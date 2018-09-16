@@ -9,9 +9,7 @@
   </a>
 
   <!-- Header Navbar: style can be found in header.less -->
-  <nav class="navbar navbar-static-top" style="
-    height: 51px;
-">
+  <nav class="navbar navbar-static-top" style="height: 51px;">
     <!-- Sidebar toggle button-->
     <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
       <i class="fa fa-bars"></i>
@@ -35,10 +33,10 @@
   <section class="sidebar">
     <!-- Sidebar user panel -->
     <div class="user-panel">
-      <div class="pull-left image">
+      <div class="float-left image">
         <img src="../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
       </div>
-      <div class="pull-left info">
+      <div class="float-left info">
         <p>Alexander Pierce</p>
         <a href="#"><i class="fa fa-circle text-success"></i> Superuser</a>
       </div>
@@ -50,7 +48,7 @@
         <a href="#">
           <i class="fa fa-building"></i> <span>Kantor</span>
           <span class="pull-right-container">
-            <i class="fa fa-angle-left pull-right"></i>
+            <i class="fa fa-angle-left float-right"></i>
           </span>
         </a>
         <ul class="treeview-menu">
@@ -66,10 +64,11 @@
         } else {
       ?>
         <li><a href="#">Tidak ada data Kantor</a></li>
-        <li><a href="tambah_kantor.php"><i class="fa fa-plus"></i> Tambah Kantor</a></li>
       <?php
         }
       ?>
+          <li><a href="tambah_kantor.php"><i class="fa fa-plus"></i> Tambah Kantor</a></li>
+
         </ul>
       </li>
       <li>
@@ -85,7 +84,7 @@
           <i class="fa fa-pie-chart"></i>
           <span>Charts</span>
           <span class="pull-right-container">
-            <i class="fa fa-angle-left pull-right"></i>
+            <i class="fa fa-angle-left float-right"></i>
           </span>
         </a>
         <ul class="treeview-menu">
@@ -100,7 +99,7 @@
           <i class="fa fa-laptop"></i>
           <span>UI Elements</span>
           <span class="pull-right-container">
-            <i class="fa fa-angle-left pull-right"></i>
+            <i class="fa fa-angle-left float-right"></i>
           </span>
         </a>
         <ul class="treeview-menu">
@@ -116,7 +115,7 @@
         <a href="#">
           <i class="fa fa-edit"></i> <span>Forms</span>
           <span class="pull-right-container">
-            <i class="fa fa-angle-left pull-right"></i>
+            <i class="fa fa-angle-left float-right"></i>
           </span>
         </a>
         <ul class="treeview-menu">
@@ -129,7 +128,7 @@
         <a href="#">
           <i class="fa fa-table"></i> <span>Tables</span>
           <span class="pull-right-container">
-            <i class="fa fa-angle-left pull-right"></i>
+            <i class="fa fa-angle-left float-right"></i>
           </span>
         </a>
         <ul class="treeview-menu">
@@ -160,7 +159,7 @@
         <a href="#">
           <i class="fa fa-folder"></i> <span>Examples</span>
           <span class="pull-right-container">
-            <i class="fa fa-angle-left pull-right"></i>
+            <i class="fa fa-angle-left float-right"></i>
           </span>
         </a>
         <ul class="treeview-menu">
@@ -179,7 +178,7 @@
         <a href="#">
           <i class="fa fa-share"></i> <span>Multilevel</span>
           <span class="pull-right-container">
-            <i class="fa fa-angle-left pull-right"></i>
+            <i class="fa fa-angle-left float-right"></i>
           </span>
         </a>
         <ul class="treeview-menu">
@@ -187,7 +186,7 @@
           <li class="treeview">
             <a href="#"><i class="fa fa-circle-o"></i> Level One
               <span class="pull-right-container">
-                <i class="fa fa-angle-left pull-right"></i>
+                <i class="fa fa-angle-left float-right"></i>
               </span>
             </a>
             <ul class="treeview-menu">
@@ -195,7 +194,7 @@
               <li class="treeview">
                 <a href="#"><i class="fa fa-circle-o"></i> Level Two
                   <span class="pull-right-container">
-                    <i class="fa fa-angle-left pull-right"></i>
+                    <i class="fa fa-angle-left float-right"></i>
                   </span>
                 </a>
                 <ul class="treeview-menu">
