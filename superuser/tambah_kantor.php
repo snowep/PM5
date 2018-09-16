@@ -60,7 +60,7 @@
             <div class="box-body">
               <div class="row">
                 <div class="col-md-12">
-                  <form action="process_tambah_kantor.html" method="post">
+                  <form action="process/tambah_kantor.html" method="post">
                     <div class="form-group">
                       <label>Nama Kantor</label>
                       <input type="text" class="form-control" name="nama_kantor" placeholder="Nama Kantor">
