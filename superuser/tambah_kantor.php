@@ -59,8 +59,22 @@
           <div class="box">
             <div class="box-body">
               <div class="row">
-                <div class="col-md-8">
-
+                <div class="col-md-12">
+                  <form action="process_tambah_kantor.html" method="post">
+                    <div class="form-group">
+                      <label>Nama Kantor</label>
+                      <input type="text" class="form-control" name="nama_kantor" placeholder="Nama Kantor">
+                    </div>
+                    <div class="form-group">
+                      <label>Alamat Kantor</label>
+                      <textarea class="form-control" name="alamat_kantor" rows="3"></textarea>
+                    </div>
+                    <div class="form-group">
+                      <label>Telepon Kantor</label>
+                      <input type="text" class="form-control" name="telepon_kantor" placeholder="Telepon Kantor">
+                    </div>
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                  </form>
                 </div>
                 <!-- /.col -->
               </div>
