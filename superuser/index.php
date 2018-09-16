@@ -454,7 +454,7 @@
                   <h3 class="box-title">Latest Members</h3>
 
                   <div class="box-tools pull-right">
-                    <span class="label label-danger">8 New Members</span>
+                    <span class="badge badge-danger">8 New Members</span>
                     <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
                     </button>
                     <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i>
@@ -546,7 +546,7 @@
                   <tr>
                     <td><a href="pages/examples/invoice.html">OR9842</a></td>
                     <td>Call of Duty IV</td>
-                    <td><span class="label label-success">Shipped</span></td>
+                    <td><span class="badge badge-success">Shipped</span></td>
                     <td>
                       <div class="sparkbar" data-color="#00a65a" data-height="20">90,80,90,-70,61,-83,63</div>
                     </td>
@@ -554,7 +554,7 @@
                   <tr>
                     <td><a href="pages/examples/invoice.html">OR1848</a></td>
                     <td>Samsung Smart TV</td>
-                    <td><span class="label label-warning">Pending</span></td>
+                    <td><span class="badge badge-warning">Pending</span></td>
                     <td>
                       <div class="sparkbar" data-color="#f39c12" data-height="20">90,80,-90,70,61,-83,68</div>
                     </td>
@@ -562,7 +562,7 @@
                   <tr>
                     <td><a href="pages/examples/invoice.html">OR7429</a></td>
                     <td>iPhone 6 Plus</td>
-                    <td><span class="label label-danger">Delivered</span></td>
+                    <td><span class="badge badge-danger">Delivered</span></td>
                     <td>
                       <div class="sparkbar" data-color="#f56954" data-height="20">90,-80,90,70,-61,83,63</div>
                     </td>
@@ -570,7 +570,7 @@
                   <tr>
                     <td><a href="pages/examples/invoice.html">OR7429</a></td>
                     <td>Samsung Smart TV</td>
-                    <td><span class="label label-info">Processing</span></td>
+                    <td><span class="badge badge-info">Processing</span></td>
                     <td>
                       <div class="sparkbar" data-color="#00c0ef" data-height="20">90,80,-90,70,-61,83,63</div>
                     </td>
@@ -578,7 +578,7 @@
                   <tr>
                     <td><a href="pages/examples/invoice.html">OR1848</a></td>
                     <td>Samsung Smart TV</td>
-                    <td><span class="label label-warning">Pending</span></td>
+                    <td><span class="badge badge-warning">Pending</span></td>
                     <td>
                       <div class="sparkbar" data-color="#f39c12" data-height="20">90,80,-90,70,61,-83,68</div>
                     </td>
@@ -586,7 +586,7 @@
                   <tr>
                     <td><a href="pages/examples/invoice.html">OR7429</a></td>
                     <td>iPhone 6 Plus</td>
-                    <td><span class="label label-danger">Delivered</span></td>
+                    <td><span class="badge badge-danger">Delivered</span></td>
                     <td>
                       <div class="sparkbar" data-color="#f56954" data-height="20">90,-80,90,70,-61,83,63</div>
                     </td>
@@ -594,7 +594,7 @@
                   <tr>
                     <td><a href="pages/examples/invoice.html">OR9842</a></td>
                     <td>Call of Duty IV</td>
-                    <td><span class="label label-success">Shipped</span></td>
+                    <td><span class="badge badge-success">Shipped</span></td>
                     <td>
                       <div class="sparkbar" data-color="#00a65a" data-height="20">90,80,90,-70,61,-83,63</div>
                     </td>
@@ -755,7 +755,7 @@
                   </div>
                   <div class="product-info">
                     <a href="javascript:void(0)" class="product-title">Samsung TV
-                      <span class="label label-warning pull-right">$1800</span></a>
+                      <span class="badge badge-warning pull-right">$1800</span></a>
                     <span class="product-description">
                           Samsung 32" 1080p 60Hz LED Smart HDTV.
                         </span>
@@ -768,7 +768,7 @@
                   </div>
                   <div class="product-info">
                     <a href="javascript:void(0)" class="product-title">Bicycle
-                      <span class="label label-info pull-right">$700</span></a>
+                      <span class="badge badge-info pull-right">$700</span></a>
                     <span class="product-description">
                           26" Mongoose Dolomite Men's 7-speed, Navy Blue.
                         </span>
@@ -781,7 +781,7 @@
                   </div>
                   <div class="product-info">
                     <a href="javascript:void(0)" class="product-title">Xbox One <span
-                        class="label label-danger pull-right">$350</span></a>
+                        class="badge badge-danger pull-right">$350</span></a>
                     <span class="product-description">
                           Xbox One Console Bundle with Halo Master Chief Collection.
                         </span>
@@ -794,7 +794,7 @@
                   </div>
                   <div class="product-info">
                     <a href="javascript:void(0)" class="product-title">PlayStation 4
-                      <span class="label label-success pull-right">$399</span></a>
+                      <span class="badge badge-success pull-right">$399</span></a>
                     <span class="product-description">
                           PlayStation 4 500GB Console (PS4)
                         </span>
@@ -819,13 +819,9 @@
   </div>
   <!-- /.content-wrapper -->
 
-  <footer class="main-footer">
-    <div class="pull-right hidden-xs">
-      <b>Version</b> 2.4.0
-    </div>
-    <strong>Copyright &copy; 2014-2016 <a href="https://adminlte.io">Almsaeed Studio</a>.</strong> All rights
-    reserved.
-  </footer>
+  <?php
+    include 'element/footer.php';
+  ?>
 
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
@@ -893,7 +889,7 @@
             <a href="javascript:void(0)">
               <h4 class="control-sidebar-subheading">
                 Custom Template Design
-                <span class="label label-danger pull-right">70%</span>
+                <span class="badge badge-danger pull-right">70%</span>
               </h4>
 
               <div class="progress progress-xxs">
@@ -905,7 +901,7 @@
             <a href="javascript:void(0)">
               <h4 class="control-sidebar-subheading">
                 Update Resume
-                <span class="label label-success pull-right">95%</span>
+                <span class="badge badge-success pull-right">95%</span>
               </h4>
 
               <div class="progress progress-xxs">
@@ -917,7 +913,7 @@
             <a href="javascript:void(0)">
               <h4 class="control-sidebar-subheading">
                 Laravel Integration
-                <span class="label label-warning pull-right">50%</span>
+                <span class="badge badge-warning pull-right">50%</span>
               </h4>
 
               <div class="progress progress-xxs">
@@ -929,7 +925,7 @@
             <a href="javascript:void(0)">
               <h4 class="control-sidebar-subheading">
                 Back End Framework
-                <span class="label label-primary pull-right">68%</span>
+                <span class="badge badge-primary pull-right">68%</span>
               </h4>
 
               <div class="progress progress-xxs">
@@ -949,10 +945,10 @@
           <h3 class="control-sidebar-heading">General Settings</h3>
 
           <div class="form-group">
-            <label class="control-sidebar-subheading">
+            <badge class="control-sidebar-subheading">
               Report panel usage
               <input type="checkbox" class="pull-right" checked>
-            </label>
+            </badge>
 
             <p>
               Some information about this general settings option
@@ -961,10 +957,10 @@
           <!-- /.form-group -->
 
           <div class="form-group">
-            <label class="control-sidebar-subheading">
+            <badge class="control-sidebar-subheading">
               Allow mail redirect
               <input type="checkbox" class="pull-right" checked>
-            </label>
+            </badge>
 
             <p>
               Other sets of options are available
@@ -973,10 +969,10 @@
           <!-- /.form-group -->
 
           <div class="form-group">
-            <label class="control-sidebar-subheading">
+            <badge class="control-sidebar-subheading">
               Expose author name in posts
               <input type="checkbox" class="pull-right" checked>
-            </label>
+            </badge>
 
             <p>
               Allow the user to show his name in blog posts
@@ -987,26 +983,26 @@
           <h3 class="control-sidebar-heading">Chat Settings</h3>
 
           <div class="form-group">
-            <label class="control-sidebar-subheading">
+            <badge class="control-sidebar-subheading">
               Show me as online
               <input type="checkbox" class="pull-right" checked>
-            </label>
+            </badge>
           </div>
           <!-- /.form-group -->
 
           <div class="form-group">
-            <label class="control-sidebar-subheading">
+            <badge class="control-sidebar-subheading">
               Turn off notifications
               <input type="checkbox" class="pull-right">
-            </label>
+            </badge>
           </div>
           <!-- /.form-group -->
 
           <div class="form-group">
-            <label class="control-sidebar-subheading">
+            <badge class="control-sidebar-subheading">
               Delete chat history
               <a href="javascript:void(0)" class="text-red pull-right"><i class="fa fa-trash-o"></i></a>
-            </label>
+            </badge>
           </div>
           <!-- /.form-group -->
         </form>

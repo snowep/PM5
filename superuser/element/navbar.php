@@ -9,7 +9,9 @@
   </a>
 
   <!-- Header Navbar: style can be found in header.less -->
-  <nav class="navbar navbar-static-top">
+  <nav class="navbar navbar-static-top" style="
+    height: 51px;
+">
     <!-- Sidebar toggle button-->
     <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
       <i class="fa fa-bars"></i>
@@ -74,7 +76,7 @@
         <a href="pages/widgets.html">
           <i class="fa fa-th"></i> <span>Widgets</span>
           <span class="pull-right-container">
-            <small class="label pull-right bg-green">new</small>
+            <small class="badge pull-right bg-green">new</small>
           </span>
         </a>
       </li>
@@ -139,8 +141,8 @@
         <a href="pages/calendar.html">
           <i class="fa fa-calendar"></i> <span>Calendar</span>
           <span class="pull-right-container">
-            <small class="label pull-right bg-red">3</small>
-            <small class="label pull-right bg-blue">17</small>
+            <small class="badge pull-right bg-red">3</small>
+            <small class="badge pull-right bg-blue">17</small>
           </span>
         </a>
       </li>
@@ -148,9 +150,9 @@
         <a href="pages/mailbox/mailbox.html">
           <i class="fa fa-envelope"></i> <span>Mailbox</span>
           <span class="pull-right-container">
-            <small class="label pull-right bg-yellow">12</small>
-            <small class="label pull-right bg-green">16</small>
-            <small class="label pull-right bg-red">5</small>
+            <small class="badge pull-right bg-yellow">12</small>
+            <small class="badge pull-right bg-green">16</small>
+            <small class="badge pull-right bg-red">5</small>
           </span>
         </a>
       </li>
@@ -207,7 +209,7 @@
         </ul>
       </li>
       <li><a href="https://adminlte.io/docs"><i class="fa fa-book"></i> <span>Documentation</span></a></li>
-      <li class="header">LABELS</li>
+      <li class="header">badgeS</li>
       <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Important</span></a></li>
       <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Warning</span></a></li>
       <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Information</span></a></li>
