@@ -119,9 +119,10 @@
           </span>
         </a>
         <ul class="treeview-menu">
-          <li><a href="pages/forms/general.html"><i class="fa fa-circle-o"></i> General Elements</a></li>
-          <li><a href="pages/forms/advanced.html"><i class="fa fa-circle-o"></i> Advanced Elements</a></li>
-          <li><a href="pages/forms/editors.html"><i class="fa fa-circle-o"></i> Editors</a></li>
+          <li><a href="process/input_server.php"><i class="fa fa-circle-o"></i> Input Asset Server</a></li>
+          <li><a href="pages/forms/input_wifi.php"><i class="fa fa-circle-o"></i> Input Asset Wifi</a></li>
+          <li><a href="pages/forms/input_pc.php"><i class="fa fa-circle-o"></i> Input Asset Komputer</a></li>
+          <li><a href="pages/forms/input_switch.php"><i class="fa fa-circle-o"></i> Input Asset Switch</a></li>
         </ul>
       </li>
       <li class="treeview">
