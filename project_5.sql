@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 16, 2018 at 12:42 PM
+-- Generation Time: Sep 17, 2018 at 06:37 PM
 -- Server version: 10.1.34-MariaDB
 -- PHP Version: 5.6.37
 
@@ -45,6 +45,15 @@ CREATE TABLE `gedung` (
   `info_10` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `gedung`
+--
+
+INSERT INTO `gedung` (`id_gedung`, `id_kantor`, `nama_gedung`, `alamat`, `info_01`, `info_02`, `info_03`, `info_04`, `info_05`, `info_06`, `info_07`, `info_08`, `info_09`, `info_10`) VALUES
+(5, 1, 'Gedung Utama', 'Alamat Gedung Utama Kantor A', '', '', '', '', '', '', '', '', '', ''),
+(6, 1, 'Gedung Kreo', 'Alamat Gedung Kreo Kantor A', '', '', '', '', '', '', '', '', '', ''),
+(7, 2, 'Gedung Utama', 'Alamat Gedung Utama Kantor B', '', '', '', '', '', '', '', '', '', '');
+
 -- --------------------------------------------------------
 
 --
@@ -56,21 +65,29 @@ CREATE TABLE `kantor` (
   `nama_kantor` varchar(255) NOT NULL,
   `alamat` varchar(255) NOT NULL,
   `telepon` varchar(255) NOT NULL,
-  `gps_x` varchar(255) NOT NULL,
-  `gps_y` varchar(255) NOT NULL,
-  `nama_user` varchar(255) NOT NULL,
-  `hp_user` varchar(255) NOT NULL,
-  `info_01` varchar(100) NOT NULL,
-  `info_02` varchar(100) NOT NULL,
-  `info_03` varchar(100) NOT NULL,
-  `info_04` varchar(100) NOT NULL,
-  `info_05` varchar(100) NOT NULL,
-  `info_06` varchar(100) NOT NULL,
-  `info_07` varchar(100) NOT NULL,
-  `info_08` varchar(100) NOT NULL,
-  `info_09` varchar(100) NOT NULL,
-  `info_10` varchar(100) NOT NULL
+  `gps_x` varchar(255) DEFAULT NULL,
+  `gps_y` varchar(255) DEFAULT NULL,
+  `nama_user` varchar(255) DEFAULT NULL,
+  `hp_user` varchar(255) DEFAULT NULL,
+  `info_01` varchar(100) DEFAULT NULL,
+  `info_02` varchar(100) DEFAULT NULL,
+  `info_03` varchar(100) DEFAULT NULL,
+  `info_04` varchar(100) DEFAULT NULL,
+  `info_05` varchar(100) DEFAULT NULL,
+  `info_06` varchar(100) DEFAULT NULL,
+  `info_07` varchar(100) DEFAULT NULL,
+  `info_08` varchar(100) DEFAULT NULL,
+  `info_09` varchar(100) DEFAULT NULL,
+  `info_10` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `kantor`
+--
+
+INSERT INTO `kantor` (`id_kantor`, `nama_kantor`, `alamat`, `telepon`, `gps_x`, `gps_y`, `nama_user`, `hp_user`, `info_01`, `info_02`, `info_03`, `info_04`, `info_05`, `info_06`, `info_07`, `info_08`, `info_09`, `info_10`) VALUES
+(1, 'Kantor A', 'Alamat A', 'Telepon A', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(2, 'Kantor B', 'Alamat Kantor B', 'Telepon B', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -93,6 +110,15 @@ CREATE TABLE `lantai` (
   `info_09` varchar(100) NOT NULL,
   `info_10` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `lantai`
+--
+
+INSERT INTO `lantai` (`id_lantai`, `id_gedung`, `nama_lantai`, `info_01`, `info_02`, `info_03`, `info_04`, `info_05`, `info_06`, `info_07`, `info_08`, `info_09`, `info_10`) VALUES
+(1, 5, 'Lantai 1', '', '', '', '', '', '', '', '', '', ''),
+(2, 5, 'Lantai 2', '', '', '', '', '', '', '', '', '', ''),
+(3, 5, 'Lantai 3', '', '', '', '', '', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -174,6 +200,14 @@ CREATE TABLE `ruangan` (
   `info_09` varchar(100) NOT NULL,
   `info_10` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `ruangan`
+--
+
+INSERT INTO `ruangan` (`id_ruangan`, `id_lantai`, `nama_ruangan`, `info_01`, `info_02`, `info_03`, `info_04`, `info_05`, `info_06`, `info_07`, `info_08`, `info_09`, `info_10`) VALUES
+(1, 2, 'Ruang Rapat', '', '', '', '', '', '', '', '', '', ''),
+(2, 3, 'Ruangan Perencanaan', '', '', '', '', '', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -329,9 +363,9 @@ ALTER TABLE `lantai`
 ALTER TABLE `pc`
   ADD PRIMARY KEY (`id_pc`),
   ADD KEY `id_kantor` (`id_kantor`,`id_gedung`,`id_lantai`,`id_ruangan`),
-  ADD KEY `id_lantai` (`id_lantai`),
-  ADD KEY `id_ruangan` (`id_ruangan`),
-  ADD KEY `id_gedung` (`id_gedung`);
+  ADD KEY `pc_ibfk_2` (`id_lantai`),
+  ADD KEY `pc_ibfk_3` (`id_ruangan`),
+  ADD KEY `pc_ibfk_4` (`id_gedung`);
 
 --
 -- Indexes for table `pegawai`
@@ -353,9 +387,9 @@ ALTER TABLE `ruangan`
 ALTER TABLE `server`
   ADD PRIMARY KEY (`id_server`),
   ADD KEY `id_kantor` (`id_kantor`,`id_gedung`,`id_lantai`,`id_ruangan`),
-  ADD KEY `id_gedung` (`id_gedung`),
-  ADD KEY `id_lantai` (`id_lantai`),
-  ADD KEY `id_ruangan` (`id_ruangan`);
+  ADD KEY `server_ibfk_2` (`id_gedung`),
+  ADD KEY `server_ibfk_3` (`id_lantai`),
+  ADD KEY `server_ibfk_4` (`id_ruangan`);
 
 --
 -- Indexes for table `switch`
@@ -363,9 +397,9 @@ ALTER TABLE `server`
 ALTER TABLE `switch`
   ADD PRIMARY KEY (`id_switch`),
   ADD KEY `id_kantor` (`id_kantor`,`id_gedung`,`id_lantai`,`id_ruangan`),
-  ADD KEY `id_gedung` (`id_gedung`),
-  ADD KEY `id_lantai` (`id_lantai`),
-  ADD KEY `id_ruangan` (`id_ruangan`);
+  ADD KEY `switch_ibfk_2` (`id_gedung`),
+  ADD KEY `switch_ibfk_3` (`id_lantai`),
+  ADD KEY `switch_ibfk_4` (`id_ruangan`);
 
 --
 -- Indexes for table `user`
@@ -380,9 +414,9 @@ ALTER TABLE `user`
 ALTER TABLE `wifi`
   ADD PRIMARY KEY (`id_wifi`),
   ADD KEY `id_kantor` (`id_kantor`,`id_gedung`,`id_lantai`,`id_ruangan`),
-  ADD KEY `id_gedung` (`id_gedung`),
-  ADD KEY `id_lantai` (`id_lantai`),
-  ADD KEY `id_ruangan` (`id_ruangan`);
+  ADD KEY `wifi_ibfk_1` (`id_gedung`),
+  ADD KEY `wifi_ibfk_3` (`id_lantai`),
+  ADD KEY `wifi_ibfk_4` (`id_ruangan`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -392,19 +426,19 @@ ALTER TABLE `wifi`
 -- AUTO_INCREMENT for table `gedung`
 --
 ALTER TABLE `gedung`
-  MODIFY `id_gedung` int(255) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_gedung` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `kantor`
 --
 ALTER TABLE `kantor`
-  MODIFY `id_kantor` int(255) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_kantor` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `lantai`
 --
 ALTER TABLE `lantai`
-  MODIFY `id_lantai` int(255) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_lantai` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `pc`
@@ -422,7 +456,7 @@ ALTER TABLE `pegawai`
 -- AUTO_INCREMENT for table `ruangan`
 --
 ALTER TABLE `ruangan`
-  MODIFY `id_ruangan` int(255) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_ruangan` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `server`
@@ -456,67 +490,67 @@ ALTER TABLE `wifi`
 -- Constraints for table `gedung`
 --
 ALTER TABLE `gedung`
-  ADD CONSTRAINT `gedung_ibfk_1` FOREIGN KEY (`id_kantor`) REFERENCES `kantor` (`id_kantor`);
+  ADD CONSTRAINT `gedung_ibfk_1` FOREIGN KEY (`id_kantor`) REFERENCES `kantor` (`id_kantor`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `lantai`
 --
 ALTER TABLE `lantai`
-  ADD CONSTRAINT `lantai_ibfk_1` FOREIGN KEY (`id_gedung`) REFERENCES `gedung` (`id_gedung`);
+  ADD CONSTRAINT `lantai_ibfk_1` FOREIGN KEY (`id_gedung`) REFERENCES `gedung` (`id_gedung`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `pc`
 --
 ALTER TABLE `pc`
-  ADD CONSTRAINT `pc_ibfk_1` FOREIGN KEY (`id_kantor`) REFERENCES `kantor` (`id_kantor`),
-  ADD CONSTRAINT `pc_ibfk_2` FOREIGN KEY (`id_lantai`) REFERENCES `lantai` (`id_lantai`),
-  ADD CONSTRAINT `pc_ibfk_3` FOREIGN KEY (`id_ruangan`) REFERENCES `ruangan` (`id_ruangan`),
-  ADD CONSTRAINT `pc_ibfk_4` FOREIGN KEY (`id_gedung`) REFERENCES `gedung` (`id_gedung`);
+  ADD CONSTRAINT `pc_ibfk_1` FOREIGN KEY (`id_kantor`) REFERENCES `kantor` (`id_kantor`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `pc_ibfk_2` FOREIGN KEY (`id_lantai`) REFERENCES `lantai` (`id_lantai`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `pc_ibfk_3` FOREIGN KEY (`id_ruangan`) REFERENCES `ruangan` (`id_ruangan`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `pc_ibfk_4` FOREIGN KEY (`id_gedung`) REFERENCES `gedung` (`id_gedung`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `pegawai`
 --
 ALTER TABLE `pegawai`
-  ADD CONSTRAINT `pegawai_ibfk_1` FOREIGN KEY (`id_pc`) REFERENCES `pc` (`id_pc`);
+  ADD CONSTRAINT `pegawai_ibfk_1` FOREIGN KEY (`id_pc`) REFERENCES `pc` (`id_pc`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `ruangan`
 --
 ALTER TABLE `ruangan`
-  ADD CONSTRAINT `ruangan_ibfk_1` FOREIGN KEY (`id_lantai`) REFERENCES `lantai` (`id_lantai`);
+  ADD CONSTRAINT `ruangan_ibfk_1` FOREIGN KEY (`id_lantai`) REFERENCES `lantai` (`id_lantai`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `server`
 --
 ALTER TABLE `server`
-  ADD CONSTRAINT `server_ibfk_1` FOREIGN KEY (`id_kantor`) REFERENCES `kantor` (`id_kantor`),
-  ADD CONSTRAINT `server_ibfk_2` FOREIGN KEY (`id_gedung`) REFERENCES `gedung` (`id_gedung`),
-  ADD CONSTRAINT `server_ibfk_3` FOREIGN KEY (`id_lantai`) REFERENCES `lantai` (`id_lantai`),
-  ADD CONSTRAINT `server_ibfk_4` FOREIGN KEY (`id_ruangan`) REFERENCES `ruangan` (`id_ruangan`);
+  ADD CONSTRAINT `server_ibfk_1` FOREIGN KEY (`id_kantor`) REFERENCES `kantor` (`id_kantor`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `server_ibfk_2` FOREIGN KEY (`id_gedung`) REFERENCES `gedung` (`id_gedung`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `server_ibfk_3` FOREIGN KEY (`id_lantai`) REFERENCES `lantai` (`id_lantai`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `server_ibfk_4` FOREIGN KEY (`id_ruangan`) REFERENCES `ruangan` (`id_ruangan`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `switch`
 --
 ALTER TABLE `switch`
-  ADD CONSTRAINT `switch_ibfk_1` FOREIGN KEY (`id_kantor`) REFERENCES `kantor` (`id_kantor`),
-  ADD CONSTRAINT `switch_ibfk_2` FOREIGN KEY (`id_gedung`) REFERENCES `gedung` (`id_gedung`),
-  ADD CONSTRAINT `switch_ibfk_3` FOREIGN KEY (`id_lantai`) REFERENCES `lantai` (`id_lantai`),
-  ADD CONSTRAINT `switch_ibfk_4` FOREIGN KEY (`id_ruangan`) REFERENCES `ruangan` (`id_ruangan`);
+  ADD CONSTRAINT `switch_ibfk_1` FOREIGN KEY (`id_kantor`) REFERENCES `kantor` (`id_kantor`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `switch_ibfk_2` FOREIGN KEY (`id_gedung`) REFERENCES `gedung` (`id_gedung`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `switch_ibfk_3` FOREIGN KEY (`id_lantai`) REFERENCES `lantai` (`id_lantai`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `switch_ibfk_4` FOREIGN KEY (`id_ruangan`) REFERENCES `ruangan` (`id_ruangan`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `user`
 --
 ALTER TABLE `user`
-  ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`id_kantor`) REFERENCES `kantor` (`id_kantor`);
+  ADD CONSTRAINT `user_ibfk_1` FOREIGN KEY (`id_kantor`) REFERENCES `kantor` (`id_kantor`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `wifi`
 --
 ALTER TABLE `wifi`
-  ADD CONSTRAINT `wifi_ibfk_1` FOREIGN KEY (`id_gedung`) REFERENCES `gedung` (`id_gedung`),
-  ADD CONSTRAINT `wifi_ibfk_2` FOREIGN KEY (`id_kantor`) REFERENCES `kantor` (`id_kantor`),
-  ADD CONSTRAINT `wifi_ibfk_3` FOREIGN KEY (`id_lantai`) REFERENCES `lantai` (`id_lantai`),
-  ADD CONSTRAINT `wifi_ibfk_4` FOREIGN KEY (`id_ruangan`) REFERENCES `ruangan` (`id_ruangan`);
+  ADD CONSTRAINT `wifi_ibfk_1` FOREIGN KEY (`id_gedung`) REFERENCES `gedung` (`id_gedung`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `wifi_ibfk_2` FOREIGN KEY (`id_kantor`) REFERENCES `kantor` (`id_kantor`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `wifi_ibfk_3` FOREIGN KEY (`id_lantai`) REFERENCES `lantai` (`id_lantai`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `wifi_ibfk_4` FOREIGN KEY (`id_ruangan`) REFERENCES `ruangan` (`id_ruangan`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
