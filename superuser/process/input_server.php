@@ -1,44 +1,39 @@
 <?php
-      include "../config.php";
+      include "../../koneksi.php";
  ?>
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-  <head>
-<title>Input Asset Server</title>
-    <meta charset="utf-8">
-    <!-- start: Mobile Specific -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- end: Mobile Specific -->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Dashboard</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+  <!-- Bootstrap 3.3.7 -->
+  <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="../../bower_components/font-awesome/css/all.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="../../bower_components/Ionicons/css/ionicons.min.css">
+  <!-- jvectormap -->
+  <link rel="stylesheet" href="../../bower_components/jvectormap/jquery-jvectormap.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="../../dist/css/AdminLTE.min.css">
+  <!-- AdminLTE Skins. Choose a skin from the css/skins
+       folder instead of downloading all of them to reduce the load. -->
+  <link rel="stylesheet" href="../../dist/css/skins/_all-skins.min.css">
 
-    <!-- start: CSS -->
-    <script type="text/javascript" src="../config/jquery.min.js"></script>
-  	<script type="text/javascript" src="../components/dropdown.js"></script>
-  	<script type="text/javascript" src="../components/transition.js"></script>
-  	<script type="text/javascript" src="../components/modal.js"></script>
-  	<link rel="stylesheet" type="text/css" href="../components/container.css">
-  	<link rel="stylesheet" type="text/css" href="../components/menu.css">
-  	<link rel="stylesheet" type="text/css" href="../components/grid.css">
-  	<link rel="stylesheet" type="text/css" href="../components/header.css">
-  	<link rel="stylesheet" type="text/css" href="../components/segment.css">
-  	<link rel="stylesheet" type="text/css" href="../components/divider.css">
-  	<link rel="stylesheet" type="text/css" href="../components/form.css">
-  	<link rel="stylesheet" type="text/css" href="../components/label.css">
-  	<link rel="stylesheet" type="text/css" href="../components/button.css">
-  	<link rel="stylesheet" type="text/css" href="../components/table.css">
-  	<link rel="stylesheet" type="text/css" href="../components/icon.css">
-  	<link rel="stylesheet" type="text/css" href="../components/dropdown.css">
-  	<link rel="stylesheet" type="text/css" href="../components/modal.css">
-  	<link rel="stylesheet" type="text/css" href="../components/transition.css">
-  	<link rel="stylesheet" type="text/css" href="../components/site.css">
-  	<link rel="stylesheet" type="text/css" href="../components/semantic.css">
-    <link id="bootstrap-style" href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/bootstrap-responsive.min.css" rel="stylesheet">
-    <link id="base-style" href="css/style.css" rel="stylesheet">
-    <link id="base-style-responsive" href="css/style-responsive.css" rel="stylesheet">
-    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800&subset=latin,cyrillic-ext,latin-ext' rel='stylesheet' type='text/css'>
-    <!-- end: CSS -->
-    <title></title>
-  </head>
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+  <!-- Google Font -->
+  <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
+</head>
   <body>
 
 
@@ -229,7 +224,7 @@
           </thead>
           <tbody>
     <?php
-    $sql = $conn->query("SELECT * FROM server");
+    $sql = $db->query("SELECT * FROM server");
     while ($row = $sql->fetch()) {
     ?>
           <tr>

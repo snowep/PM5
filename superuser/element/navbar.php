@@ -58,7 +58,7 @@
         if ($count > 0) {
           while ($row = $sql->fetch()) {
       ?>
-          <li><a href="kantor.php?id_kantor=<?php echo $row['id_kantor'] ?>"><i class="fa fa-circle-o"></i> <?php echo $row['nama_kantor'] ?></a></li>
+          <li><a href="kantor.php?id_kantor=<?php echo $row['id_kantor'] ?>"><?php echo $row['nama_kantor'] ?></a></li>
       <?php
           }
         } else {
@@ -71,27 +71,19 @@
 
         </ul>
       </li>
-      <li>
-        <a href="pages/widgets.html">
-          <i class="fa fa-th"></i> <span>Widgets</span>
-          <span class="pull-right-container">
-            <small class="badge pull-right bg-green">new</small>
-          </span>
-        </a>
-      </li>
       <li class="treeview">
         <a href="#">
-          <i class="fa fa-pie-chart"></i>
-          <span>Charts</span>
+          <i class="fa fa-box"></i>
+          <span>Aset</span>
           <span class="pull-right-container">
             <i class="fa fa-angle-left float-right"></i>
           </span>
         </a>
         <ul class="treeview-menu">
-          <li><a href="pages/charts/chartjs.html"><i class="fa fa-circle-o"></i> ChartJS</a></li>
-          <li><a href="pages/charts/morris.html"><i class="fa fa-circle-o"></i> Morris</a></li>
-          <li><a href="pages/charts/flot.html"><i class="fa fa-circle-o"></i> Flot</a></li>
-          <li><a href="pages/charts/inline.html"><i class="fa fa-circle-o"></i> Inline charts</a></li>
+          <li><a href="PC.php"><i class="fa fa-desktop"></i> PC</a></li>
+          <li><a href="pages/charts/morris.html"><i class="fa fa-server"></i> Server</a></li>
+          <li><a href="pages/charts/flot.html"><i class="fa fa-microchip"></i> Switch</a></li>
+          <li><a href="pages/charts/inline.html"><i class="fa fa-wifi"></i> WiFi</a></li>
         </ul>
       </li>
       <li class="treeview">
@@ -120,9 +112,9 @@
         </a>
         <ul class="treeview-menu">
           <li><a href="process/input_server.php"><i class="fa fa-circle-o"></i> Input Asset Server</a></li>
-          <li><a href="pages/forms/input_wifi.php"><i class="fa fa-circle-o"></i> Input Asset Wifi</a></li>
-          <li><a href="pages/forms/input_pc.php"><i class="fa fa-circle-o"></i> Input Asset Komputer</a></li>
-          <li><a href="pages/forms/input_switch.php"><i class="fa fa-circle-o"></i> Input Asset Switch</a></li>
+          <li><a href="process/input_wifi.php"><i class="fa fa-circle-o"></i> Input Asset Wifi</a></li>
+          <li><a href="process/input_pc.php"><i class="fa fa-circle-o"></i> Input Asset Komputer</a></li>
+          <li><a href="process/input_switch.php"><i class="fa fa-circle-o"></i> Input Asset Switch</a></li>
         </ul>
       </li>
       <li class="treeview">
