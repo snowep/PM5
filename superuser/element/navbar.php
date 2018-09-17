@@ -19,7 +19,7 @@
       <ul class="nav navbar-nav">
         <!-- Messages: style can be found in dropdown.less-->
         <li class="user user-menu">
-          <a href="../signout.php">
+          <a href="../login.php">
             Sign Out
           </a>
         </li>
@@ -81,9 +81,9 @@
         </a>
         <ul class="treeview-menu">
           <li><a href="PC.php"><i class="fa fa-desktop"></i> PC</a></li>
-          <li><a href="pages/charts/morris.html"><i class="fa fa-server"></i> Server</a></li>
-          <li><a href="pages/charts/flot.html"><i class="fa fa-microchip"></i> Switch</a></li>
-          <li><a href="pages/charts/inline.html"><i class="fa fa-wifi"></i> WiFi</a></li>
+          <li><a href="server.php"><i class="fa fa-server"></i> Server</a></li>
+          <li><a href="switch.php"><i class="fa fa-microchip"></i> Switch</a></li>
+          <li><a href="wifi.php"><i class="fa fa-wifi"></i> WiFi</a></li>
         </ul>
       </li>
       <li class="treeview">
