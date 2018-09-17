@@ -44,7 +44,7 @@
     <!-- sidebar menu: : style can be found in sidebar.less -->
     <ul class="sidebar-menu" data-widget="tree">
       <li class="header">Navigation</li>
-      <li class="active treeview menu-open">
+      <li class="treeview">
         <a href="#">
           <i class="fa fa-building"></i> <span>Kantor</span>
           <span class="pull-right-container">
