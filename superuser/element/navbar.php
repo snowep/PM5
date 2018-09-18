@@ -86,23 +86,7 @@
           <li><a href="wifi.php"><i class="fa fa-wifi"></i> WiFi</a></li>
         </ul>
       </li>
-      <li class="treeview">
-        <a href="#">
-          <i class="fa fa-laptop"></i>
-          <span>UI Elements</span>
-          <span class="pull-right-container">
-            <i class="fa fa-angle-left float-right"></i>
-          </span>
-        </a>
-        <ul class="treeview-menu">
-          <li><a href="pages/UI/general.html"><i class="fa fa-circle-o"></i> General</a></li>
-          <li><a href="pages/UI/icons.html"><i class="fa fa-circle-o"></i> Icons</a></li>
-          <li><a href="pages/UI/buttons.html"><i class="fa fa-circle-o"></i> Buttons</a></li>
-          <li><a href="pages/UI/sliders.html"><i class="fa fa-circle-o"></i> Sliders</a></li>
-          <li><a href="pages/UI/timeline.html"><i class="fa fa-circle-o"></i> Timeline</a></li>
-          <li><a href="pages/UI/modals.html"><i class="fa fa-circle-o"></i> Modals</a></li>
-        </ul>
-      </li>
+      <li><a href="daftar_pegawai.php"><i class="fa fa-users"></i> <span>Daftar Pegawai</span></a></li>
       <li class="treeview">
         <a href="#">
           <i class="fa fa-edit"></i> <span>Forms</span>
