@@ -59,7 +59,7 @@
       <div class="row">
         <div class="col-md-12">
           <?php
-            $sql = $db->query("SELECT * FROM pc");
+            $sql = $db->query("SELECT * FROM pc INNER JOIN kantor ON pc.id_kantor = kantor.id_kantor INNER JOIN gedung ON pc.id_gedung = gedung.id_gedung");
             $count = $sql->rowCount();
 
             if ($count > 0) {
@@ -76,12 +76,24 @@
               <div class="row">
               <?php
                   while ($row = $sql->fetch()) {
+                    $query = $db->query("SELECT * FROM pegawai");
               ?>
                 <div class="col-3">
                   <div class="card mb-3">
                     <div class="card-body">
-                      <h5 class="card-title"><?php echo strtoupper($row['jenis'])." | ".$row['processor'] ?></h5>
+                      <h5 class="card-title">
+                        <?php echo strtoupper($row['jenis'])." | ".$row['processor'] ?>
+                      </h5>
+                      <small><span class="badge badge-secondary"><?php echo $row['nama_kantor'] ?></span> <span class="badge badge-primary"><?php echo $row['nama_gedung'] ?></span></small>
                       <p><?php echo $row['ip_address'] ?></p>
+                      <?php
+                        $data = $query->fetch();
+                        if ($data['id_pc'] !== $row['id_pc']) {
+                      ?>
+                      <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#tambahUser<?php echo $row['id_pc'] ?>"><i class="fa fa-user"></i> Belum ada User</button>
+                      <?php
+                        }
+                      ?>
                       <a href="aset.php?id_pc=<?php echo $row['id_pc'] ?>" class="btn btn-primary btn-sm">Lihat Aset</a>
                       <a href="pc_detail.php?id_pc=<?php echo $row['id_pc'] ?>" class="btn btn-primary btn-sm">Detail PC</a>
                       <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapusGedung<?php echo $row['id_gedung'] ?>"><i class="fa fa-trash"></i></button>
@@ -283,6 +295,53 @@
       </div>
     </div>
   </div>
+  <?php
+  $sql = $db->query("SELECT * FROM pc");
+  while ($row = $sql->fetch()) {
+    $_SESSION['id_pc'] = $row['id_pc'];
+  ?>
+  <div class="modal fade" id="tambahUser<?php echo $row['id_pc'] ?>" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Tambah user untuk <?php echo strtoupper($row['jenis']) ?></h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden>&times;</span>
+          </button>
+        </div>
+
+        <div class="modal-body">
+          <form action="process/tambah_pc_user.php" method="post">
+            <div class="row">
+              <div class="col">
+                <div class="form-group">
+                  <label>Pilih Pegawai</label>
+                  <?php
+                    $sql = $db->query("SELECT * FROM pegawai WHERE id_pc IS NULL");
+                    $count = $sql->rowCount();
+                  ?>
+                  <select class="form-control" name="pegawai">
+                    <option value="">Pilih Pegawai</option>
+                    <?php
+                      if ($count > 0) {
+                        while ($row = $sql->fetch()) {
+                          echo '<option value="'.$row['id_pegawai'].'">'.$row['nama'].'</option>';
+                        }
+                      } else {
+                        echo '<option value="">Semua sudah terdaftar/belum ada data pegawai</option>';
+                      }
+                    ?>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+<?php } ?>
 </div>
 <!-- ./wrapper -->
 

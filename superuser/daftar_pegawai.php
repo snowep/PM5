@@ -49,9 +49,7 @@
       </h1>
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="index.php"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-        <li class="breadcrumb-item"><a href="kantor.php?id_kantor=<?php echo $_SESSION['id_kantor'] ?>"> <?php echo $row['nama_kantor']; ?></a></li>
-        <li class="breadcrumb-item"><a href="gedung.php?id_gedung=<?php echo $_SESSION['id_gedung'] ?>"><?php echo $row['nama_gedung']; ?></a></li>
-        <li class="breadcrumb-item active"><?php echo $row['nama_lantai']; ?></li>
+        <li class="breadcrumb-item active">Daftar Pegawai</li>
       </ol>
     </section>
     <!-- Main content -->
@@ -103,7 +101,7 @@
             <p class="lead">Oops! Sepertinya belum ada data pegawai yang dimasukkan.</p>
             <hr class="my-4">
             <p>Mulai dengan menambah data pegawai kedalam database.</p>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambahRuangan">Tambah Pegawai</button>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambahPegawai">Tambah Pegawai</button>
           </div>
         </div>
       </div>
@@ -125,21 +123,37 @@
     include 'element/footer.php';
   ?>
 
-  <div class="modal fade" id="tambahRuangan" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal fade" id="tambahPegawai" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Tambah Ruangan</h5>
+          <h5 class="modal-title">Tambah Pegawai</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden>&times;</span>
           </button>
         </div>
 
         <div class="modal-body">
-          <form action="process/tambah_ruangan.php" method="post">
+          <form action="process/tambah_pegawai.php" method="post">
             <div class="form-group">
-              <label>Nama Ruangan</label>
-              <input type="text" class="form-control" name="nama_ruangan" placeholder="Nama Ruangan">
+              <label>NIP</label>
+              <input type="text" class="form-control" name="nip" placeholder="198503302003121002">
+            </div>
+            <div class="form-group">
+              <label>Nama</label>
+              <input type="text" class="form-control" name="nama" placeholder="Mi Kael La">
+            </div>
+            <div class="form-group">
+              <label>Jabatan</label>
+              <input type="text" class="form-control" name="jabatan" placeholder="Supervisor">
+            </div>
+            <div class="form-group">
+              <label>Struktural</label>
+              <select class="form-control" id="struktural" name="struktural">
+                <option value="">Pilih Struktural</option>
+                <option value="0">0</option>
+                <option value="1">1</option>
+              </select>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
           </form>

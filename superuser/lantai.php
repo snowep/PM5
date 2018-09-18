@@ -78,7 +78,7 @@
               <h3 class="box-title">Daftar Ruangan</h3>
 
               <div class="box-tools pull-right">
-                <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#tambahLantai"><i class="fa fa-plus"></i> Tambah Lantai</button>
+                <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#tambahRuangan"><i class="fa fa-plus"></i> Tambah Ruangan</button>
               </div>
             </div>
             <div class="box-body">
@@ -90,7 +90,7 @@
                   <div class="card mb-3">
                     <div class="card-body">
                       <h5 class="card-title"><?php echo $row['nama_ruangan'] ?></h5>
-                      <a href="aset.php?id_ruangan=<?php echo $row['id_ruangan'] ?>" class="btn btn-primary btn-sm">Lihat Aset</a>
+                      <a href="aset_ruangan.php?id_ruangan=<?php echo $row['id_ruangan'] ?>" class="btn btn-primary btn-sm">Lihat Aset</a>
                       <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapusRuangan<?php echo $row['id_ruangan'] ?>"><i class="fa fa-trash"></i></button>
                     </div>
                   </div>
