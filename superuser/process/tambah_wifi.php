@@ -18,5 +18,5 @@
     wifi(id_kantor, id_gedung, id_lantai, id_ruangan, nama_ap, ip_address, mac_address, merk, tipe, tahun, kapasitas)
     VALUES($id_kantor,$id_gedung,$id_lantai,$id_ruangan,'$na','$ip','$mac','$merk','$tipe','$tahun','$kapasitas')");
 
-//  header("location:../wifi.php");
+    header("location:../wifi.php");
 ?>
