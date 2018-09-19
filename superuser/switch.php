@@ -69,21 +69,26 @@
               <h3 class="box-title">Daftar Switch</h3>
 
               <div class="box-tools pull-right">
-                <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#tambahGedung"><i class="fa fa-plus"></i> Tambah Gedung</button>
+                <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#tambahswitch"><i class="fa fa-plus"></i> Tambah Wifi</button>
               </div>
             </div>
             <div class="box-body">
               <div class="row">
               <?php
                   while ($row = $sql->fetch()) {
+                    $query = $db->query("SELECT * FROM pegawai");
               ?>
                 <div class="col-3">
                   <div class="card mb-3">
                     <div class="card-body">
-                      <h5 class="card-title"><?php echo $row['nama_gedung'] ?></h5>
-                      <p><?php echo $row['alamat'] ?></p>
-                      <a href="aset.php?id_gedung=<?php echo $row['id_gedung'] ?>" class="btn btn-primary btn-sm">Lihat Aset</a>
-                      <a href="detail.php?id_gedung=<?php echo $row['id_gedung'] ?>" class="btn btn-primary btn-sm">Detail Gedung</a>
+                      <h5 class="card-title">
+                        <?php echo strtoupper($row['nama_switch'])." | ".$row['merk'] ?>
+                      </h5>
+                      <small><span class="badge badge-secondary"><?php echo $row['id_kantor'] ?></span> <span class="badge badge-primary"><?php echo $row['id_gedung'] ?></span></small>
+                      <p><?php echo $row['ip_address'] ?></p>
+
+                      <a href="aset.php?id_pc=<?php echo $row['id_pc'] ?>" class="btn btn-primary btn-sm">Lihat Aset</a>
+                      <a href="pc_detail.php?id_pc=<?php echo $row['id_pc'] ?>" class="btn btn-primary btn-sm">Detail PC</a>
                       <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapusGedung<?php echo $row['id_gedung'] ?>"><i class="fa fa-trash"></i></button>
                     </div>
                   </div>
@@ -138,7 +143,7 @@
         </div>
 
         <div class="modal-body">
-          <form action="process/tambah_gedung.php" method="post">
+          <form action="process/tambah_switch.php" method="post">
             <div class="row">
               <div class="col">
                 <div class="form-group">
@@ -147,7 +152,7 @@
                     $sql = $db->query("SELECT * FROM kantor");
                     $count = $sql->rowCount();
                   ?>
-                  <select class="form-control" id="kantor">
+                  <select class="form-control" id="kantor" name="kantor">
                     <option value="">Pilih Kantor</option>
                     <?php
                       if ($count > 0) {
@@ -164,7 +169,7 @@
               <div class="col">
                 <div class="form-group">
                   <label>Pilih Gedung</label>
-                  <select class="form-control" id="gedung">
+                  <select class="form-control" id="gedung" name="gedung">
                     <option value="">Pilih Kantor Dahulu</option>
                   </select>
                 </div>
@@ -174,7 +179,7 @@
               <div class="col">
                 <div class="form-group">
                   <label>Pilih Lantai</label>
-                  <select class="form-control" id="lantai">
+                  <select class="form-control" id="lantai" name="lantai">
                     <option value="">Pilih Gedung Dahulu</option>
                   </select>
                 </div>
@@ -182,7 +187,7 @@
               <div class="col">
                 <div class="form-group">
                   <label>Pilih Ruangan</label>
-                  <select class="form-control" id="ruangan">
+                  <select class="form-control" id="ruangan" name="ruangan">
                     <option value="">Pilih Lantai Dahulu</option>
                   </select>
                 </div>
@@ -232,9 +237,9 @@
                   <label>Tahun</label>
                   <div class="input-group mb-3">
                     <div class="input-group-append">
-                      <span class="input-group-text" id="hdd_addon">20</span>
+                      <span class="input-group-text" id="tahun_addon">20</span>
                     </div>
-                    <input type="text" class="form-control" placeholder="18" aria-label="HDD" name="hdd" aria-describedby="hdd_addon">
+                    <input type="text" class="form-control" placeholder="18" aria-label="tahun" name="tahun" aria-describedby="tahun_addon">
                   </div>
                 </div>
               </div>
@@ -244,7 +249,7 @@
             <div class="col">
               <div class="form-group">
                 <label>Jumlah Port</label>
-                <input type="text" class="form-control" name="jumlah_port" placeholder="HP">
+                <input type="text" class="form-control" name="jumlah_port" placeholder="">
               </div>
             </div>
             </div>
