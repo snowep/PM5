@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.2
+-- version 4.8.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 17, 2018 at 06:37 PM
--- Server version: 10.1.34-MariaDB
--- PHP Version: 5.6.37
+-- Generation Time: Sep 19, 2018 at 05:05 AM
+-- Server version: 10.1.35-MariaDB
+-- PHP Version: 7.2.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -51,8 +51,15 @@ CREATE TABLE `gedung` (
 
 INSERT INTO `gedung` (`id_gedung`, `id_kantor`, `nama_gedung`, `alamat`, `info_01`, `info_02`, `info_03`, `info_04`, `info_05`, `info_06`, `info_07`, `info_08`, `info_09`, `info_10`) VALUES
 (5, 1, 'Gedung Utama', 'Alamat Gedung Utama Kantor A', '', '', '', '', '', '', '', '', '', ''),
-(6, 1, 'Gedung Kreo', 'Alamat Gedung Kreo Kantor A', '', '', '', '', '', '', '', '', '', ''),
-(7, 2, 'Gedung Utama', 'Alamat Gedung Utama Kantor B', '', '', '', '', '', '', '', '', '', '');
+(7, 3, 'Gedung A', 'Jl. Jenderal Sudirman No.1, Sukasari, Kec. Tangerang, Kota Tangerang, Banten 15118', '', '', '', '', '', '', '', '', '', ''),
+(8, 5, 'Gedung Utama', 'Cempaka putih', '', '', '', '', '', '', '', '', '', ''),
+(9, 6, 'Gedung Utama', 'Bandengan', '', '', '', '', '', '', '', '', '', ''),
+(10, 7, 'Gedung Utama', 'BUlungan', '', '', '', '', '', '', '', '', '', ''),
+(11, 8, 'Gedung Utama', 'Ciputat', '', '', '', '', '', '', '', '', '', ''),
+(12, 9, 'Gedung Utama', 'Bintaro', '', '', '', '', '', '', '', '', '', ''),
+(13, 9, 'Gedung Utama', 'Bintaro', '', '', '', '', '', '', '', '', '', ''),
+(14, 10, 'Gedung Utama', 'Jatinegara', '', '', '', '', '', '', '', '', '', ''),
+(15, 11, 'Gedung D', 'Jakarta Pusat', '', '', '', '', '', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -87,7 +94,14 @@ CREATE TABLE `kantor` (
 
 INSERT INTO `kantor` (`id_kantor`, `nama_kantor`, `alamat`, `telepon`, `gps_x`, `gps_y`, `nama_user`, `hp_user`, `info_01`, `info_02`, `info_03`, `info_04`, `info_05`, `info_06`, `info_07`, `info_08`, `info_09`, `info_10`) VALUES
 (1, 'Kantor A', 'Alamat A', 'Telepon A', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
-(2, 'Kantor B', 'Alamat Kantor B', 'Telepon B', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+(3, 'PLN Disbanten', 'Jl. Jenderal Sudirman No.1, Sukasari, Kec. Tangerang, Kota Tangerang, Banten 15118', '15118 021- 5526716', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(5, 'PLN Area Cempaka Putih', 'Kav.60, Jalan A. Yani, RT.15/RW.3', '123', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(6, 'PLN Area Bandengan', 'Jl. Bandengan Utara Raya No.81, RT.5/RW.16, Pejagalan, Penjaringan, Kota Jkt Utara, Daerah Khusus Ibukota Jakarta 14450', '(021) 1238964', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(7, 'PLN Bulungan', 'Jalan Sisingamangaraja No.1, RT.2/RW.8, Gunung, Kebayoran Baru, RT.2/RW.8, Gunung, Kby. Baru, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12120', '(021) 7244754', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(8, 'PLN- Area Pelayanan Ciputat', 'Jl. RE. Martadinata KM. 27, Ciputat, Pamulang Tim., Pamulang, Kota Tangerang Selatan, Banten 15417', '(021) 7443805', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(9, 'PLN Bintaro', 'Bintaro Sektor VII Blok B7 Kavling A2 No. 17, Jl. Mohammad Husni Thamrin, Pondok Jaya, Pondok Aren, Pondok Jaya, Pd. Jaya, Pd. Aren, Tangerang, Banten 15524', '(021) 74861708', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(10, 'PLN Area Jatinegara', 'Jl. Raya Jatinegara Timur No.75, RT.10/RW.2, Bali Mester, Jatinegara, Kota Jakarta Timur, Daerah Khusus Ibukota Jakarta 13310', '123', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL),
+(11, 'PLN Distribusi Jakarta Raya', 'Jl. M.I. Ridwan Rais No.1, RT.7/RW.1, Gambir, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10110', '(021) 3454000', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -118,7 +132,11 @@ CREATE TABLE `lantai` (
 INSERT INTO `lantai` (`id_lantai`, `id_gedung`, `nama_lantai`, `info_01`, `info_02`, `info_03`, `info_04`, `info_05`, `info_06`, `info_07`, `info_08`, `info_09`, `info_10`) VALUES
 (1, 5, 'Lantai 1', '', '', '', '', '', '', '', '', '', ''),
 (2, 5, 'Lantai 2', '', '', '', '', '', '', '', '', '', ''),
-(3, 5, 'Lantai 3', '', '', '', '', '', '', '', '', '', '');
+(3, 5, 'Lantai 3', '', '', '', '', '', '', '', '', '', ''),
+(4, 5, 'Lantai 4', '', '', '', '', '', '', '', '', '', ''),
+(5, 8, 'Lantai 1', '', '', '', '', '', '', '', '', '', ''),
+(6, 11, 'Lantai 1', '', '', '', '', '', '', '', '', '', ''),
+(7, 15, 'Lantai 2', '', '', '', '', '', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -154,6 +172,15 @@ CREATE TABLE `pc` (
   `info_10` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `pc`
+--
+
+INSERT INTO `pc` (`id_pc`, `id_kantor`, `id_gedung`, `id_lantai`, `id_ruangan`, `jenis`, `ip_address`, `mac_address`, `serial_number`, `hard_disk`, `ram`, `processor`, `sistem_operasi`, `tahun`, `keterangan`, `info_01`, `info_02`, `info_03`, `info_04`, `info_05`, `info_06`, `info_07`, `info_08`, `info_09`, `info_10`) VALUES
+(1, 1, 5, 1, 3, 'pc', '10.3.36.245', 'F4-4D-30-19-E2-96', 'R301Z1C5', '1000', '4', 'Intel Core i3', 'Windows 10', '16', '', '', '', '', '', '', '', '', '', '', ''),
+(4, 8, 11, 6, 10, 'pc', '1992.168.1.1', 'AC-E0-10-14-FA-8D', 'R301Z1C5', '500', '4 GB', 'i3', 'windows 7', '2006', '', '', '', '', '', '', '', '', '', '', ''),
+(5, 11, 15, 7, 11, 'laptop', '1992.168.1.1', 'AC-E0-10-14-FA-8D', 'R301Z1C5', '500', '4 GB', 'intel inside', 'LINUX', '2006', '', '', '', '', '', '', '', '', '', '', '');
+
 -- --------------------------------------------------------
 
 --
@@ -166,7 +193,7 @@ CREATE TABLE `pegawai` (
   `nama` varchar(255) NOT NULL,
   `jabatan` varchar(255) NOT NULL,
   `struktural` enum('0','1') NOT NULL,
-  `id_pc` int(255) NOT NULL,
+  `id_pc` int(255) DEFAULT NULL,
   `info_01` varchar(100) NOT NULL,
   `info_02` varchar(100) NOT NULL,
   `info_03` varchar(100) NOT NULL,
@@ -178,6 +205,14 @@ CREATE TABLE `pegawai` (
   `info_09` varchar(100) NOT NULL,
   `info_10` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `pegawai`
+--
+
+INSERT INTO `pegawai` (`id_pegawai`, `nip`, `nama`, `jabatan`, `struktural`, `id_pc`, `info_01`, `info_02`, `info_03`, `info_04`, `info_05`, `info_06`, `info_07`, `info_08`, `info_09`, `info_10`) VALUES
+(1, '123', 'A', 'Supervisor', '0', 1, '', '', '', '', '', '', '', '', '', ''),
+(2, '12312312331', 'adasdad', 'asstaf', '1', NULL, '', '', '', '', '', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -207,7 +242,16 @@ CREATE TABLE `ruangan` (
 
 INSERT INTO `ruangan` (`id_ruangan`, `id_lantai`, `nama_ruangan`, `info_01`, `info_02`, `info_03`, `info_04`, `info_05`, `info_06`, `info_07`, `info_08`, `info_09`, `info_10`) VALUES
 (1, 2, 'Ruang Rapat', '', '', '', '', '', '', '', '', '', ''),
-(2, 3, 'Ruangan Perencanaan', '', '', '', '', '', '', '', '', '', '');
+(2, 3, 'Ruangan Perencanaan', '', '', '', '', '', '', '', '', '', ''),
+(3, 1, 'Bagian Jaringan', '', '', '', '', '', '', '', '', '', ''),
+(4, 1, 'Ruang Rapat', '', '', '', '', '', '', '', '', '', ''),
+(5, 1, 'Ruangan Perencanaan', '', '', '', '', '', '', '', '', '', ''),
+(6, 1, 'Ruang A', '', '', '', '', '', '', '', '', '', ''),
+(7, 1, 'Ruang B', '', '', '', '', '', '', '', '', '', ''),
+(8, 4, 'Ruangan Scada', '', '', '', '', '', '', '', '', '', ''),
+(9, 5, 'Ruang Pelayanan', '', '', '', '', '', '', '', '', '', ''),
+(10, 6, 'Ruang Pelayanan', '', '', '', '', '', '', '', '', '', ''),
+(11, 7, 'Ruangan IT', '', '', '', '', '', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -426,37 +470,37 @@ ALTER TABLE `wifi`
 -- AUTO_INCREMENT for table `gedung`
 --
 ALTER TABLE `gedung`
-  MODIFY `id_gedung` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_gedung` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `kantor`
 --
 ALTER TABLE `kantor`
-  MODIFY `id_kantor` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_kantor` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `lantai`
 --
 ALTER TABLE `lantai`
-  MODIFY `id_lantai` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_lantai` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `pc`
 --
 ALTER TABLE `pc`
-  MODIFY `id_pc` int(255) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_pc` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `pegawai`
 --
 ALTER TABLE `pegawai`
-  MODIFY `id_pegawai` int(255) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_pegawai` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `ruangan`
 --
 ALTER TABLE `ruangan`
-  MODIFY `id_ruangan` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_ruangan` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT for table `server`
