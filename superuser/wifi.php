@@ -69,7 +69,7 @@
               <h3 class="box-title">Daftar Wifi</h3>
 
               <div class="box-tools pull-right">
-                <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#tambahGedung"><i class="fa fa-plus"></i> Tambah Gedung</button>
+                <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#tambahwifi"><i class="fa fa-plus"></i> Tambah Wifi</button>
               </div>
             </div>
             <div class="box-body">
@@ -138,7 +138,7 @@
         </div>
 
         <div class="modal-body">
-          <form action="process/tambah_gedung.php" method="post">
+          <form action="process/tambah_wifi.php" method="post">
             <div class="row">
               <div class="col">
                 <div class="form-group">
@@ -231,9 +231,9 @@
                   <label>Tahun</label>
                   <div class="input-group mb-3">
                     <div class="input-group-append">
-                      <span class="input-group-text" id="hdd_addon">20</span>
+                      <span class="input-group-text" id="tahun_addon">20</span>
                     </div>
-                    <input type="text" class="form-control" placeholder="18" aria-label="HDD" name="hdd" aria-describedby="hdd_addon">
+                    <input type="text" class="form-control" placeholder="18" aria-label="HDD" name="tahun" aria-describedby="tahun_addon">
                   </div>
                 </div>
               </div>
