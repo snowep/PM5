@@ -68,7 +68,7 @@
       <div class="row">
         <div class="col-md-12">
           <?php
-            $sql = $db->query("SELECT * FROM ruangan WHERE id_lantai = '$id'");
+            $sql = $db->query("SELECT * FROM ruangan WHERE id_lantai = '$id' ORDER BY nama_ruangan ASC");
             $count = $sql->rowCount();
 
             if ($count > 0) {
@@ -157,25 +157,25 @@
     </div>
   </div>
   <?php
-  $sql = $db->query("SELECT * FROM lantai WHERE id_gedung = '$id'");
+  $sql = $db->query("SELECT * FROM ruangan WHERE id_lantai = '$id'");
   while ($row = $sql->fetch()) {
   ?>
-  <div class="modal fade" id="hapusLantai<?php echo $row['id_lantai'] ?>" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal fade" id="hapusRuangan<?php echo $row['id_ruangan'] ?>" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Hapus <?php echo $row['nama_lantai'] ?></h5>
+          <h5 class="modal-title">Hapus <?php echo $row['nama_ruangan'] ?></h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden>&times;</span>
           </button>
         </div>
 
         <div class="modal-body">
-          <p style="font-weight:400">Anda yakin menghapus lantai ini? Semua data yang bersangkutan dengan lantai ini akan ikut <b>terhapus</b> dan <b>TIDAK BISA</b> dikembalikan lagi?</p>
+          <p style="font-weight:400">Anda yakin menghapus ruangan ini? Semua data yang bersangkutan dengan ruangan ini akan ikut <b>terhapus</b> dan <b>TIDAK BISA</b> dikembalikan lagi!</p>
         </div>
 
         <div class="modal-footer">
-          <a href="process/hapus_lantai.php?id_lantai=<?php echo $row['id_lantai'] ?>" class="btn btn-danger btn-sm">Hapus</a>
+          <a href="process/hapus_ruangan.php?id_ruangan=<?php echo $row['id_ruangan'] ?>" class="btn btn-danger btn-sm">Hapus</a>
         </div>
       </div>
     </div>
