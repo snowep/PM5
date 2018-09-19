@@ -71,7 +71,7 @@
 
 
               <div class="box-tools pull-right">
-                <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#tambahwifi"><i class="fa fa-plus"></i> Tambah Wifi</button>
+                <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#tambahWifi"><i class="fa fa-plus"></i> Tambah Wifi</button>
               </div>
             </div>
             <div class="box-body">
@@ -116,7 +116,7 @@
             <p class="lead">Oops! Sepertinya belum ada data Wifi yang dimasukkan.</p>
             <hr class="my-4">
             <p>Mulai dengan menambah data Wifi kedalam database.</p>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambahwifi">Tambah Wifi</button>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambahWifi">Tambah Wifi</button>
           </div>
         </div>
       </div>
@@ -138,7 +138,7 @@
     include 'element/footer.php';
   ?>
 
-  <div class="modal fade" id="tambahwifi" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal fade" id="tambahWifi" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -147,7 +147,6 @@
             <span aria-hidden>&times;</span>
           </button>
         </div>
-
         <div class="modal-body">
           <form action="process/tambah_wifi.php" method="post">
             <div class="row">
@@ -199,7 +198,6 @@
                 </div>
               </div>
             </div>
-
             <div class="row">
               <div class="col">
                 <div class="form-group">
@@ -236,7 +234,7 @@
                 </div>
               </div>
             </div>
-          <div class="row">
+            <div class="row">
               <div class="col">
                 <div class="form-group">
                   <label>Tahun</label>
@@ -248,15 +246,12 @@
                   </div>
                 </div>
               </div>
-
-
               <div class="col">
                 <div class="form-group">
                   <label>Kapasitas</label>
                   <input type="text" class="form-control" name="kapasitas" placeholder="">
                 </div>
               </div>
-            </div>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
           </form>

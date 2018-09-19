@@ -15,10 +15,12 @@
   $ram        = $_POST['ram'];
   $thn        = $_POST['tahun'];
   $ket        = $_POST['ket'];
-  echo $id;
+  $size       = $_POST['size'];
+
+  $hdds = $hdd." ".$size;
   $sql = $db->query("INSERT INTO
     pc(id_kantor, id_gedung, id_lantai, id_ruangan, jenis, ip_address, mac_address, serial_number, hard_disk, ram, processor, sistem_operasi, tahun)
-    VALUES('$id_kantor','$id_gedung','$id_lantai','$id_ruangan','$jenis','$ip','$mac','$sn','$hdd','$ram','$proc','$os','$thn')");
+    VALUES('$id_kantor','$id_gedung','$id_lantai','$id_ruangan','$jenis','$ip','$mac','$sn','$hdds','$ram','$proc','$os','$thn')");
 
   header("location:../PC.php");
 ?>

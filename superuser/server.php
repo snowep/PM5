@@ -59,7 +59,11 @@
       <div class="row">
         <div class="col-md-12">
           <?php
-            $sql = $db->query("SELECT * FROM server");
+            $sql = $db->query("SELECT * FROM server
+              INNER JOIN kantor ON server.id_kantor = kantor.id_kantor
+              INNER JOIN gedung ON server.id_gedung = gedung.id_gedung
+              INNER JOIN lantai ON server.id_lantai = lantai.id_lantai
+              INNER JOIN ruangan ON server.id_ruangan = ruangan.id_ruangan");
             $count = $sql->rowCount();
 
             if ($count > 0) {
@@ -69,7 +73,7 @@
               <h3 class="box-title">Daftar Server</h3>
 
               <div class="box-tools pull-right">
-                <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#tambahserver"><i class="fa fa-plus"></i> Tambah Server</button>
+                <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#tambahServer"><i class="fa fa-plus"></i> Tambah Server</button>
               </div>
             </div>
             <div class="box-body">
@@ -82,14 +86,17 @@
                   <div class="card mb-3">
                     <div class="card-body">
                       <h5 class="card-title">
-                        <?php echo strtoupper($row['tipe_server'])." | ".$row['fungsi_server'] ?>
+                        <?php echo $row['merk']." ".strtoupper($row['tipe_server'])." | ".$row['fungsi_server'] ?>
                       </h5>
-                      <small><span class="badge badge-secondary"><?php echo $row['id_kantor'] ?></span> <span class="badge badge-primary"><?php echo $row['id_gedung'] ?></span></small>
+                      <small>
+                        <span class="badge badge-secondary"><?php echo $row['nama_kantor'] ?></span>
+                        <span class="badge badge-primary"><?php echo $row['nama_gedung'] ?></span>
+                        <span class="badge badge-primary"><?php echo $row['nama_lantai'] ?></span>
+                        <span class="badge badge-primary"><?php echo $row['nama_ruangan'] ?></span>
+                      </small>
                       <p><?php echo $row['ip_address'] ?></p>
-
-                      <a href="aset.php?id_pc=<?php echo $row['id_pc'] ?>" class="btn btn-primary btn-sm">Lihat Aset</a>
-                      <a href="pc_detail.php?id_pc=<?php echo $row['id_pc'] ?>" class="btn btn-primary btn-sm">Detail PC</a>
-                      <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapusGedung<?php echo $row['id_gedung'] ?>"><i class="fa fa-trash"></i></button>
+                      <a href="server_detail.php?id_server=<?php echo $row['id_server'] ?>" class="btn btn-primary btn-sm">Detail Server</a>
+                      <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapusServer<?php echo $row['id_server'] ?>"><i class="fa fa-trash"></i></button>
                     </div>
                   </div>
                 </div>
@@ -110,7 +117,7 @@
             <p class="lead">Oops! Sepertinya belum ada data Server yang dimasukkan.</p>
             <hr class="my-4">
             <p>Mulai dengan menambah data Server kedalam database.</p>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambahserver">Tambah Server</button>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambahServer">Tambah Server</button>
           </div>
         </div>
       </div>
@@ -122,7 +129,6 @@
         <!-- /.col -->
       </div>
       <!-- /.row -->
-
     </section>
     <!-- /.content -->
   </div>
@@ -132,175 +138,31 @@
     include 'element/footer.php';
   ?>
 
-  <div class="modal fade" id="tambahserver" tabindex="-1" role="dialog" aria-hidden="true">
+  <?php
+  $sql = $db->query("SELECT * FROM server");
+  while ($row = $sql->fetch()) {
+  ?>
+  <div class="modal fade" id="hapusServer<?php echo $row['id_server'] ?>" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Tambah Server</h5>
+          <h5 class="modal-title">Hapus <?php echo $row['merk']." - ".$row['tipe_server'] ?></h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden>&times;</span>
           </button>
         </div>
 
         <div class="modal-body">
-          <form action="process/tambah_server.php" method="post">
-            <div class="row">
-              <div class="col">
-                <div class="form-group">
-                  <label>Pilih Kantor</label>
-                  <?php
-                    $sql = $db->query("SELECT * FROM kantor");
-                    $count = $sql->rowCount();
-                  ?>
-                  <select class="form-control" id="kantor" name="kantor">
-                    <option value="">Pilih Kantor</option>
-                    <?php
-                      if ($count > 0) {
-                        while ($row = $sql->fetch()) {
-                          echo '<option value="'.$row['id_kantor'].'">'.$row['nama_kantor'].'</option>';
-                        }
-                      } else {
-                        echo '<option value="">Belum ada Data Kantor</option>';
-                      }
-                    ?>
-                  </select>
-                </div>
-              </div>
-              <div class="col">
-                <div class="form-group">
-                  <label>Pilih Gedung</label>
-                  <select class="form-control" id="gedung" name="gedung">
-                    <option value="">Pilih Kantor Dahulu</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col">
-                <div class="form-group">
-                  <label>Pilih Lantai</label>
-                  <select class="form-control" id="lantai" name="lantai">
-                    <option value="">Pilih Gedung Dahulu</option>
-                  </select>
-                </div>
-              </div>
-              <div class="col">
-                <div class="form-group">
-                  <label>Pilih Ruangan</label>
-                  <select class="form-control" id="ruangan" name="ruangan">
-                    <option value="">Pilih Lantai Dahulu</option>
-                  </select>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col">
-                <div class="form-group">
-                  <label>IP Address</label>
-                  <input type="text" class="form-control" name="ip_address" placeholder="192.168.10.5">
-                </div>
-              </div>
-              <div class="col">
-                <div class="form-group">
-                  <label>MAC Address</label>
-                  <input type="text" class="form-control" name="mac_address" placeholder="00-E0-4D-B9-5C-47">
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col">
-                <div class="form-group">
-                  <label>Serial Number</label>
-                  <input type="text" class="form-control" name="serial_number" placeholder="SN">
-                </div>
-              </div>
-              <div class="col">
-                <div class="form-group">
-                  <label>Sistem Operasi</label>
-                  <input type="text" class="form-control" name="sistem_operasi" placeholder="Windows 10">
-                </div>
-              </div>
+          <p style="font-weight:400">Anda yakin menghapus server ini? Server ini digunakan untuk manjalankan <i><?php echo $row['fungsi_server'] ?></i></p>
+        </div>
 
-                      </div>
-                      <div class="row">
-                        <div class="col">
-                          <div class="form-group">
-                            <label>HDD</label>
-                            <div class="input-group mb-3">
-                              <input type="text" class="form-control" placeholder="1000" aria-label="HDD" name="hdd" aria-describedby="hdd_addon">
-                              <div class="input-group-append">
-                                <span class="input-group-text" id="hdd_addon">GB</span>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col">
-                          <div class="form-group">
-                            <label>RAM</label>
-                            <div class="input-group mb-3">
-                              <input type="text" class="form-control" placeholder="16" aria-label="RAM" name="ram" aria-describedby="ram_addon">
-                              <div class="input-group-append">
-                                <span class="input-group-text" id="ram_addon">GB</span>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        </div>
-
-              <div class="col">
-                <div class="form-group">
-                  <label>Processor</label>
-                  <input type="text" class="form-control" name="processor" placeholder="Intel Core i9-8950HK">
-                </div>
-              </div>
-
-              <div class="col">
-                <div class="form-group">
-                  <label>Tipe Server</label>
-                  <input type="text" class="form-control" name="tipe_server" placeholder="X3100 M4">
-                </div>
-              </div>
-
-              <div class="col">
-                <div class="form-group">
-                  <label>Merek</label>
-                  <input type="text" class="form-control" name="merek" placeholder="IBM">
-                </div>
-              </div>
-
-              <div class="col">
-                <div class="form-group">
-                  <label>Fungsi Server</label>
-                  <input type="text" class="form-control" name="fungsi_server" placeholder="APLIKASI GIS">
-                </div>
-              </div>
-
-              <div class="col">
-                <div class="form-group">
-                  <label>Tahun</label>
-                  <div class="input-group mb-3">
-                    <div class="input-group-append">
-                      <span class="input-group-text" id="tahun_addon">20</span>
-                    </div>
-                    <input type="text" class="form-control" placeholder="18" aria-label="TAHUN" name="tahun" aria-describedby="tahun_addon">
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col">
-                <div class="form-group">
-                  <label>Keterangan</label>
-                  <textarea class="form-control" name="ket" rows="3"></textarea>
-                </div>
-              </div>
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-          </form>
+        <div class="modal-footer">
+          <a href="process/hapus_server.php?id_server=<?php echo $row['id_server'] ?>" class="btn btn-danger btn-sm">Hapus</a>
         </div>
       </div>
     </div>
   </div>
+  <?php } ?>
 </div>
 <!-- ./wrapper -->
 

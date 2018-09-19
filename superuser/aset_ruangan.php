@@ -68,72 +68,10 @@
     <section class="content">
       <!-- Info boxes -->
       <?php
-        include 'element/statistic_box_kantor.php';
+        include 'element/statistic_box_aset_ruangan.php';
+        include 'element/row_pc.php';
+        include 'element/row_server.php';
       ?>
-      <!-- /.row -->
-
-      <div class="row">
-        <div class="col-md-12">
-          <?php
-            $sql = $db->query("SELECT * FROM gedung WHERE id_kantor = '$id'");
-            $count = $sql->rowCount();
-
-            if ($count > 0) {
-          ?>
-          <div class="box">
-            <div class="box-header with-border">
-              <h3 class="box-title">Daftar Gedung</h3>
-
-              <div class="box-tools pull-right">
-                <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#tambahGedung"><i class="fa fa-plus"></i> Tambah Gedung</button>
-              </div>
-            </div>
-            <div class="box-body">
-              <div class="row">
-              <?php
-                  while ($row = $sql->fetch()) {
-              ?>
-                <div class="col-3">
-                  <div class="card mb-3">
-                    <div class="card-body">
-                      <h5 class="card-title"><?php echo $row['nama_gedung'] ?></h5>
-                      <p><?php echo $row['alamat'] ?></p>
-                      <a href="aset.php?id_gedung=<?php echo $row['id_gedung'] ?>" class="btn btn-primary btn-sm">Lihat Aset</a>
-                      <a href="gedung.php?id_gedung=<?php echo $row['id_gedung'] ?>" class="btn btn-primary btn-sm">Detail Gedung</a>
-                      <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapusGedung<?php echo $row['id_gedung'] ?>"><i class="fa fa-trash"></i></button>
-                    </div>
-                  </div>
-                </div>
-                    <?php
-                        }
-                    ?>
-              </div>
-            </div>
-            <!-- /.box-header -->
-            <!-- ./box-body -->
-          </div><?php
-            } else {
-            ?>
-      <div class="col-md-12">
-        <div class="jumbotron jumbotron-fluid">
-          <div class="container">
-            <h1 class="display-4">Data gedung tidak ditemukan!</h1>
-            <p class="lead">Oops! Sepertinya belum ada data gedung yang dimasukkan.</p>
-            <hr class="my-4">
-            <p>Mulai dengan menambah data gedung kedalam database.</p>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambahGedung">Tambah Gedung</button>
-          </div>
-        </div>
-      </div>
-      <?php
-        }
-      ?>
-          <!-- /.box -->
-        </div>
-        <!-- /.col -->
-      </div>
-      <!-- /.row -->
-
     </section>
     <!-- /.content -->
   </div>
@@ -142,58 +80,29 @@
   <?php
     include 'element/footer.php';
   ?>
-
-  <div class="modal fade" id="tambahGedung" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal fade" id="tambahAset" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Tambah Gedung</h5>
+          <h5 class="modal-title">Pilih Aset</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden>&times;</span>
           </button>
         </div>
-
         <div class="modal-body">
-          <form action="process/tambah_gedung.php" method="post">
-            <div class="form-group">
-              <label>Nama Gedung</label>
-              <input type="text" class="form-control" name="nama_gedung" placeholder="Nama Gedung">
-            </div>
-            <div class="form-group">
-              <label>Alamat Gedung</label>
-              <textarea class="form-control" name="alamat_gedung" rows="3"></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-          </form>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambahPC">PC</button>
+          <button type="button" class="btn btn-success" data-toggle="modal" data-target="#tambahServer">Server</button>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambahPC">Switch</button>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambahPC">WiFi</button>
         </div>
       </div>
     </div>
   </div>
+
   <?php
-  $sql = $db->query("SELECT * FROM gedung WHERE id_kantor = '$id'");
-  while ($row = $sql->fetch()) {
+    include 'element/modal_tambah_pc.php';
+    include 'element/modal_tambah_server.php';
   ?>
-  <div class="modal fade" id="hapusGedung<?php echo $row['id_gedung'] ?>" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Hapus <?php echo $row['nama_gedung'] ?></h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden>&times;</span>
-          </button>
-        </div>
-
-        <div class="modal-body">
-          <p style="font-weight:400">Anda yakin menghapus gedung ini? Semua data yang bersangkutan dengan gedung ini akan ikut <b>terhapus</b> dan <b>TIDAK BISA</b> dikembalikan lagi?</p>
-        </div>
-
-        <div class="modal-footer">
-          <a href="process/hapus_gedung.php?id_gedung=<?php echo $row['id_gedung'] ?>" class="btn btn-danger btn-sm">Hapus</a>
-        </div>
-      </div>
-    </div>
-  </div>
-<?php } ?>
 </div>
 <!-- ./wrapper -->
 

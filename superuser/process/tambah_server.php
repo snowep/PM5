@@ -17,10 +17,12 @@
   $fs        = $_POST['fungsi_server'];
   $thn        = $_POST['tahun'];
   $ket        = $_POST['ket'];
+  $size       = $_POST['size'];
 
+  $hdds = $hdd." ".$size;
   $sql = $db->query("INSERT INTO
     server(id_kantor, id_gedung, id_lantai, id_ruangan, ip_address, mac_address, serial_number, sistem_operasi, hard_disk, ram, cpu_processor, tipe_server, merk, fungsi_server, tahun, keterangan)
-    VALUES('$id_kantor','$id_gedung','$id_lantai','$id_ruangan','$ip','$mac','$sn','$os','$hdd','$ram','$proc','$tips','$merk','$fs','$thn','$ket')");
+    VALUES('$id_kantor','$id_gedung','$id_lantai','$id_ruangan','$ip','$mac','$sn','$os','$hdds','$ram','$proc','$tips','$merk','$fs','$thn','$ket')");
 
-  //header("location:../server.php");
+  header("location:../server.php");
 ?>
