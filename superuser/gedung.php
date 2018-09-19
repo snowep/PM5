@@ -3,7 +3,7 @@
   include '../koneksi.php';
   $id = $_GET['id_gedung'];
 
-  $_SESSION['id_gedung'] = $id;
+  $_SESSION['id_gedung'] = $id; 
 ?>
 <!DOCTYPE html>
 <html>
