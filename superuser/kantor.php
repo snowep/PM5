@@ -1,9 +1,9 @@
 <?php
   session_start();
   include '../koneksi.php';
-  $id = $_GET['id_kantor'];
+  $id_kantor = $_GET['id_kantor'];
 
-  $_SESSION['id_kantor'] = $id;
+  $_SESSION['id_kantor'] = $id_kantor;
 ?>
 <!DOCTYPE html>
 <html>
@@ -50,7 +50,7 @@
     <section class="content-header">
       <h1>
         <?php
-          $sql = $db->query("SELECT * FROM kantor WHERE id_kantor = '$id'");
+          $sql = $db->query("SELECT * FROM kantor WHERE id_kantor = '$id_kantor'");
           $row = $sql->fetch();
           echo $row['nama_kantor'];
         ?>
@@ -72,7 +72,7 @@
       <div class="row">
         <div class="col-md-12">
           <?php
-            $sql = $db->query("SELECT * FROM gedung WHERE id_kantor = '$id'");
+            $sql = $db->query("SELECT * FROM gedung WHERE id_kantor = '$id_kantor'");
             $count = $sql->rowCount();
 
             if ($count > 0) {
@@ -90,7 +90,7 @@
               <?php
                   while ($row = $sql->fetch()) {
               ?>
-                <div class="col-3">
+                <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
                   <div class="card mb-3">
                     <div class="card-body">
                       <h5 class="card-title"><?php echo $row['nama_gedung'] ?></h5>

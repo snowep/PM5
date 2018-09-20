@@ -4,7 +4,7 @@
       <span class="info-box-icon bg-aqua"><i class="fa fa-users"></i></span>
 
       <div class="info-box-content">
-        <span class="info-box-text">Karyawan</span>
+        <span class="info-box-text">Pegawai</span>
         <span class="info-box-number">90<small>%</small></span>
       </div>
       <!-- /.info-box-content -->

@@ -59,7 +59,11 @@
       <div class="row">
         <div class="col-md-12">
           <?php
-            $sql = $db->query("SELECT * FROM wifi");
+            $sql = $db->query("SELECT * FROM wifi
+              INNER JOIN kantor ON wifi.id_kantor = kantor.id_kantor
+              INNER JOIN gedung ON wifi.id_gedung = gedung.id_gedung
+              INNER JOIN lantai ON wifi.id_lantai = lantai.id_lantai
+              INNER JOIN ruangan ON wifi.id_ruangan = ruangan.id_ruangan");
             $count = $sql->rowCount();
 
             if ($count > 0) {
@@ -86,19 +90,19 @@
                       <h5 class="card-title">
                         <?php echo strtoupper($row['nama_ap'])." | ".$row['merk'] ?>
                       </h5>
-                      <small><span class="badge badge-secondary"><?php echo $row['id_kantor'] ?></span> <span class="badge badge-primary"><?php echo $row['id_gedung'] ?></span></small>
+                      <small>
+                        <span class="badge badge-secondary"><?php echo $row['nama_kantor'] ?></span>
+                        <span class="badge badge-primary"><?php echo $row['nama_gedung'] ?></span>
+                        <span class="badge badge-primary"><?php echo $row['nama_lantai'] ?></span>
+                        <span class="badge badge-primary"><?php echo $row['nama_ruangan'] ?></span>
+                      </small>
                       <p><?php echo $row['ip_address'] ?></p>
-
                       <a href="aset.php?id_pc=<?php echo $row['id_pc'] ?>" class="btn btn-primary btn-sm">Lihat Aset</a>
                       <a href="pc_detail.php?id_pc=<?php echo $row['id_pc'] ?>" class="btn btn-primary btn-sm">Detail PC</a>
                       <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapusGedung<?php echo $row['id_gedung'] ?>"><i class="fa fa-trash"></i></button>
                     </div>
                   </div>
                 </div>
-
-
-
-
                     <?php
                         }
                     ?>
@@ -238,12 +242,7 @@
               <div class="col">
                 <div class="form-group">
                   <label>Tahun</label>
-                  <div class="input-group mb-3">
-                    <div class="input-group-append">
-                      <span class="input-group-text" id="tahun_addon">20</span>
-                    </div>
-                    <input type="text" class="form-control" placeholder="18" aria-label="HDD" name="tahun" aria-describedby="tahun_addon">
-                  </div>
+                  <input type="text" class="form-control" placeholder="2018" aria-label="tahun" name="tahun">
                 </div>
               </div>
               <div class="col">

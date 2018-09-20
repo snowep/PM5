@@ -75,12 +75,12 @@
               <?php
                   while ($row = $sql->fetch()) {
               ?>
-                <div class="col-3">
+                <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
                   <div class="card mb-3">
                     <div class="card-body">
                       <h5 class="card-title"><?php echo $row['nama'] ?></h5>
-                      <a href="aset.php?id_ruangan=<?php echo $row['id_ruangan'] ?>" class="btn btn-primary btn-sm">Lihat Aset</a>
-                      <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapusRuangan<?php echo $row['id_ruangan'] ?>"><i class="fa fa-trash"></i></button>
+                      <a href="aset.php?id_ruangan=<?php echo $row['id_ruangan'] ?>" class="btn btn-primary btn-sm">Detail Pegawai</a>
+                      <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapusPegawai<?php echo $row['id_pegawai'] ?>"><i class="fa fa-trash"></i></button>
                     </div>
                   </div>
                 </div>
@@ -162,25 +162,25 @@
     </div>
   </div>
   <?php
-  $sql = $db->query("SELECT * FROM lantai WHERE id_gedung = '$id'");
+  $sql = $db->query("SELECT * FROM pegawai");
   while ($row = $sql->fetch()) {
   ?>
-  <div class="modal fade" id="hapusLantai<?php echo $row['id_lantai'] ?>" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal fade" id="hapusPegawai<?php echo $row['id_pegawai'] ?>" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Hapus <?php echo $row['nama_lantai'] ?></h5>
+          <h5 class="modal-title">Hapus <?php echo $row['nama'] ?></h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden>&times;</span>
           </button>
         </div>
 
         <div class="modal-body">
-          <p style="font-weight:400">Anda yakin menghapus lantai ini? Semua data yang bersangkutan dengan lantai ini akan ikut <b>terhapus</b> dan <b>TIDAK BISA</b> dikembalikan lagi?</p>
+          <p style="font-weight:400">Anda yakin menghapus pegawai ini?</p>
         </div>
 
         <div class="modal-footer">
-          <a href="process/hapus_lantai.php?id_lantai=<?php echo $row['id_lantai'] ?>" class="btn btn-danger btn-sm">Hapus</a>
+          <a href="process/hapus_pegawai.php?id_pegawai=<?php echo $row['id_pegawai'] ?>" class="btn btn-danger btn-sm">Hapus</a>
         </div>
       </div>
     </div>

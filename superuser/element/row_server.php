@@ -18,7 +18,7 @@
         <div class="row">
         <?php
             while ($row = $sql->fetch()) {
-              $query = $db->query("SELECT * FROM pegawai");
+              $query = $db->query("SELECT * FROM server");
         ?>
           <div class="col-3">
             <div class="card mb-3">
@@ -34,29 +34,13 @@
           </div>
               <?php
                   }
+                }
               ?>
         </div>
       </div>
       <!-- /.box-header -->
       <!-- ./box-body -->
     </div>
-    <?php
-      } else {
-    ?>
-    <div class="col-md-12">
-      <div class="jumbotron jumbotron-fluid">
-        <div class="container">
-          <h1 class="display-4">Data mengenai Server tidak ditemukan!</h1>
-          <p class="lead">Oops! Sepertinya belum ada data Server yang dimasukkan.</p>
-          <hr class="my-4">
-          <p>Mulai dengan menambah data Server kedalam database.</p>
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambahServer">Tambah Server</button>
-        </div>
-      </div>
-    </div>
-    <?php
-      }
-    ?>
     <!-- /.box -->
   </div>
   <!-- /.col -->

@@ -3,7 +3,7 @@
   include '../koneksi.php';
   $id = $_GET['id_gedung'];
 
-  $_SESSION['id_gedung'] = $id; 
+  $_SESSION['id_gedung'] = $id;
 ?>
 <!DOCTYPE html>
 <html>
@@ -87,7 +87,7 @@
                     $query = $db->query("SELECT * FROM ruangan WHERE id_lantai = '".$row['id_lantai']."' LIMIT 3");
                     $rowCount = $query->rowCount();
               ?>
-                <div class="col-2">
+                <div class="col-sm-12 col-md-12 col-lg-6 col-xl-3">
                   <div class="card mb-3">
                     <div class="card-body">
                       <h5 class="card-title"><?php echo $row['nama_lantai'] ?></h5>
