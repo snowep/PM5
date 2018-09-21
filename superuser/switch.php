@@ -59,7 +59,11 @@
       <div class="row">
         <div class="col-md-12">
           <?php
-            $sql = $db->query("SELECT * FROM switch");
+            $sql = $db->query("SELECT * FROM switch
+              INNER JOIN kantor ON switch.id_kantor = kantor.id_kantor
+              INNER JOIN gedung ON switch.id_gedung = gedung.id_gedung
+              INNER JOIN lantai ON switch.id_lantai = lantai.id_lantai
+              INNER JOIN ruangan ON switch.id_ruangan = ruangan.id_ruangan");
             $count = $sql->rowCount();
 
             if ($count > 0) {
@@ -84,7 +88,12 @@
                       <h5 class="card-title">
                         <?php echo strtoupper($row['nama_switch'])." | ".$row['merk'] ?>
                       </h5>
-                      <small><span class="badge badge-secondary"><?php echo $row['id_kantor'] ?></span> <span class="badge badge-primary"><?php echo $row['id_gedung'] ?></span></small>
+                      <small>
+                        <span class="badge badge-secondary"><?php echo $row['nama_kantor'] ?></span>
+                        <span class="badge badge-primary"><?php echo $row['nama_gedung'] ?></span>
+                        <span class="badge badge-primary"><?php echo $row['nama_lantai'] ?></span>
+                        <span class="badge badge-primary"><?php echo $row['nama_ruangan'] ?></span>
+                      </small>
                       <p><?php echo $row['ip_address'] ?></p>
 
                       <a href="aset.php?id_pc=<?php echo $row['id_pc'] ?>" class="btn btn-primary btn-sm">Lihat Aset</a>
@@ -200,16 +209,14 @@
                   <input type="text" class="form-control" name="nama_switch" placeholder="Server Switch">
                 </div>
               </div>
-
               <div class="col">
                 <div class="form-group">
                   <label>Tipe Switch</label>
                   <input type="text" class="form-control" name="switch_type" placeholder="25100-48">
                 </div>
               </div>
-                  </div>
-
-                    <div class="row">
+            </div>
+            <div class="row">
               <div class="col">
                 <div class="form-group">
                   <label>MAC Address</label>
@@ -224,36 +231,29 @@
               </div>
             </div>
 
-                <div class="row">
-            <div class="col">
-              <div class="form-group">
-                <label>Merek</label>
-                <input type="text" class="form-control" name="merek" placeholder="HP">
+            <div class="row">
+              <div class="col">
+                <div class="form-group">
+                  <label>Merek</label>
+                  <input type="text" class="form-control" name="merek" placeholder="HP">
+                </div>
               </div>
-            </div>
-
               <div class="col">
                 <div class="form-group">
                   <label>Tahun</label>
-                  <div class="input-group mb-3">
-                    <div class="input-group-append">
-                      <span class="input-group-text" id="tahun_addon">20</span>
-                    </div>
-                    <input type="text" class="form-control" placeholder="18" aria-label="tahun" name="tahun" aria-describedby="tahun_addon">
-                  </div>
+                  <input type="text" class="form-control" placeholder="18" aria-label="tahun" name="tahun" aria-describedby="tahun_addon">
                 </div>
               </div>
             </div>
-
             <div class="row">
-            <div class="col">
-              <div class="form-group">
-                <label>Jumlah Port</label>
-                <input type="text" class="form-control" name="jumlah_port" placeholder="">
+              <div class="col">
+                <div class="form-group">
+                  <label>Jumlah Port</label>
+                  <input type="text" class="form-control" name="jumlah_port" placeholder="">
+                </div>
               </div>
             </div>
-            </div>
-  <div class="row">
+            <div class="row">
               <div class="col">
                 <div class="form-group">
                   <label>Keterangan</label>
@@ -263,7 +263,6 @@
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
           </form>
-
         </div>
       </div>
     </div>

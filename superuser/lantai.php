@@ -86,7 +86,7 @@
               <?php
                   while ($row = $sql->fetch()) {
               ?>
-                <div class="col-3">
+                <div class="col-sm-12 col-md-6 col-lg-3">
                   <div class="card mb-3">
                     <div class="card-body">
                       <h5 class="card-title"><?php echo $row['nama_ruangan'] ?></h5>

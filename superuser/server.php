@@ -136,6 +136,7 @@
 
   <?php
     include 'element/footer.php';
+    include 'element/modal_tambah_server.php';
   ?>
 
   <?php
