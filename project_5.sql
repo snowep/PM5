@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Sep 19, 2018 at 07:11 AM
+-- Generation Time: Sep 17, 2018 at 06:37 PM
 -- Server version: 10.1.34-MariaDB
 -- PHP Version: 5.6.37
 
@@ -52,8 +52,7 @@ CREATE TABLE `gedung` (
 INSERT INTO `gedung` (`id_gedung`, `id_kantor`, `nama_gedung`, `alamat`, `info_01`, `info_02`, `info_03`, `info_04`, `info_05`, `info_06`, `info_07`, `info_08`, `info_09`, `info_10`) VALUES
 (5, 1, 'Gedung Utama', 'Alamat Gedung Utama Kantor A', '', '', '', '', '', '', '', '', '', ''),
 (6, 1, 'Gedung Kreo', 'Alamat Gedung Kreo Kantor A', '', '', '', '', '', '', '', '', '', ''),
-(7, 2, 'Gedung Utama', 'Alamat Gedung Utama Kantor B', '', '', '', '', '', '', '', '', '', ''),
-(10, 1, 'Gedung A', 'Alamat Gedung A Kantor A\r\n', '', '', '', '', '', '', '', '', '', '');
+(7, 2, 'Gedung Utama', 'Alamat Gedung Utama Kantor B', '', '', '', '', '', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -155,16 +154,6 @@ CREATE TABLE `pc` (
   `info_10` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `pc`
---
-
-INSERT INTO `pc` (`id_pc`, `id_kantor`, `id_gedung`, `id_lantai`, `id_ruangan`, `jenis`, `ip_address`, `mac_address`, `serial_number`, `hard_disk`, `ram`, `processor`, `sistem_operasi`, `tahun`, `keterangan`, `info_01`, `info_02`, `info_03`, `info_04`, `info_05`, `info_06`, `info_07`, `info_08`, `info_09`, `info_10`) VALUES
-(1, 1, 5, 1, 3, 'pc', '10.3.36.245', 'F4-4D-30-19-E2-96', 'R301Z1C5', '1000', '4', 'Intel Core i3', 'Windows 10', '16', '', '', '', '', '', '', '', '', '', '', ''),
-(2, 1, 5, 1, 3, 'laptop', '10.3.36.35', 'F4-8E-38-9F-EE-F8', '2VGG8G2', '1000', '8', 'Intel Core i5', 'Windows 7', '16', '', '', '', '', '', '', '', '', '', '', ''),
-(3, 1, 5, 1, 3, 'laptop', '10.3.36.38', 'F4-8E-38-9F-EE-97', '2VYJ8F2', '1000', '8', 'Intel Core i5', 'Windows 10', '16', '', '', '', '', '', '', '', '', '', '', ''),
-(4, 1, 5, 1, 3, 'pc', '10.3.36.46', '8C-89-A5-10-A4-82', 'To Be Filled By OEM', '500', '2', 'Intel Core i5', 'Windows 10', '', '', '', '', '', '', '', '', '', '', '', '');
-
 -- --------------------------------------------------------
 
 --
@@ -177,7 +166,7 @@ CREATE TABLE `pegawai` (
   `nama` varchar(255) NOT NULL,
   `jabatan` varchar(255) NOT NULL,
   `struktural` enum('0','1') NOT NULL,
-  `id_pc` int(255) DEFAULT NULL,
+  `id_pc` int(255) NOT NULL,
   `info_01` varchar(100) NOT NULL,
   `info_02` varchar(100) NOT NULL,
   `info_03` varchar(100) NOT NULL,
@@ -189,16 +178,6 @@ CREATE TABLE `pegawai` (
   `info_09` varchar(100) NOT NULL,
   `info_10` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `pegawai`
---
-
-INSERT INTO `pegawai` (`id_pegawai`, `nip`, `nama`, `jabatan`, `struktural`, `id_pc`, `info_01`, `info_02`, `info_03`, `info_04`, `info_05`, `info_06`, `info_07`, `info_08`, `info_09`, `info_10`) VALUES
-(1, '123', 'Tito Sujarwadi', 'Supervisor', '0', 1, '', '', '', '', '', '', '', '', '', ''),
-(2, '1111', 'Pandu', 'Senior Network Engineer', '0', 2, '', '', '', '', '', '', '', '', '', ''),
-(3, '0002929', 'Ramli', 'Network Engineer', '1', 3, '', '', '', '', '', '', '', '', '', ''),
-(4, '62651321', 'Naselih', 'Staff', '1', 4, '', '', '', '', '', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -228,12 +207,7 @@ CREATE TABLE `ruangan` (
 
 INSERT INTO `ruangan` (`id_ruangan`, `id_lantai`, `nama_ruangan`, `info_01`, `info_02`, `info_03`, `info_04`, `info_05`, `info_06`, `info_07`, `info_08`, `info_09`, `info_10`) VALUES
 (1, 2, 'Ruang Rapat', '', '', '', '', '', '', '', '', '', ''),
-(2, 3, 'Ruangan Perencanaan', '', '', '', '', '', '', '', '', '', ''),
-(3, 1, 'Bagian Jaringan', '', '', '', '', '', '', '', '', '', ''),
-(4, 1, 'Ruang Rapat', '', '', '', '', '', '', '', '', '', ''),
-(5, 1, 'Ruangan Perencanaan', '', '', '', '', '', '', '', '', '', ''),
-(6, 1, 'Ruang A', '', '', '', '', '', '', '', '', '', ''),
-(7, 1, 'Ruang B', '', '', '', '', '', '', '', '', '', '');
+(2, 3, 'Ruangan Perencanaan', '', '', '', '', '', '', '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -452,7 +426,7 @@ ALTER TABLE `wifi`
 -- AUTO_INCREMENT for table `gedung`
 --
 ALTER TABLE `gedung`
-  MODIFY `id_gedung` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `id_gedung` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `kantor`
@@ -470,19 +444,19 @@ ALTER TABLE `lantai`
 -- AUTO_INCREMENT for table `pc`
 --
 ALTER TABLE `pc`
-  MODIFY `id_pc` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_pc` int(255) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `pegawai`
 --
 ALTER TABLE `pegawai`
-  MODIFY `id_pegawai` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_pegawai` int(255) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `ruangan`
 --
 ALTER TABLE `ruangan`
-  MODIFY `id_ruangan` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `id_ruangan` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `server`
