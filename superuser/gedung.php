@@ -1,9 +1,9 @@
 <?php
   session_start();
   include '../koneksi.php';
-  $id = $_GET['id_gedung'];
+  $id_gedung = $_GET['id_gedung'];
 
-  $_SESSION['id_gedung'] = $id;
+  $_SESSION['id_gedung'] = $id_gedung;
 ?>
 <!DOCTYPE html>
 <html>
@@ -27,13 +27,6 @@
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
 
-  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-  <![endif]-->
-
   <!-- Google Font -->
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
@@ -50,7 +43,7 @@
     <section class="content-header">
       <h1>
         <?php
-          $sql = $db->query("SELECT * FROM gedung INNER JOIN kantor ON gedung.id_kantor = kantor.id_kantor WHERE id_gedung = '$id'");
+          $sql = $db->query("SELECT * FROM gedung INNER JOIN kantor ON gedung.id_kantor = kantor.id_kantor WHERE id_gedung = '$id_gedung'");
           $row = $sql->fetch();
           echo $row['nama_gedung'];
         ?>
@@ -67,7 +60,7 @@
       <div class="row">
         <div class="col-md-12">
           <?php
-            $sql = $db->query("SELECT * FROM lantai WHERE id_gedung = '$id'");
+            $sql = $db->query("SELECT * FROM lantai WHERE id_gedung = '$id_gedung'");
             $count = $sql->rowCount();
 
             if ($count > 0) {
@@ -84,21 +77,24 @@
               <div class="row">
               <?php
                   while ($row = $sql->fetch()) {
-                    $query = $db->query("SELECT * FROM ruangan WHERE id_lantai = '".$row['id_lantai']."' LIMIT 3");
+                    $query = $db->query("SELECT * FROM ruangan WHERE id_lantai = '".$row['id_lantai']."'");
                     $rowCount = $query->rowCount();
               ?>
                 <div class="col-sm-12 col-md-12 col-lg-6 col-xl-3">
                   <div class="card mb-3">
                     <div class="card-body">
                       <h5 class="card-title"><?php echo $row['nama_lantai'] ?></h5>
+                      <ul class="list-group">
                       <?php while ($data = $query->fetch()) { ?>
-                      <ol><?php echo $data['nama_ruangan'] ?></ol>
-                    <?php } if ($rowCount > 2) {
-                        echo "<ol>...</ol>";
-                      } ?>
-                      <a href="aset_lantai.php?id_lantai=<?php echo $row['id_lantai'] ?>" class="btn btn-primary btn-sm">Lihat Aset</a>
-                      <a href="lantai.php?id_lantai=<?php echo $row['id_lantai'] ?>" class="btn btn-primary btn-sm">Detail lantai</a>
-                      <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapusLantai<?php echo $row['id_lantai'] ?>"><i class="fa fa-trash"></i></button>
+                        <li class="list-group-item"><?php echo $data['nama_ruangan'] ?></li>
+                    <?php } ?>
+                      </ul>
+                      <br>
+                      <a href="aset_lantai.php?id_lantai=<?php echo $row['id_lantai'] ?>" class="btn btn-light btn-sm" data-toggle="tooltip" data-placement="bottom" title="Lihat Aset Lantai"><i class="fa fa-eye"></i></a>
+                      <a href="lantai.php?id_lantai=<?php echo $row['id_lantai'] ?>" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="bottom" title="Detail Lantai"><i class="fa fa-layer-group"></i></a>
+                      <span data-toggle="modal" data-target="#hapusLantai<?php echo $row['id_lantai'] ?>" >
+                        <button type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="bottom" title="Hapus Lantai"><i class="fa fa-trash"></i></button>
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -195,6 +191,8 @@
 <script src="../bower_components/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap 3.3.7 -->
 <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="../bower_components/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
 <!-- FastClick -->
 <script src="../bower_components/fastclick/lib/fastclick.js"></script>
 <!-- AdminLTE App -->
@@ -207,6 +205,8 @@
 <!-- SlimScroll -->
 <script src="../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
 <!-- ChartJS -->
+<script src="../bower_components/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
 <script src="../bower_components/chart.js/Chart.js"></script>
 <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
 <script src="../dist/js/pages/dashboard2.js"></script>

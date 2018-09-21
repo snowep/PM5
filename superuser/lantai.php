@@ -1,9 +1,9 @@
 <?php
   session_start();
   include '../koneksi.php';
-  $id = $_GET['id_lantai'];
+  $id_lantai = $_GET['id_lantai'];
 
-  $_SESSION['id_lantai'] = $id;
+  $_SESSION['id_lantai'] = $id_lantai;
 ?>
 <!DOCTYPE html>
 <html>
@@ -50,7 +50,7 @@
     <section class="content-header">
       <h1>
         <?php
-          $sql = $db->query("SELECT * FROM lantai INNER JOIN gedung ON lantai.id_gedung = gedung.id_gedung INNER JOIN kantor ON gedung.id_kantor = kantor.id_kantor WHERE id_lantai = '$id'");
+          $sql = $db->query("SELECT * FROM lantai INNER JOIN gedung ON lantai.id_gedung = gedung.id_gedung INNER JOIN kantor ON gedung.id_kantor = kantor.id_kantor WHERE id_lantai = '$id_lantai'");
           $row = $sql->fetch();
           echo $row['nama_lantai'];
         ?>
@@ -68,7 +68,7 @@
       <div class="row">
         <div class="col-md-12">
           <?php
-            $sql = $db->query("SELECT * FROM ruangan WHERE id_lantai = '$id' ORDER BY nama_ruangan ASC");
+            $sql = $db->query("SELECT * FROM ruangan WHERE id_lantai = '$id_lantai' ORDER BY nama_ruangan ASC");
             $count = $sql->rowCount();
 
             if ($count > 0) {
@@ -90,8 +90,10 @@
                   <div class="card mb-3">
                     <div class="card-body">
                       <h5 class="card-title"><?php echo $row['nama_ruangan'] ?></h5>
-                      <a href="aset_ruangan.php?id_ruangan=<?php echo $row['id_ruangan'] ?>" class="btn btn-primary btn-sm">Lihat Aset</a>
-                      <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapusRuangan<?php echo $row['id_ruangan'] ?>"><i class="fa fa-trash"></i></button>
+                      <a href="aset_ruangan.php?id_ruangan=<?php echo $row['id_ruangan'] ?>" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="bottom" title="Detail Ruangan"><i class="fa fa-layer-group"></i></a>
+                      <span data-toggle="modal" data-target="#hapusRuangan<?php echo $row['id_ruangan'] ?>" >
+                        <button type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="bottom" title="Hapus Ruangan"><i class="fa fa-trash"></i></button>
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -191,7 +193,8 @@
 <!-- FastClick -->
 <script src="../bower_components/fastclick/lib/fastclick.js"></script>
 <!-- AdminLTE App -->
-<script src="../dist/js/adminlte.min.js"></script>
+<script src="../dist/js/adminlte.min.js"></script><script src="../bower_components/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
 <!-- Sparkline -->
 <script src="../bower_components/jquery-sparkline/dist/jquery.sparkline.min.js"></script>
 <!-- jvectormap  -->

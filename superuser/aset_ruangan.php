@@ -27,13 +27,6 @@
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
 
-  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-  <![endif]-->
-
   <!-- Google Font -->
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
@@ -52,9 +45,14 @@
         <?php
           $sql = $db->query("SELECT * FROM ruangan INNER JOIN lantai ON ruangan.id_lantai = lantai.id_lantai INNER JOIN gedung ON lantai.id_gedung = gedung.id_gedung INNER JOIN kantor ON gedung.id_kantor = kantor.id_kantor WHERE ruangan.id_ruangan = '$id_ruangan'");
           $row = $sql->fetch();
-          echo $row['nama_gedung'];
+          echo $row['nama_ruangan'];
         ?>
-        <small><?php echo $row['nama_lantai'] ?></small>
+        <small>
+          <?php echo $row['nama_lantai'] ?>
+          <span data-toggle="modal" data-target="#tambahAset" >
+            <button type="button" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="bottom" title="Tambah Aset"><i class="fa fa-plus"></i></button>
+          </span>
+        </small>
       </h1>
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
@@ -77,9 +75,9 @@
   </div>
   <!-- /.content-wrapper -->
 
-  <?php
-    include 'element/footer.php';
-  ?>
+    <?php
+      include 'element/footer.php';
+    ?>
   <div class="modal fade" id="tambahAset" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -112,7 +110,8 @@
 <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- FastClick -->
 <script src="../bower_components/fastclick/lib/fastclick.js"></script>
-<!-- AdminLTE App -->
+<script src="../bower_components/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
 <script src="../dist/js/adminlte.min.js"></script>
 <!-- Sparkline -->
 <script src="../bower_components/jquery-sparkline/dist/jquery.sparkline.min.js"></script>

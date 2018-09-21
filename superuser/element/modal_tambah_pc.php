@@ -156,3 +156,28 @@
     </div>
   </div>
 </div>
+<?php
+$sql = $db->query("SELECT pc.id_pc, pc.jenis, pegawai.nama FROM pc LEFT JOIN pegawai ON pc.id_pc = pegawai.id_pc");
+while ($row = $sql->fetch()) {
+?>
+<div class="modal fade" id="hapusPC<?php echo $row['id_pc'] ?>" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Hapus <?php echo strtoupper($row['jenis'])." - ".$row['id_pc'] ?></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden>&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <p style="font-weight:400">Anda yakin menghapus PC ini? PC ini sedang digunakan oleh <i><?php echo $row['nama'] ?></i></p>
+      </div>
+
+      <div class="modal-footer">
+        <a href="process/hapus_pc.php?id_pc=<?php echo $row['id_pc'] ?>" class="btn btn-danger btn-sm">Hapus</a>
+      </div>
+    </div>
+  </div>
+</div>
+<?php } ?>

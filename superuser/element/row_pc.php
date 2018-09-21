@@ -19,7 +19,7 @@
         <h3 class="box-title">Daftar PC</h3>
 
         <div class="box-tools pull-right">
-          <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#tambahPC"><i class="fa fa-plus"></i> Tambah PC</button>
+          <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#tambahAset"><i class="fa fa-plus"></i> Tambah Aset</button>
         </div>
       </div>
       <div class="box-body">
@@ -27,7 +27,7 @@
         <?php
             while ($row = $sql->fetch()) {
         ?>
-          <div class="col-3">
+          <div class="col-sm-12 col-md-6 col-lg-2">
             <div class="card mb-3">
               <div class="card-body">
                 <h5 class="card-title">
@@ -43,8 +43,10 @@
                 <?php
                   }
                 ?>
-                <a href="pc_detail.php?id_pc=<?php echo $row['id_pc'] ?>" class="btn btn-primary btn-sm">Detail PC</a>
-                <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapusPC<?php echo $row['id_pc'] ?>"><i class="fa fa-trash"></i></button>
+                <a href="pc_detail.php?id_pc=<?php echo $row['id_pc'] ?>" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="bottom" title="Detail Gedung"><i class="fa fa-layer-group"></i></a>
+                <span data-toggle="modal" data-target="#hapusPC<?php echo $row['id_pc'] ?>" >
+                  <button type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="bottom" title="Hapus Gedung"><i class="fa fa-trash"></i></button>
+                </span>
               </div>
             </div>
           </div>
