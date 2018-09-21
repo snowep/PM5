@@ -54,7 +54,11 @@
           $row = $sql->fetch();
           echo $row['nama_kantor'];
         ?>
-        <small><?php echo $row['telepon'] ?></small>
+        <small>
+          <?php echo $row['telepon'] ?>
+          <a href="aset_kantor.php?id_kantor=<?php echo $id_kantor ?>" class="btn btn-primary btn-sm">Lihat Aset</a>
+          <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapusKantor<?php echo $id_kantor ?>"><i class="fa fa-trash"></i></button>
+        </small>
       </h1>
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
@@ -95,7 +99,7 @@
                     <div class="card-body">
                       <h5 class="card-title"><?php echo $row['nama_gedung'] ?></h5>
                       <p><?php echo $row['alamat'] ?></p>
-                      <a href="aset.php?id_gedung=<?php echo $row['id_gedung'] ?>" class="btn btn-primary btn-sm">Lihat Aset</a>
+                      <a href="aset_gedung.php?id_gedung=<?php echo $row['id_gedung'] ?>" class="btn btn-primary btn-sm">Lihat Aset</a>
                       <a href="gedung.php?id_gedung=<?php echo $row['id_gedung'] ?>" class="btn btn-primary btn-sm">Detail Gedung</a>
                       <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapusGedung<?php echo $row['id_gedung'] ?>"><i class="fa fa-trash"></i></button>
                     </div>
@@ -167,7 +171,7 @@
     </div>
   </div>
   <?php
-  $sql = $db->query("SELECT * FROM gedung WHERE id_kantor = '$id'");
+  $sql = $db->query("SELECT * FROM gedung WHERE id_kantor = '$id_kantor'");
   while ($row = $sql->fetch()) {
   ?>
   <div class="modal fade" id="hapusGedung<?php echo $row['id_gedung'] ?>" tabindex="-1" role="dialog" aria-hidden="true">
@@ -181,7 +185,7 @@
         </div>
 
         <div class="modal-body">
-          <p style="font-weight:400">Anda yakin menghapus gedung ini? Semua data yang bersangkutan dengan gedung ini akan ikut <b>terhapus</b> dan <b>TIDAK BISA</b> dikembalikan lagi?</p>
+          <p style="font-weight:400">Anda yakin menghapus gedung ini? Semua data yang bersangkutan dengan gedung ini akan ikut <b>terhapus</b> dan <b>TIDAK BISA</b> dikembalikan lagi!</p>
         </div>
 
         <div class="modal-footer">
@@ -191,6 +195,7 @@
     </div>
   </div>
 <?php } ?>
+<<<<<<< HEAD:admin/kantor.php
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
     <!-- Create the tabs -->
@@ -382,6 +387,29 @@
   <!-- Add the sidebar's background. This div must be placed
        immediately after the control sidebar -->
   <div class="control-sidebar-bg"></div>
+=======
+<div class="modal fade" id="hapusKantor<?php echo $id_kantor ?>" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <?php $sql = $db->query("SELECT * FROM kantor WHERE id_kantor = '$id_kantor'"); $row = $sql->fetch(); ?>
+        <h5 class="modal-title">Hapus <?php echo $row['nama_kantor'] ?></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden>&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <p style="font-weight:400">Anda yakin menghapus kantor ini? Semua data yang bersangkutan dengan kantor ini akan ikut <b>terhapus</b> dan <b>TIDAK BISA</b> dikembalikan lagi!</p>
+      </div>
+
+      <div class="modal-footer">
+        <a href="process/hapus_kantor.php?id_kantor=<?php echo $id_kantor ?>" class="btn btn-danger btn-sm">Hapus</a>
+      </div>
+    </div>
+  </div>
+</div>
+>>>>>>> bb84fd941ae4dde53655e3d5e743274148d45ea4:superuser/kantor.php
 
 </div>
 <!-- ./wrapper -->
