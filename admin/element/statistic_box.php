@@ -7,13 +7,8 @@
         $count = $sql->rowCount();
       ?>
       <div class="info-box-content">
-<<<<<<< HEAD:admin/element/statistic_box.php
-        <span class="info-box-text">Karyawan</span>
-        <span class="info-box-number">90<small>%</small></span>
-=======
         <span class="info-box-text">Pegawai</span>
         <span class="info-box-number"><?php echo $count ?></span>
->>>>>>> bb84fd941ae4dde53655e3d5e743274148d45ea4:superuser/element/statistic_box.php
       </div>
       <!-- /.info-box-content -->
     </div>
