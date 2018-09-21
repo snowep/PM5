@@ -1,8 +1,17 @@
 <div class="row">
   <div class="col-md-12">
     <?php
+    if ($page == 'aset_ruangan') {
       $sql = $db->query("SELECT * FROM server WHERE id_ruangan = '$id_ruangan'");
-      $count = $sql->rowCount();
+    } elseif ($page == 'aset_lantai') {
+      $sql = $db->query("SELECT * FROM server WHERE id_lantai = '$id_lantai'");
+    } elseif ($page == 'aset_gedung') {
+      $sql = $db->query("SELECT * FROM server WHERE id_gedung = '$id_gedung'");
+    } else {
+      $sql = $db->query("SELECT * FROM server WHERE id_kantor = '$id_kantor'");
+    }
+
+    $count = $sql->rowCount();
 
       if ($count > 0) {
     ?>

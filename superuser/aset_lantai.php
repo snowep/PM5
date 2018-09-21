@@ -1,9 +1,10 @@
 <?php
   session_start();
   include '../koneksi.php';
-  $id_ruangan = $_GET['id_ruangan'];
-  $page = 'aset_ruangan';
-  $_SESSION['id_ruangan'] = $id_ruangan;
+  $id_lantai = $_GET['id_lantai'];
+  $page = 'aset_lantai';
+
+  $_SESSION['id_lantai'] = $id_lantai;
 ?>
 <!DOCTYPE html>
 <html>
@@ -50,25 +51,24 @@
     <section class="content-header">
       <h1>
         <?php
-          $sql = $db->query("SELECT * FROM ruangan INNER JOIN lantai ON ruangan.id_lantai = lantai.id_lantai INNER JOIN gedung ON lantai.id_gedung = gedung.id_gedung INNER JOIN kantor ON gedung.id_kantor = kantor.id_kantor WHERE ruangan.id_ruangan = '$id_ruangan'");
+          $sql = $db->query("SELECT * FROM lantai INNER JOIN gedung ON lantai.id_gedung = gedung.id_gedung INNER JOIN kantor ON gedung.id_kantor = kantor.id_kantor WHERE id_lantai = '$id_lantai'");
           $row = $sql->fetch();
-          echo $row['nama_gedung'];
+          echo $row['nama_lantai'];
         ?>
-        <small><?php echo $row['nama_lantai'] ?></small>
+        <small><?php echo $row['nama_gedung'] ?></small>
       </h1>
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
         <li class="breadcrumb-item"><a href="kantor.php?id_kantor=<?php echo $_SESSION['id_kantor'] ?>"><?php echo $row['nama_kantor']; ?></a></li>
         <li class="breadcrumb-item"><a href="gedung.php?id_gedung=<?php echo $_SESSION['id_gedung'] ?>"><?php echo $row['nama_gedung']; ?></a></li>
-        <li class="breadcrumb-item"><a href="lantai.php?id_lantai=<?php echo $_SESSION['id_lantai'] ?>"><?php echo $row['nama_lantai']; ?></a></li>
-        <li class="breadcrumb-item active"><?php echo $row['nama_ruangan']; ?></li>
+        <li class="breadcrumb-item active"><a href="lantai.php?id_lantai=<?php echo $_SESSION['id_lantai'] ?>"><?php echo $row['nama_lantai']; ?></a></li>
       </ol>
     </section>
     <!-- Main content -->
     <section class="content">
       <!-- Info boxes -->
       <?php
-        include 'element/statistic_box_aset_ruangan.php';
+        include 'element/statistic_box_aset_lantai.php';
         include 'element/row_pc.php';
         include 'element/row_server.php';
       ?>

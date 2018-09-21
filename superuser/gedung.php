@@ -96,7 +96,7 @@
                     <?php } if ($rowCount > 2) {
                         echo "<ol>...</ol>";
                       } ?>
-                      <a href="aset.php?id_lantai=<?php echo $row['id_lantai'] ?>" class="btn btn-primary btn-sm">Lihat Aset</a>
+                      <a href="aset_lantai.php?id_lantai=<?php echo $row['id_lantai'] ?>" class="btn btn-primary btn-sm">Lihat Aset</a>
                       <a href="lantai.php?id_lantai=<?php echo $row['id_lantai'] ?>" class="btn btn-primary btn-sm">Detail lantai</a>
                       <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapusLantai<?php echo $row['id_lantai'] ?>"><i class="fa fa-trash"></i></button>
                     </div>
