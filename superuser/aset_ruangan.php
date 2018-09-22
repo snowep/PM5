@@ -67,8 +67,7 @@
       <!-- Info boxes -->
       <?php
         include 'element/statistic_box_aset_ruangan.php';
-        include 'element/row_pc.php';
-        include 'element/row_server.php';
+        include 'element/row_aset.php';
       ?>
     </section>
     <!-- /.content -->
@@ -113,7 +112,8 @@
 <script src="../bower_components/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
 <script src="../dist/js/adminlte.min.js"></script>
-<!-- Sparkline -->
+<?php include 'ajaxGetData.php'; ?>
+
 <script src="../bower_components/jquery-sparkline/dist/jquery.sparkline.min.js"></script>
 <!-- jvectormap  -->
 <script src="../plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>

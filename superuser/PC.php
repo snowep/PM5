@@ -59,7 +59,7 @@
         <div class="col-md-12">
           <?php
             $sql = $db->query("SELECT * FROM pc INNER JOIN kantor ON pc.id_kantor = kantor.id_kantor INNER JOIN gedung ON pc.id_gedung = gedung.id_gedung
-                              INNER JOIN lantai ON pc.id_lantai = lantai.id_lantai INNER JOIN ruangan ON pc.id_ruangan = ruangan.id_ruangan");
+                              INNER JOIN lantai ON pc.id_lantai = lantai.id_lantai INNER JOIN ruangan ON pc.id_ruangan = ruangan.id_ruangan ORDER BY INET_ATON(ip_address)");
             $count = $sql->rowCount();
 
             if ($count > 0) {
@@ -74,22 +74,15 @@
             </div>
             <div class="box-body">
               <div class="row">
-              <?php
-                  while ($row = $sql->fetch()) {
-              ?>
-                <div class="col-3">
+                <div class="card-columns">
+                <?php
+                    while ($row = $sql->fetch()) {
+                ?>
                   <div class="card mb-3">
                     <div class="card-body">
                       <h5 class="card-title">
                         <?php echo strtoupper($row['jenis'])." | ".$row['processor'] ?>
                       </h5>
-                      <small>
-                        <span class="badge badge-secondary"><?php echo $row['nama_kantor'] ?></span>
-                        <span class="badge badge-primary"><?php echo $row['nama_gedung'] ?></span>
-                        <span class="badge badge-primary"><?php echo $row['nama_lantai'] ?></span>
-                        <span class="badge badge-primary"><?php echo $row['nama_ruangan'] ?></span>
-                        <span class="badge badge-primary"><?php echo $row['nama_lantai'] ?></span>
-                      </small>
                       <p><?php echo $row['ip_address'] ?></p>
                       <?php
                         $query = $db->query("SELECT * FROM pegawai WHERE id_pc = '".$row['id_pc']."'");
@@ -105,10 +98,10 @@
                       <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapusPC<?php echo $row['id_pc'] ?>"><i class="fa fa-trash"></i></button>
                     </div>
                   </div>
+                <?php
+                    }
+                ?>
                 </div>
-                    <?php
-                        }
-                    ?>
               </div>
             </div>
             <!-- /.box-header -->
@@ -241,52 +234,6 @@
 <script src="../dist/js/pages/dashboard2.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../dist/js/demo.js"></script>
-<script type="text/javascript">
-  $(document).ready(function() {
-    $('#kantor').on('change', function() {
-      var idKantor = $(this).val();
-      if (idKantor) {
-        $.ajax({
-          type: 'POST',
-          url:  'ajaxData.php',
-          data: 'id_kantor='+idKantor,
-          success:function(html) {
-            $('#gedung').html(html);
-            $('#lantai').html('<option value="">Pilih Gedung Dahulu</option>')
-          }
-        })
-      }
-    });
-
-    $('#gedung').on('change', function() {
-      var idGedung = $(this).val();
-      if (idGedung) {
-        $.ajax({
-          type: 'POST',
-          url:  'ajaxData.php',
-          data: 'id_gedung='+idGedung,
-          success:function(html) {
-            $('#lantai').html(html);
-            $('#ruangan').html('<option value="">Pilih Lantai Dahulu</option>')
-          }
-        })
-      }
-    });
-
-    $('#lantai').on('change', function() {
-      var idLantai = $(this).val();
-      if (idLantai) {
-        $.ajax({
-          type: 'POST',
-          url:  'ajaxData.php',
-          data: 'id_lantai='+idLantai,
-          success:function(html) {
-            $('#ruangan').html(html);
-          }
-        })
-      }
-    });
-  })
-</script>
+<?php include 'ajaxGetData.php'; ?>
 </body>
 </html>
