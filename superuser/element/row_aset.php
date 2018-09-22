@@ -19,8 +19,8 @@
     } else {
       $sqlPc = $db->query("SELECT * FROM pc WHERE id_kantor = '$id_kantor' ORDER BY INET_ATON(ip_address)");
       $sqlServer = $db->query("SELECT * FROM server WHERE id_kantor = '$id_kantor'");
-      $sqlWifi = $db->query("SELECT * FROM wifi WHERE id_ruangan = '$id_ruangan'");
-      $sqlSwitch = $db->query("SELECT * FROM switch WHERE id_ruangan = '$id_ruangan'");
+      $sqlWifi = $db->query("SELECT * FROM wifi WHERE id_kantor = '$id_kantor'");
+      $sqlSwitch = $db->query("SELECT * FROM switch WHERE id_kantor = '$id_kantor'");
     }
       $countPc = $sqlPc->rowCount();
       $countServer = $sqlServer->rowCount();
@@ -47,15 +47,16 @@
             if ($countWifi > 0) { //cek data wifi
               include 'box_wifi.php'; //jika ada tampilkan wifi
             } else { //jika wifi tidak ada
+              include 'box_aset_tidak_ada.php'; //tampilkan
             } //selesai else wifi
           } else { //jika switch tidak ada
             if ($countWifi > 0) { //cek data wifi
               include 'box_wifi.php'; //jika ada tampilkan wifi
             } else { //jika wifi tidak ada
+              include 'box_aset_tidak_ada.php'; //tampilkan
             } //selesai else wifi
           } //selesai else switch
         }
-        include 'box_aset_tidak_ada.php'; //tampilkan
       } else { //jika pc tidak ada
         if ($countServer > 0) { //cek data server
           include 'box_server.php'; //jika ada tampilkan server

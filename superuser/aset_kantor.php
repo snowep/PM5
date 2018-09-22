@@ -95,8 +95,10 @@
   </div>
 
   <?php
-    include 'element/modal_tambah_pc.php';
-    include 'element/modal_tambah_server.php';
+    include 'element/modal_pc.php';
+    include 'element/modal_server.php';
+    include 'element/modal_switch.php';
+    include 'element/modal_wifi.php';
   ?>
 </div>
 <!-- ./wrapper -->

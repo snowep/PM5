@@ -3,7 +3,7 @@
     <h3 class="box-title">Daftar WiFi</h3>
 
     <div class="box-tools pull-right">
-      <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#tambahServer"><i class="fa fa-plus"></i> Tambah Aset</button>
+      <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#tambahAset"><i class="fa fa-plus"></i> Tambah Aset</button>
     </div>
   </div>
   <div class="box-body">

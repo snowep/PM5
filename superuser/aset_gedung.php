@@ -90,8 +90,8 @@
         <div class="modal-body">
           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambahPC">PC</button>
           <button type="button" class="btn btn-success" data-toggle="modal" data-target="#tambahServer">Server</button>
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambahPC">Switch</button>
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambahPC">WiFi</button>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambahSwitch">Switch</button>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambahWifi">WiFi</button>
         </div>
       </div>
     </div>
@@ -101,8 +101,10 @@
 <!-- ./wrapper -->
 
   <?php
-    include 'element/modal_tambah_pc.php';
-    include 'element/modal_tambah_server.php';
+    include 'element/modal_pc.php';
+    include 'element/modal_server.php';
+    include 'element/modal_switch.php';
+    include 'element/modal_wifi.php';
   ?>
 <!-- jQuery 3 -->
 <script src="../bower_components/jquery/dist/jquery.min.js"></script>
