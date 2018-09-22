@@ -18,7 +18,7 @@
                   $sql = $db->query("SELECT * FROM kantor");
                   $count = $sql->rowCount();
                 ?>
-                <select class="form-control" id="kantor" name="kantor">
+                <select class="form-control" id="kantor1" name="kantor">
                   <option value="">Pilih Kantor</option>
                   <?php
                     if ($count > 0) {
@@ -35,7 +35,7 @@
             <div class="col">
               <div class="form-group">
                 <label>Pilih Gedung</label>
-                <select class="form-control" id="gedung" name="gedung">
+                <select class="form-control" id="gedung1" name="gedung">
                   <option value="">Pilih Kantor Dahulu</option>
                 </select>
               </div>
@@ -45,7 +45,7 @@
             <div class="col">
               <div class="form-group">
                 <label>Pilih Lantai</label>
-                <select class="form-control" id="lantai" name="lantai">
+                <select class="form-control" id="lantai1" name="lantai">
                   <option value="">Pilih Gedung Dahulu</option>
                 </select>
               </div>
@@ -53,7 +53,7 @@
             <div class="col">
               <div class="form-group">
                 <label>Pilih Ruangan</label>
-                <select class="form-control" id="ruangan" name="ruangan">
+                <select class="form-control" id="ruangan1" name="ruangan">
                   <option value="">Pilih Lantai Dahulu</option>
                 </select>
               </div>
