@@ -262,7 +262,7 @@ while ($row = $sql->fetch()) {
       </div>
 
       <div class="modal-body">
-        <form class="" action="updatePC.php" method="post">
+        <form action="updatePC.php" method="post">
           <table class="table">
             <tbody>
               <tr>

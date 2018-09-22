@@ -27,63 +27,63 @@
       $countSwitch = $sqlSwitch->rowCount();
       $countWifi = $sqlWifi->rowCount();
 
-      if ($countPc > 0) { //cek data pc
-        include 'box_pc.php'; //jika ada tampilkan pc
-        if ($countServer > 0) { //cek data server
-          include 'box_server.php'; //jika ada tampilkan server
-          if ($countSwitch > 0) { //cek data switch
-            include 'box_switch.php'; //jika ada tampilkan switch
-            if ($countWifi > 0) { //cek data wifi
-              include 'box_wifi.php'; //jika ada tampilkan wifi
-            }
-          } else { //jika switch tidak ada
-            if ($countWifi > 0) { //cek data wifi
-              include 'box_wifi.php'; //jika ada tampilkan wifi
-            }
-          } //selesai else switch
-        } else {
-          if ($countSwitch > 0) { //cek data switch
-            include 'box_switch.php'; //jika ada tampilkan switch
-            if ($countWifi > 0) { //cek data wifi
-              include 'box_wifi.php'; //jika ada tampilkan wifi
-            } else { //jika wifi tidak ada
-              include 'box_aset_tidak_ada.php'; //tampilkan
-            } //selesai else wifi
-          } else { //jika switch tidak ada
-            if ($countWifi > 0) { //cek data wifi
-              include 'box_wifi.php'; //jika ada tampilkan wifi
-            } else { //jika wifi tidak ada
-              include 'box_aset_tidak_ada.php'; //tampilkan
-            } //selesai else wifi
-          } //selesai else switch
-        }
-      } else { //jika pc tidak ada
-        if ($countServer > 0) { //cek data server
-          include 'box_server.php'; //jika ada tampilkan server
-          if ($countSwitch > 0) { //cek data switch
-            include 'box_switch.php'; //jika ada tampilkan switch
-            if ($countWifi > 0) { //cek data wifi
-              include 'box_wifi.php'; //jika ada tampilkan wifi
-            }
-          } else { //jika switch tidak ada
-            if ($countWifi > 0) { //cek data wifi
-              include 'box_wifi.php'; //jika ada tampilkan wifi
-            }
-          } //selesai else switch
-        } else {
-          if ($countSwitch > 0) { //cek data switch
-            include 'box_switch.php'; //jika ada tampilkan switch
-            if ($countWifi > 0) { //cek data wifi
-              include 'box_wifi.php'; //jika ada tampilkan wifi
-            }
-          } else { //jika switch tidak ada
-            if ($countWifi > 0) { //cek data wifi
-              include 'box_wifi.php'; //jika ada tampilkan wifi
-            }
-          } //selesai else switch
-        }
-        include 'box_aset_tidak_ada.php'; //tampilkan
+    if ($countPc > 0) { //cek data pc
+      include 'box_pc.php'; //jika ada tampilkan pc
+      if ($countServer > 0) { //cek data server
+        include 'box_server.php'; //jika ada tampilkan server
+        if ($countSwitch > 0) { //cek data switch
+          include 'box_switch.php'; //jika ada tampilkan switch
+          if ($countWifi > 0) { //cek data wifi
+            include 'box_wifi.php'; //jika ada tampilkan wifi
+          }
+        } else { //jika switch tidak ada
+          if ($countWifi > 0) { //cek data wifi
+            include 'box_wifi.php'; //jika ada tampilkan wifi
+          }
+        } //selesai else switch
+      } else {
+        if ($countSwitch > 0) { //cek data switch
+          include 'box_switch.php'; //jika ada tampilkan switch
+          if ($countWifi > 0) { //cek data wifi
+            include 'box_wifi.php'; //jika ada tampilkan wifi
+          } else { //jika wifi tidak ada
+            include 'box_aset_tidak_ada.php'; //tampilkan
+          } //selesai else wifi
+        } else { //jika switch tidak ada
+          if ($countWifi > 0) { //cek data wifi
+            include 'box_wifi.php'; //jika ada tampilkan wifi
+          } else { //jika wifi tidak ada
+            include 'box_aset_tidak_ada.php'; //tampilkan
+          } //selesai else wifi
+        } //selesai else switch
       }
+    } else { //jika pc tidak ada
+      if ($countServer > 0) { //cek data server
+        include 'box_server.php'; //jika ada tampilkan server
+        if ($countSwitch > 0) { //cek data switch
+          include 'box_switch.php'; //jika ada tampilkan switch
+          if ($countWifi > 0) { //cek data wifi
+            include 'box_wifi.php'; //jika ada tampilkan wifi
+          }
+        } else { //jika switch tidak ada
+          if ($countWifi > 0) { //cek data wifi
+            include 'box_wifi.php'; //jika ada tampilkan wifi
+          }
+        } //selesai else switch
+      } else {
+        if ($countSwitch > 0) { //cek data switch
+          include 'box_switch.php'; //jika ada tampilkan switch
+          if ($countWifi > 0) { //cek data wifi
+            include 'box_wifi.php'; //jika ada tampilkan wifi
+          }
+        } else { //jika switch tidak ada
+          if ($countWifi > 0) { //cek data wifi
+            include 'box_wifi.php'; //jika ada tampilkan wifi
+          }
+        } //selesai else switch
+      }
+      include 'box_aset_tidak_ada.php'; //tampilkan
+    }
   ?>
     <!-- /.box -->
   </div>

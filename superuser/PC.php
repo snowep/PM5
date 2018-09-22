@@ -75,13 +75,13 @@
             <div class="box-body">
               <div class="row">
                 <div class="card-columns">
-                <?php
-                    while ($row = $sql->fetch()) {
-                ?>
+              <?php
+                  while ($row = $sql->fetch()) {
+              ?>
                   <div class="card mb-3">
                     <div class="card-body">
                       <h5 class="card-title">
-                        <?php echo strtoupper($row['jenis'])." | ".$row['processor'] ?>
+                        <?php if ($row['jenis'] == 'pc') { echo strtoupper($row['jenis'])." | ".$row['processor']; } else { echo ucfirst($row['jenis'])." | ".$row['processor']; } ?>
                       </h5>
                       <p><?php echo $row['ip_address'] ?></p>
                       <?php
@@ -93,15 +93,19 @@
                       <?php
                         }
                       ?>
-                      <a href="aset.php?id_pc=<?php echo $row['id_pc'] ?>" class="btn btn-primary btn-sm">Lihat Aset</a>
-                      <a href="pc_detail.php?id_pc=<?php echo $row['id_pc'] ?>" class="btn btn-primary btn-sm">Detail PC</a>
-                      <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapusPC<?php echo $row['id_pc'] ?>"><i class="fa fa-trash"></i></button>
+                      <span data-toggle="modal" data-target="#detailPC<?php echo $row['id_pc'] ?>" >
+                        <button type="button" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="bottom" title="Detail <?php if ($row['jenis'] == 'pc') { echo strtoupper($row['jenis']); } else { echo ucfirst($row['jenis']); } ?>"><i class="fa fa-layer-group"></i></button>
+                      </span>
+                      <span data-toggle="modal" data-target="#hapusPC<?php echo $row['id_pc'] ?>" >
+                        <button type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="bottom" title="Hapus <?php if ($row['jenis'] == 'pc') { echo strtoupper($row['jenis']); } else { echo ucfirst($row['jenis']); } ?>"><i class="fa fa-trash"></i></button>
+                      </span>
                     </div>
                   </div>
-                <?php
-                    }
-                ?>
-                </div>
+                    <?php
+                        }
+                    ?>
+
+                  </div>
               </div>
             </div>
             <!-- /.box-header -->
