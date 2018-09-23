@@ -72,10 +72,10 @@
             </div>
             <div class="box-body">
               <div class="row">
+                <div class="card-columns pegawai">
               <?php
                   while ($row = $sql->fetch()) {
               ?>
-                <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
                   <div class="card mb-3">
                     <div class="card-body">
                       <h5 class="card-title"><?php echo $row['nama'] ?></h5>
@@ -83,10 +83,10 @@
                       <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapusPegawai<?php echo $row['id_pegawai'] ?>"><i class="fa fa-trash"></i></button>
                     </div>
                   </div>
-                </div>
                     <?php
                         }
                     ?>
+                  </div>
               </div>
             </div>
             <!-- /.box-header -->

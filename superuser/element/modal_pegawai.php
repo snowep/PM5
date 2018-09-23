@@ -1,5 +1,5 @@
-<div class="modal fade" id="tambahPC" tabindex="-1" role="dialog" aria-hidden="true">
-  <div class="modal-dialog" role="document">
+<div class="modal fade" id="tambahPegawai" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document"> 
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title">Tambah PC</h5>

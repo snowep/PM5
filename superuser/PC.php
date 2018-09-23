@@ -141,7 +141,7 @@
   <?php
     include 'element/footer.php';
 
-  include 'element/modal_pc.php';
+    include 'element/modal_pc.php';
 
   $query = $db->query("SELECT * FROM pc");
   while ($data = $query->fetch()) {

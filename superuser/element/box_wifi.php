@@ -19,8 +19,12 @@
               <?php echo $row['merk']." ".strtoupper($row['tipe'])." | ".$row['nama_ap'] ?>
             </h5>
             <p><?php echo $row['ip_address'] ?></p>
-            <a href="server_detail.php?id_server=<?php echo $row['id_server'] ?>" class="btn btn-primary btn-sm">Detail Server</a>
-            <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapusServer<?php echo $row['id_server'] ?>"><i class="fa fa-trash"></i></button>
+            <span data-toggle="modal" data-target="#detailWifi<?php echo $row['id_wifi'] ?>" >
+              <button type="button" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="bottom" title="Detail Wifi"><i class="fa fa-layer-group"></i></button>
+            </span>
+            <span data-toggle="modal" data-target="#hapusWifi<?php echo $row['id_wifi'] ?>" >
+              <button type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="bottom" title="Hapus Wifi"><i class="fa fa-trash"></i></button>
+            </span>
           </div>
         </div>
       </div>

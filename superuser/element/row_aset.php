@@ -46,16 +46,13 @@
           include 'box_switch.php'; //jika ada tampilkan switch
           if ($countWifi > 0) { //cek data wifi
             include 'box_wifi.php'; //jika ada tampilkan wifi
-          } else { //jika wifi tidak ada
-            include 'box_aset_tidak_ada.php'; //tampilkan
-          } //selesai else wifi
+          }
         } else { //jika switch tidak ada
           if ($countWifi > 0) { //cek data wifi
             include 'box_wifi.php'; //jika ada tampilkan wifi
-          } else { //jika wifi tidak ada
-            include 'box_aset_tidak_ada.php'; //tampilkan
-          } //selesai else wifi
+          }
         } //selesai else switch
+        include 'box_aset_tidak_ada.php'; //tampilkan
       }
     } else { //jika pc tidak ada
       if ($countServer > 0) { //cek data server

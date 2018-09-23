@@ -163,3 +163,212 @@
     </div>
   </div>
 </div>
+<?php
+$sql = $db->query("SELECT * FROM server");
+while ($row = $sql->fetch()) {
+?>
+  <div class="modal fade" id="detailServer<?php echo $row['id_server'] ?>" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Detail Server [<b><?php echo $row['merk'] ?> - <?php echo $row['tipe_server'] ?></b>] | <small><?php echo $row['fungsi_server'] ?></small> </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden>&times;</span>
+          </button>
+        </div>
+        <?php
+          $sql2 = $db->query("SELECT * FROM server");
+          $data = $sql2->fetch();
+        ?>
+        <div class="modal-body">
+          <table class="table">
+            <tbody>
+              <tr>
+                <td>Fungsi Server:</td>
+                <td><?php echo $data['fungsi_server'] ?></td>
+              </tr>
+              <tr>
+                <td>Sistem Operasi:</td>
+                <td><?php echo $data['sistem_operasi'] ?></td>
+              </tr>
+              <tr>
+                <td>IP Address:</td>
+                <td><?php echo $data['ip_address'] ?></td>
+              </tr>
+              <tr>
+                <td>MAC Address:</td>
+                <td><?php echo $data['mac_address'] ?></td>
+              </tr>
+              <tr>
+                <td>Serial Number:</td>
+                <td><?php echo $data['serial_number'] ?></td>
+              </tr>
+              <tr>
+                <td>Kapasitas HDD:</td>
+                <td><?php echo $data['hard_disk'] ?></td>
+              </tr>
+              <tr>
+                <td>Ukuran RAM:</td>
+                <td><?php echo $data['ram'] ?> GB</td>
+              </tr>
+              <tr>
+                <td>Processor yang digunakan:</td>
+                <td><?php echo $data['cpu_processor'] ?></td>
+              </tr>
+              <tr>
+                <td>Tahun:</td>
+                <td><?php echo $data['tahun'] ?></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="modal-footer">
+          <span data-toggle="modal" data-target="#editServer<?php echo $row['id_server'] ?>" >
+            <button type="button" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="bottom" title="Edit data Server"><i class="fa fa-edit"></i></button>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+<?php }
+$sql = $db->query("SELECT * FROM server");
+while ($row = $sql->fetch()) {
+?>
+<div class="modal fade" id="editServer<?php echo $row['id_server'] ?>" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Edit Server [<b><?php echo $row['merk'] ?> - <?php echo $row['tipe_server'] ?></b>] | <small><?php echo $row['fungsi_server'] ?></small> </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden>&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <form action="updatePC.php" method="post">
+          <table class="table">
+            <tbody>
+              <tr>
+                <td>Fungsi Server:</td>
+                <td>
+                  <div class="form-group">
+                    <input class="form-control" type="text" name="fungsi" value="<?php echo $row['fungsi_server'] ?>">
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>Sistem Operasi:</td>
+                <td>
+                  <div class="form-group">
+                    <input class="form-control" type="text" name="os" value="<?php echo $row['sistem_operasi'] ?>">
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>IP Address:</td>
+                <td>
+                  <div class="form-group">
+                    <input class="form-control" type="text" name="ip" value="<?php echo $row['ip_address'] ?>">
+                    <small>Gunakan titik sebagai pemisah. Ex: 192.168.1.1</small>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>MAC Address:</td>
+                <td>
+                  <div class="form-group">
+                    <input class="form-control" type="text" name="mac" value="<?php echo $row['mac_address'] ?>">
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>Serial Number:</td>
+                <td>
+                  <div class="form-group">
+                    <input class="form-control" type="text" name="sn" value="<?php echo $row['serial_number'] ?>">
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>Kapasitas HDD:</td>
+                <td>
+                  <div class="form-group">
+                    <div class="input-group mb-3">
+                      <input type="text" class="form-control" value="<?php $qwe = explode(" ",$row['hard_disk']); echo $qwe[0] ?>" aria-label="HDD" name="hdd" aria-describedby="hdd_addon">
+                      <div class="input-group-append">
+                        <div class="input-group-append">
+                          <select class="input-group-text" name="size">
+                            <option value="GB">GB</option>
+                            <option value="TB">TB</option>
+                          </select>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>Ukuran RAM:</td>
+                <td>
+                  <div class="form-group">
+                    <div class="input-group mb-3">
+                      <input type="text" class="form-control" value="<?php echo $row['ram'] ?>" aria-label="RAM" name="ram" aria-describedby="ram_addon">
+                      <div class="input-group-append">
+                        <span class="input-group-text" id="ram_addon">GB</span>
+                      </div>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>Processor yang digunakan:</td>
+                <td>
+                  <div class="form-group">
+                    <input class="form-control" type="text" name="processor" value="<?php echo $row['cpu_processor'] ?>">
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>Tahun:</td>
+                <td>
+                  <div class="form-group">
+                    <input class="form-control" type="text" name="tahun" value="<?php echo $row['tahun'] ?>">
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </form>
+      </div>
+
+      <div class="modal-footer">
+        <a href="process/update_pc.php?id_pc=<?php echo $row['id_pc'] ?>" class="btn btn-success btn-sm">Update Data</a>
+      </div>
+    </div>
+  </div>
+</div>
+<?php }
+$sql = $db->query("SELECT * FROM server");
+while ($row = $sql->fetch()) {
+?>
+<div class="modal fade" id="hapusServer<?php echo $row['id_server'] ?>" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Hapus Server <?php echo $row['merk'] ?></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden>&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <p style="font-weight:400">Anda yakin menghapus Server ini? Server ini sedang menjalankan <i><?php echo $row['fungsi_server'] ?>.</i></p>
+      </div>
+
+      <div class="modal-footer">
+        <a href="process/hapus_server.php?id_server=<?php echo $row['id_server'] ?>" class="btn btn-danger btn-sm">Hapus</a>
+      </div>
+    </div>
+  </div>
+</div>
+<?php } ?>

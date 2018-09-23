@@ -88,15 +88,13 @@
                       <h5 class="card-title">
                         <?php echo $row['merk']." ".strtoupper($row['tipe_server'])." | ".$row['fungsi_server'] ?>
                       </h5>
-                      <small>
-                        <span class="badge badge-secondary"><?php echo $row['nama_kantor'] ?></span>
-                        <span class="badge badge-primary"><?php echo $row['nama_gedung'] ?></span>
-                        <span class="badge badge-primary"><?php echo $row['nama_lantai'] ?></span>
-                        <span class="badge badge-primary"><?php echo $row['nama_ruangan'] ?></span>
-                      </small>
                       <p><?php echo $row['ip_address'] ?></p>
-                      <a href="server_detail.php?id_server=<?php echo $row['id_server'] ?>" class="btn btn-primary btn-sm">Detail Server</a>
-                      <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapusServer<?php echo $row['id_server'] ?>"><i class="fa fa-trash"></i></button>
+                      <span data-toggle="modal" data-target="#detailServer<?php echo $row['id_server'] ?>" >
+                        <button type="button" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="bottom" title="Detail Server"><i class="fa fa-layer-group"></i></button>
+                      </span>
+                      <span data-toggle="modal" data-target="#hapusServer<?php echo $row['id_server'] ?>" >
+                        <button type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="bottom" title="Hapus Server"><i class="fa fa-trash"></i></button>
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -136,7 +134,7 @@
 
   <?php
     include 'element/footer.php';
-    include 'element/modal_tambah_server.php';
+    include 'element/modal_server.php';
   ?>
 
   <?php

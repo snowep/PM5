@@ -124,3 +124,137 @@
     </div>
   </div>
 </div>
+<?php
+$sql = $db->query("SELECT * FROM switch");
+while ($row = $sql->fetch()) {
+?>
+  <div class="modal fade" id="detailSwitch<?php echo $row['id_switch'] ?>" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Detail Switch [<b><?php echo $row['merk'] ?> - <?php echo $row['switch_type'] ?></b>] | <small><?php echo $row['nama_switch'] ?></small> </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden>&times;</span>
+          </button>
+        </div>
+        <?php
+          $sql2 = $db->query("SELECT * FROM switch");
+          $data = $sql2->fetch();
+        ?>
+        <div class="modal-body">
+          <table class="table">
+            <tbody>
+              <tr>
+                <td>IP Address:</td>
+                <td><?php echo $data['ip_address'] ?></td>
+              </tr>
+              <tr>
+                <td>MAC Address:</td>
+                <td><?php echo $data['mac_address'] ?></td>
+              </tr>
+              <tr>
+                <td>Jumlah Port:</td>
+                <td><?php echo $data['jumlah_port'] ?></td>
+              </tr>
+              <tr>
+                <td>Tahun:</td>
+                <td><?php echo $data['tahun'] ?></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="modal-footer">
+          <span data-toggle="modal" data-target="#editSwitch<?php echo $row['id_switch'] ?>" >
+            <button type="button" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="bottom" title="Edit data Server"><i class="fa fa-edit"></i></button>
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+<?php }
+$sql = $db->query("SELECT * FROM switch");
+while ($row = $sql->fetch()) {
+?>
+<div class="modal fade" id="editSwitch<?php echo $row['id_switch'] ?>" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Edit Switch [<b><?php echo $row['merk'] ?> - <?php echo $row['switch_type'] ?></b>] | <small><?php echo $row['nama_switch'] ?></small> </h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden>&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <form action="updatePC.php" method="post">
+          <table class="table">
+            <tbody>
+              <tr>
+                <td>IP Address:</td>
+                <td>
+                  <div class="form-group">
+                    <input class="form-control" type="text" name="ip" value="<?php echo $row['ip_address'] ?>">
+                    <small>Gunakan titik sebagai pemisah. Ex: 192.168.1.1</small>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>MAC Address:</td>
+                <td>
+                  <div class="form-group">
+                    <input class="form-control" type="text" name="mac" value="<?php echo $row['mac_address'] ?>">
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>Jumlah Port:</td>
+                <td>
+                  <div class="form-group">
+                    <input class="form-control" type="text" name="jm_port" value="<?php echo $row['jumlah_port'] ?>">
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td>Tahun:</td>
+                <td>
+                  <div class="form-group">
+                    <input class="form-control" type="text" name="tahun" value="<?php echo $row['tahun'] ?>">
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </form>
+      </div>
+
+      <div class="modal-footer">
+        <a href="process/update_switch.php?id_switch=<?php echo $row['id_switch'] ?>" class="btn btn-success btn-sm">Update Data</a>
+      </div>
+    </div>
+  </div>
+</div>
+<?php }
+$sql = $db->query("SELECT * FROM switch");
+while ($row = $sql->fetch()) {
+?>
+<div class="modal fade" id="hapusSwitch<?php echo $row['id_switch'] ?>" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Hapus Switch <?php echo $row['merk'] ?></h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden>&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <p style="font-weight:400">Anda yakin menghapus switch ini? Switch ini digunakan untuk <i><?php echo $row['nama_switch'] ?>.</i></p>
+      </div>
+
+      <div class="modal-footer">
+        <a href="process/hapus_switch.php?id_switch=<?php echo $row['id_switch'] ?>" class="btn btn-danger btn-sm">Hapus</a>
+      </div>
+    </div>
+  </div>
+</div>
+<?php } ?>
