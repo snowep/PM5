@@ -7,5 +7,5 @@
   echo $id;
   $sql = $db->query("INSERT INTO lantai(id_gedung, nama_lantai) VALUES('$id','$nm_lantai')");
 
-  header("location:../gedung.php?id_gedung=$id");
+  header("location:". $_SERVER['HTTP_REFERER']);
 ?>

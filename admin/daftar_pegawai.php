@@ -1,5 +1,4 @@
 <?php
-  session_start();
   include '../koneksi.php';
 ?>
 <!DOCTYPE html>
@@ -46,61 +45,48 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Switch
+        Daftar Pegawai
       </h1>
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-        <li class="breadcrumb-item active">Switch</li>
+        <li class="breadcrumb-item"><a href="index.php"><i class="fa fa-dashboard"></i> Dashboard</a></li>
+        <li class="breadcrumb-item active">Daftar Pegawai</li>
       </ol>
     </section>
     <!-- Main content -->
     <section class="content">
-
       <div class="row">
         <div class="col-md-12">
           <?php
-            $sql = $db->query("SELECT * FROM switch
-              INNER JOIN kantor ON switch.id_kantor = kantor.id_kantor
-              INNER JOIN gedung ON switch.id_gedung = gedung.id_gedung
-              INNER JOIN lantai ON switch.id_lantai = lantai.id_lantai
-              INNER JOIN ruangan ON switch.id_ruangan = ruangan.id_ruangan");
+            $sql = $db->query("SELECT * FROM pegawai");
             $count = $sql->rowCount();
 
             if ($count > 0) {
           ?>
           <div class="box">
             <div class="box-header with-border">
-              <h3 class="box-title">Daftar Switch</h3>
+              <h3 class="box-title">Daftar Pegawai</h3>
 
               <div class="box-tools pull-right">
-                <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#tambahSwitch"><i class="fa fa-plus"></i> Tambah Switch</button>
+                <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#tambahPegawai"><i class="fa fa-plus"></i> Tambah Pegawai</button>
               </div>
             </div>
             <div class="box-body">
               <div class="row">
+                <div class="card-columns pegawai">
               <?php
                   while ($row = $sql->fetch()) {
-                    $query = $db->query("SELECT * FROM pegawai");
               ?>
-                <div class="col-3">
                   <div class="card mb-3">
                     <div class="card-body">
-                      <h5 class="card-title">
-                        <?php echo $row['merk']." ".strtoupper($row['switch_type'])." | ".$row['nama_switch'] ?>
-                      </h5>
-                      <p><?php echo $row['ip_address'] ?></p>
-                      <span data-toggle="modal" data-target="#detailSwitch<?php echo $row['id_switch'] ?>" >
-                        <button type="button" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="bottom" title="Detail Switch"><i class="fa fa-layer-group"></i></button>
-                      </span>
-                      <span data-toggle="modal" data-target="#hapusSwitch<?php echo $row['id_switch'] ?>" >
-                        <button type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="bottom" title="Hapus Switch"><i class="fa fa-trash"></i></button>
-                      </span>
+                      <h5 class="card-title"><?php echo $row['nama'] ?></h5>
+                      <a href="aset.php?id_ruangan=<?php echo $row['id_ruangan'] ?>" class="btn btn-primary btn-sm">Detail Pegawai</a>
+                      <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapusPegawai<?php echo $row['id_pegawai'] ?>"><i class="fa fa-trash"></i></button>
                     </div>
                   </div>
-                </div>
                     <?php
                         }
                     ?>
+                  </div>
               </div>
             </div>
             <!-- /.box-header -->
@@ -111,11 +97,11 @@
       <div class="col-md-12">
         <div class="jumbotron jumbotron-fluid">
           <div class="container">
-            <h1 class="display-4">Data mengenai Switch tidak ditemukan!</h1>
-            <p class="lead">Oops! Sepertinya belum ada data Switch yang dimasukkan.</p>
+            <h1 class="display-4">Data Pegawai tidak ditemukan!</h1>
+            <p class="lead">Oops! Sepertinya belum ada data pegawai yang dimasukkan.</p>
             <hr class="my-4">
-            <p>Mulai dengan menambah data Switch kedalam database.</p>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambahSwitch">Tambah Switch</button>
+            <p>Mulai dengan menambah data pegawai kedalam database.</p>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambahPegawai">Tambah Pegawai</button>
           </div>
         </div>
       </div>
@@ -135,8 +121,76 @@
 
   <?php
     include 'element/footer.php';
-    include 'element/modal_switch.php';
   ?>
+
+  <div class="modal fade" id="tambahPegawai" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Tambah Pegawai</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden>&times;</span>
+          </button>
+        </div>
+
+        <div class="modal-body">
+          <form action="process/tambah_pegawai.php" method="post">
+            <div class="form-group">
+              <label>NIP</label>
+              <input type="text" class="form-control" name="nip" placeholder="198503302003121002">
+            </div>
+            <div class="form-group">
+              <label>Nama</label>
+              <input type="text" class="form-control" name="nama" placeholder="Mi Kael La">
+            </div>
+            <div class="form-group">
+              <label>Jabatan</label>
+              <input type="text" class="form-control" name="jabatan" placeholder="Supervisor">
+            </div>
+            <div class="form-group">
+              <label>Struktural</label>
+              <select class="form-control" id="struktural" name="struktural">
+                <option value="">Pilih Struktural</option>
+                <option value="0">0</option>
+                <option value="1">1</option>
+              </select>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <?php
+  $sql = $db->query("SELECT * FROM pegawai");
+  while ($row = $sql->fetch()) {
+  ?>
+  <div class="modal fade" id="hapusPegawai<?php echo $row['id_pegawai'] ?>" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Hapus <?php echo $row['nama'] ?></h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden>&times;</span>
+          </button>
+        </div>
+
+        <div class="modal-body">
+          <p style="font-weight:400">Anda yakin menghapus pegawai ini?</p>
+        </div>
+
+        <div class="modal-footer">
+          <a href="process/hapus_pegawai.php?id_pegawai=<?php echo $row['id_pegawai'] ?>" class="btn btn-danger btn-sm">Hapus</a>
+        </div>
+      </div>
+    </div>
+  </div>
+<?php } ?>
+  <!-- /.control-sidebar -->
+  <!-- Add the sidebar's background. This div must be placed
+       immediately after the control sidebar -->
+  <div class="control-sidebar-bg"></div>
+
 </div>
 <!-- ./wrapper -->
 
@@ -161,6 +215,5 @@
 <script src="../dist/js/pages/dashboard2.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../dist/js/demo.js"></script>
-<?php include 'ajaxGetData.php'; ?>
 </body>
 </html>

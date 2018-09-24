@@ -3,7 +3,7 @@
     <div class="info-box">
       <span class="info-box-icon bg-aqua"><i class="fa fa-users"></i></span>
       <?php
-        $sql = $db->query("SELECT * FROM pegawai INNER JOIN pc ON pegawai.id_pc = pc.id_pc INNER JOIN gedung ON pc.id_gedung = gedung.id_gedung WHERE gedung.id_gedung = '$id_gedung'");
+        $sql = $db->query("SELECT * FROM pegawai INNER JOIN pc ON pegawai.id_pc = pc.id_pc INNER JOIN ruangan ON pc.id_ruangan = ruangan.id_ruangan WHERE ruangan.id_ruangan = '$id_ruangan'");
         $count = $sql->rowCount();
       ?>
       <div class="info-box-content">
@@ -16,13 +16,13 @@
   </div>
   <!-- /.col -->
   <?php
-    $sql = $db->query("SELECT * FROM pc INNER JOIN gedung ON pc.id_gedung = gedung.id_gedung WHERE gedung.id_gedung = '$id_gedung'");
+    $sql = $db->query("SELECT * FROM pc INNER JOIN ruangan ON pc.id_ruangan = ruangan.id_ruangan WHERE ruangan.id_ruangan = '$id_ruangan'");
     $countPC = $sql->rowCount();
-    $sql = $db->query("SELECT * FROM server INNER JOIN gedung ON server.id_gedung = gedung.id_gedung WHERE gedung.id_gedung = '$id_gedung'");
+    $sql = $db->query("SELECT * FROM server INNER JOIN ruangan ON server.id_ruangan = ruangan.id_ruangan WHERE ruangan.id_ruangan = '$id_ruangan'");
     $countServer = $sql->rowCount();
-    $sql = $db->query("SELECT * FROM switch INNER JOIN gedung ON switch.id_gedung = gedung.id_gedung WHERE gedung.id_gedung = '$id_gedung'");
+    $sql = $db->query("SELECT * FROM switch INNER JOIN ruangan ON switch.id_ruangan = ruangan.id_ruangan WHERE ruangan.id_ruangan = '$id_ruangan'");
     $countSwitch = $sql->rowCount();
-    $sql = $db->query("SELECT * FROM wifi INNER JOIN gedung ON wifi.id_gedung = gedung.id_gedung WHERE gedung.id_gedung = '$id_gedung'");
+    $sql = $db->query("SELECT * FROM wifi INNER JOIN ruangan ON wifi.id_ruangan = ruangan.id_ruangan WHERE ruangan.id_ruangan = '$id_ruangan'");
     $countWifi = $sql->rowCount();
 
     $countTot = $countPC + $countWifi + $countServer + $countSwitch;

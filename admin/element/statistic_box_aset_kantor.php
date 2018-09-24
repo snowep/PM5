@@ -55,21 +55,6 @@
   <div class="col-md-3 col-sm-6 col-xs-12">
     <div class="info-box">
       <span class="info-box-icon bg-yellow"><i class="fa fa-box"></i></span>
-<<<<<<< HEAD:superuser/element/statistic_box_kantor.php
-      <?php
-        $sql = $db->query("SELECT * FROM pc INNER JOIN kantor ON pc.id_kantor = kantor.id_kantor WHERE kantor.id_kantor = '$id_kantor'");
-        $countPC = $sql->rowCount();
-        $sql = $db->query("SELECT * FROM server INNER JOIN kantor ON server.id_kantor = kantor.id_kantor WHERE kantor.id_kantor = '$id_kantor'");
-        $countServer = $sql->rowCount();
-        $sql = $db->query("SELECT * FROM switch INNER JOIN kantor ON switch.id_kantor = kantor.id_kantor WHERE kantor.id_kantor = '$id_kantor'");
-        $countSwitch = $sql->rowCount();
-        $sql = $db->query("SELECT * FROM wifi INNER JOIN kantor ON wifi.id_kantor = kantor.id_kantor WHERE kantor.id_kantor = '$id_kantor'");
-        $countWifi = $sql->rowCount();
-
-        $countTot = $countPC + $countWifi + $countServer + $countSwitch;
-      ?>
-=======
->>>>>>> dc548d96000b9badf466618ee39fbb74e0f550d6:admin/element/statistic_box_aset_kantor.php
       <div class="info-box-content">
         <span class="info-box-text">Total Asset</span>
         <span class="info-box-number"><?php echo $countTot ?></span>

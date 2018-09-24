@@ -1,9 +1,9 @@
 <?php
   session_start();
   include '../koneksi.php';
-  $id_kantor = $_GET['id_kantor'];
-  $page = 'aset_kantor';
-  $_SESSION['id_kantor'] = $id_kantor;
+  $id_ruangan = $_GET['id_ruangan'];
+  $page = 'aset_ruangan';
+  $_SESSION['id_ruangan'] = $id_ruangan;
 ?>
 <!DOCTYPE html>
 <html>
@@ -27,13 +27,6 @@
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
 
-  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-  <![endif]-->
-
   <!-- Google Font -->
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
@@ -50,21 +43,30 @@
     <section class="content-header">
       <h1>
         <?php
-          $sql = $db->query("SELECT * FROM kantor WHERE id_kantor = '$id_kantor'");
+          $sql = $db->query("SELECT * FROM ruangan INNER JOIN lantai ON ruangan.id_lantai = lantai.id_lantai INNER JOIN gedung ON lantai.id_gedung = gedung.id_gedung INNER JOIN kantor ON gedung.id_kantor = kantor.id_kantor WHERE ruangan.id_ruangan = '$id_ruangan'");
           $row = $sql->fetch();
-          echo $row['nama_kantor'];
+          echo $row['nama_ruangan'];
         ?>
+        <small>
+          <?php echo $row['nama_lantai'] ?>
+          <span data-toggle="modal" data-target="#tambahAset" >
+            <button type="button" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="bottom" title="Tambah Aset"><i class="fa fa-plus"></i></button>
+          </span>
+        </small>
       </h1>
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
-        <li class="breadcrumb-item active"><a href="kantor.php?id_kantor=<?php echo $_SESSION['id_kantor'] ?>"><?php echo $row['nama_kantor']; ?></a></li>
-        </ol>
+        <li class="breadcrumb-item"><a href="kantor.php?id_kantor=<?php echo $_SESSION['id_kantor'] ?>"><?php echo $row['nama_kantor']; ?></a></li>
+        <li class="breadcrumb-item"><a href="gedung.php?id_gedung=<?php echo $_SESSION['id_gedung'] ?>"><?php echo $row['nama_gedung']; ?></a></li>
+        <li class="breadcrumb-item"><a href="lantai.php?id_lantai=<?php echo $_SESSION['id_lantai'] ?>"><?php echo $row['nama_lantai']; ?></a></li>
+        <li class="breadcrumb-item active"><?php echo $row['nama_ruangan']; ?></li>
+      </ol>
     </section>
     <!-- Main content -->
     <section class="content">
       <!-- Info boxes -->
       <?php
-        include 'element/statistic_box_aset_kantor.php';
+        include 'element/statistic_box_aset_ruangan.php';
         include 'element/row_aset.php';
       ?>
     </section>
@@ -72,9 +74,9 @@
   </div>
   <!-- /.content-wrapper -->
 
-  <?php
-    include 'element/footer.php';
-  ?>
+    <?php
+      include 'element/footer.php';
+    ?>
   <div class="modal fade" id="tambahAset" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -109,7 +111,8 @@
 <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- FastClick -->
 <script src="../bower_components/fastclick/lib/fastclick.js"></script>
-<!-- AdminLTE App -->
+<script src="../bower_components/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
 <script src="../dist/js/adminlte.min.js"></script>
 <?php include 'ajaxGetData.php'; ?>
 

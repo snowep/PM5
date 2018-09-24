@@ -1,6 +1,6 @@
 <?php
   session_start();
-  $id = $_SESSION['id'];
+  $id = $_SESSION['id_kantor'];
   include '../../koneksi.php';
 
   $nm_gedung = $_POST['nama_gedung'];
@@ -8,5 +8,5 @@
   echo $id;
   $sql = $db->query("INSERT INTO gedung(id_kantor, nama_gedung, alamat) VALUES('$id','$nm_gedung','$al_gedung')");
 
-  header("location:../kantor.php?id_kantor=$id");
+  header("location:". $_SERVER['HTTP_REFERER']);
 ?>

@@ -27,14 +27,6 @@
        folder instead of downloading all of them to reduce the load. -->
   <link rel="stylesheet" href="../dist/css/skins/_all-skins.min.css">
 
-  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-  <!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-  <![endif]-->
-
-  <!-- Google Font -->
   <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
@@ -56,8 +48,10 @@
         ?>
         <small>
           <?php echo $row['telepon'] ?>
-          <a href="aset_kantor.php?id_kantor=<?php echo $id_kantor ?>" class="btn btn-primary btn-sm">Lihat Aset</a>
-          <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapusKantor<?php echo $id_kantor ?>"><i class="fa fa-trash"></i></button>
+          <a href="aset_kantor.php?id_kantor=<?php echo $id_kantor ?>" class="btn btn-link btn-sm" data-toggle="tooltip" data-placement="bottom" title="Lihat Aset"><i class="fa fa-eye"></i></a>
+          <span data-toggle="modal" data-target="#hapusKantor<?php echo $id_kantor ?>" >
+            <button type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="bottom" title="Hapus Kantor"><i class="fa fa-trash"></i></button>
+          </span>
         </small>
       </h1>
       <ol class="breadcrumb">
@@ -99,9 +93,11 @@
                     <div class="card-body">
                       <h5 class="card-title"><?php echo $row['nama_gedung'] ?></h5>
                       <p><?php echo $row['alamat'] ?></p>
-                      <a href="aset_gedung.php?id_gedung=<?php echo $row['id_gedung'] ?>" class="btn btn-primary btn-sm">Lihat Aset</a>
-                      <a href="gedung.php?id_gedung=<?php echo $row['id_gedung'] ?>" class="btn btn-primary btn-sm">Detail Gedung</a>
-                      <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapusGedung<?php echo $row['id_gedung'] ?>"><i class="fa fa-trash"></i></button>
+                      <a href="aset_gedung.php?id_gedung=<?php echo $row['id_gedung'] ?>" class="btn btn-light btn-sm" data-toggle="tooltip" data-placement="bottom" title="Lihat Aset Gedung"><i class="fa fa-eye"></i></a>
+                      <a href="gedung.php?id_gedung=<?php echo $row['id_gedung'] ?>" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="bottom" title="Detail Gedung"><i class="fa fa-layer-group"></i></a>
+                      <span data-toggle="modal" data-target="#hapusGedung<?php echo $row['id_gedung'] ?>" >
+                        <button type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="bottom" title="Hapus Gedung"><i class="fa fa-trash"></i></button>
+                      </span>
                     </div>
                   </div>
                 </div>
@@ -112,23 +108,24 @@
             </div>
             <!-- /.box-header -->
             <!-- ./box-body -->
-          </div><?php
-            } else {
-            ?>
-      <div class="col-md-12">
-        <div class="jumbotron jumbotron-fluid">
-          <div class="container">
-            <h1 class="display-4">Data gedung tidak ditemukan!</h1>
-            <p class="lead">Oops! Sepertinya belum ada data gedung yang dimasukkan.</p>
-            <hr class="my-4">
-            <p>Mulai dengan menambah data gedung kedalam database.</p>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambahGedung">Tambah Gedung</button>
           </div>
-        </div>
-      </div>
-      <?php
-        }
-      ?>
+          <?php
+            } else {
+          ?>
+          <div class="col-md-12">
+            <div class="jumbotron jumbotron-fluid">
+              <div class="container">
+                <h1 class="display-4">Data gedung tidak ditemukan!</h1>
+                <p class="lead">Oops! Sepertinya belum ada data gedung yang dimasukkan.</p>
+                <hr class="my-4">
+                <p>Mulai dengan menambah data gedung kedalam database.</p>
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambahGedung">Tambah Gedung</button>
+              </div>
+            </div>
+          </div>
+          <?php
+            }
+          ?>
           <!-- /.box -->
         </div>
         <!-- /.col -->
@@ -219,11 +216,11 @@
 
 </div>
 <!-- ./wrapper -->
-
 <!-- jQuery 3 -->
 <script src="../bower_components/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap 3.3.7 -->
 <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="../bower_components/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 <!-- FastClick -->
 <script src="../bower_components/fastclick/lib/fastclick.js"></script>
 <!-- AdminLTE App -->

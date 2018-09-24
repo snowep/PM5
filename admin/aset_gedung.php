@@ -55,12 +55,11 @@
           $row = $sql->fetch();
           echo $row['nama_gedung'];
         ?>
-        <small><?php echo $row['nama_gedung'] ?></small>
+        <small><?php echo $row['nama_kantor'] ?></small>
       </h1>
       <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
         <li class="breadcrumb-item"><a href="kantor.php?id_kantor=<?php echo $_SESSION['id_kantor'] ?>"><?php echo $row['nama_kantor']; ?></a></li>
-        <li class="breadcrumb-item"><a href="gedung.php?id_gedung=<?php echo $_SESSION['id_gedung'] ?>"><?php echo $row['nama_gedung']; ?></a></li>
         <li class="breadcrumb-item active"><a href="gedung.php?id_gedung=<?php echo $_SESSION['id_gedung'] ?>"><?php echo $row['nama_gedung']; ?></a></li>
       </ol>
     </section>
@@ -69,8 +68,7 @@
       <!-- Info boxes -->
       <?php
         include 'element/statistic_box_aset_gedung.php';
-        include 'element/row_pc.php';
-        include 'element/row_server.php';
+        include 'element/row_aset.php';
       ?>
     </section>
     <!-- /.content -->
@@ -92,28 +90,33 @@
         <div class="modal-body">
           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambahPC">PC</button>
           <button type="button" class="btn btn-success" data-toggle="modal" data-target="#tambahServer">Server</button>
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambahPC">Switch</button>
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambahPC">WiFi</button>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambahSwitch">Switch</button>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambahWifi">WiFi</button>
         </div>
       </div>
     </div>
   </div>
 
-  <?php
-    include 'element/modal_tambah_pc.php';
-    include 'element/modal_tambah_server.php';
-  ?>
 </div>
 <!-- ./wrapper -->
 
+  <?php
+    include 'element/modal_pc.php';
+    include 'element/modal_server.php';
+    include 'element/modal_switch.php';
+    include 'element/modal_wifi.php';
+  ?>
 <!-- jQuery 3 -->
 <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+
 <!-- Bootstrap 3.3.7 -->
 <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 <!-- FastClick -->
 <script src="../bower_components/fastclick/lib/fastclick.js"></script>
 <!-- AdminLTE App -->
 <script src="../dist/js/adminlte.min.js"></script>
+<script src="../bower_components/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+<?php include 'ajaxGetData.php'; ?>
 <!-- Sparkline -->
 <script src="../bower_components/jquery-sparkline/dist/jquery.sparkline.min.js"></script>
 <!-- jvectormap  -->
