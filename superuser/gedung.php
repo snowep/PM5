@@ -86,12 +86,11 @@
                       <h5 class="card-title"><?php echo $row['nama_lantai'] ?></h5>
                       <ul class="list-group">
                       <?php while ($data = $query->fetch()) { ?>
-                        <li class="list-group-item"><?php echo $data['nama_ruangan'] ?></li>
+                        <li class="list-group-item"><a href="aset_ruangan.php?id_ruangan=<?php echo $data['id_ruangan'] ?>"><?php echo $data['nama_ruangan'] ?></a></li>
                     <?php } ?>
                       </ul>
                       <br>
                       <a href="aset_lantai.php?id_lantai=<?php echo $row['id_lantai'] ?>" class="btn btn-light btn-sm" data-toggle="tooltip" data-placement="bottom" title="Lihat Aset Lantai"><i class="fa fa-eye"></i></a>
-                      <a href="lantai.php?id_lantai=<?php echo $row['id_lantai'] ?>" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="bottom" title="Detail Lantai"><i class="fa fa-layer-group"></i></a>
                       <span data-toggle="modal" data-target="#hapusLantai<?php echo $row['id_lantai'] ?>" >
                         <button type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="bottom" title="Hapus Lantai"><i class="fa fa-trash"></i></button>
                       </span>
