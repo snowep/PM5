@@ -87,8 +87,8 @@
         <div class="modal-body">
           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambahPC">PC</button>
           <button type="button" class="btn btn-success" data-toggle="modal" data-target="#tambahServer">Server</button>
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambahPC">Switch</button>
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambahPC">WiFi</button>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambahSwitch">Switch</button>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambahWifi">WiFi</button>
         </div>
       </div>
     </div>

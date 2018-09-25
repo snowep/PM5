@@ -1,0 +1,182 @@
+html {
+  line-height: 1.15;
+}
+body {
+    background: radial-gradient(circle, #eee 5%, #aaa 105%);
+    transition: all 300ms ease-in-out!important;
+    font-family: "Roboto";
+}
+body > .grid {
+  height: 100%;
+}
+.column {
+  transition: all 300ms ease-in-out!important;
+}
+/* custom padding top */
+.pt-5 { padding-top: 5px!important; }.pt-10 { padding-top: 10px!important; }
+.pt-15 { padding-top: 15px!important; }.pt-20 { padding-top: 20px!important; }
+.pt-25 { padding-top: 25px!important; }
+/* custom padding left */
+.pl-5 { padding-left: 5px!important; }.pl-10 { padding-left: 10px!important; }
+.pl-15 { padding-left: 15px!important; }.pl-20 { padding-left: 20px!important; }
+.pl-25 { padding-left: 25px!important; }
+/* custom padding right */
+.pr-5 { padding-right: 5px!important; }.pr-10 { padding-right: 10px!important; }
+.pr-15 { padding-right: 15px!important; }.pr-20 { padding-right: 20px!important; }
+.pr-25 { padding-right: 25px!important; }
+/* custom padding bottom */
+.pb-5 { padding-bottom: 5px!important; }.pb-10 { padding-bottom: 10px!important; }
+.pb-15 { padding-bottom: 15px!important; }.pb-20 { padding-bottom: 20px!important; }
+.pb-25 { padding-bottom: 25px!important; }
+/*  */
+/* .paper {
+  background-color: #fff;
+  border: 0;
+  border-radius: 4px;
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.2),
+              0px 1px 1px 0px rgba(0, 0, 0, 0.14),
+              0px 2px 1px -1px rgba(0, 0, 0, 0.12)!important;
+  transition: all 300ms ease-in-out!important;
+} */
+.gradient {
+  background: linear-gradient(200deg, #d047d1, #ff0000, #ffff00);
+  background-size: 200% 200%;  color: #000;
+    background-clip: text;
+    text-fill-color: transparent;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  animation: AnimationName 10s ease infinite;
+}
+@keyframes AnimationName {
+    0%{background-position:17% 0%}
+    50%{background-position:84% 100%}
+    100%{background-position:17% 0%}
+}
+.center {
+  text-align: center;
+  vertical-align: middle;
+  margin: auto;
+}
+
+/* form starting stylings ------------------------------- */
+.group 			  {
+  position:relative;
+  margin-bottom:45px;
+}
+input 				{
+  font-size:18px;
+  padding:10px 10px 10px 5px;
+  display:block;
+  width:100%;
+  border:none;
+  border-bottom:1px solid #757575;
+}
+input:focus 		{ outline:none; }
+
+/* LABEL ======================================= */
+label 				 {
+  color:#999;
+  font-size:18px;
+  font-weight:normal;
+  position:absolute;
+  pointer-events:none;
+  left:5px;
+  top:10px;
+  transition:250ms ease all;
+}
+
+/* active state */
+input:focus ~ label, input:valid ~ label 		{
+  top:-20px;
+  font-size:14px;
+  color:#c2185b;
+}
+
+/* BOTTOM BARS ================================= */
+.bar 	{ position:relative; display:block; width:100%; }
+.bar:before, .bar:after 	{
+  content:'';
+  height:2px;
+  width:0;
+  bottom:0px;
+  position:absolute;
+  background:rgb(225,0,80);
+  transition:350ms ease all;
+}
+.bar:before {
+  left:50%;
+}
+.bar:after {
+  right:50%;
+}
+
+/* active state */
+input:focus ~ .bar:before, input:focus ~ .bar:after {
+  width:50%;
+}
+/* button */
+.column .pink-custom-button {
+  background-color: rgb(225,0,80);
+  transition: all 200ms linear;
+  color: #fff;
+  box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.12)
+}
+.column .pink-custom-button:hover {
+  background-color: #8c0032;
+  color: #fff;
+  transition: all 200ms linear
+}
+.column .pink-custom-button:active {
+  background-color: #8c0032;
+  color: #fff;
+  transition: all 200ms linear;
+  box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2), 0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12)
+}
+
+.column .indigo800-custom-button {
+  background-color: #283593;
+  transition: all 200ms linear;
+  color: #fff;
+  box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2), 0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.12)
+}
+.column .indigo800-custom-button:hover {
+  background-color: #001064;
+  color: #fff;
+  transition: all 200ms linear
+}
+.column .indigo800-custom-button:active {
+  background-color: #001064;
+  color: #fff;
+  transition: all 200ms linear;
+  box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2), 0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12)
+}
+
+.ripple {
+  position: relative;
+  overflow: hidden;
+  transform: translate3d(0, 0, 0);
+}
+
+.ripple:after {
+  content: "";
+  display: block;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  background-image: radial-gradient(circle, #fff 10%, transparent 10.01%);
+  background-repeat: no-repeat;
+  background-position: 50%;
+  transform: scale(10, 10);
+  opacity: 0;
+  transition: transform .5s, opacity 1s;
+}
+
+.ripple:active:after {
+  transform: scale(0, 0);
+  opacity: .3;
+  transition: 0s;
+}
+/* snackbar */
