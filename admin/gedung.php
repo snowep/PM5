@@ -73,10 +73,6 @@
           <div class="box">
             <div class="box-header with-border">
               <h3 class="box-title">Daftar Lantai</h3>
-
-              <div class="box-tools pull-right">
-                <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#tambahLantai"><i class="fa fa-plus"></i> Tambah Lantai</button>
-              </div>
             </div>
             <div class="box-body">
               <div class="row">
@@ -95,10 +91,7 @@
                     <?php } ?>
                       </ul>
                       <br>
-                      <a href="aset_lantai.php?id_lantai=<?php echo $row['id_lantai'] ?>" class="btn btn-light btn-sm" data-toggle="tooltip" data-placement="bottom" title="Lihat Aset Lantai"><i class="fa fa-eye"></i></a>
-                      <span data-toggle="modal" data-target="#hapusLantai<?php echo $row['id_lantai'] ?>" >
-                        <button type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="bottom" title="Hapus Lantai"><i class="fa fa-trash"></i></button>
-                      </span>
+                      <a href="aset_lantai.php?id_lantai=<?php echo $row['id_lantai'] ?>" class="btn btn-dark btn-sm" data-toggle="tooltip" data-placement="bottom" title="Lihat Aset Lantai"><i class="fa fa-eye"></i></a>
                     </div>
                   </div>
                 </div>
@@ -118,8 +111,8 @@
             <h1 class="display-4">Data lantai tidak ditemukan!</h1>
             <p class="lead">Oops! Sepertinya belum ada data lantai yang dimasukkan.</p>
             <hr class="my-4">
-            <p>Mulai dengan menambah data lantai kedalam database.</p>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambahLantai">Tambah Lantai</button>
+            <p>Hanya <b>Superuser</b> yang dapat menambahkan lantai.</p>
+            <button type="button" class="btn btn-light disabled">Tambah Lantai</button>
           </div>
         </div>
       </div>
@@ -140,54 +133,6 @@
   <?php
     include 'element/footer.php';
   ?>
-
-  <div class="modal fade" id="tambahLantai" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Tambah Lantai</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden>&times;</span>
-          </button>
-        </div>
-
-        <div class="modal-body">
-          <form action="process/tambah_lantai.php" method="post">
-            <div class="form-group">
-              <label>Nama Lantai</label>
-              <input type="text" class="form-control" name="nama_lantai" placeholder="Nama Lantai">
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-  <?php
-  $sql = $db->query("SELECT * FROM lantai WHERE id_gedung = '$id'");
-  while ($row = $sql->fetch()) {
-  ?>
-  <div class="modal fade" id="hapusLantai<?php echo $row['id_lantai'] ?>" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Hapus <?php echo $row['nama_lantai'] ?></h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden>&times;</span>
-          </button>
-        </div>
-
-        <div class="modal-body">
-          <p style="font-weight:400">Anda yakin menghapus lantai ini? Semua data yang bersangkutan dengan lantai ini akan ikut <b>terhapus</b> dan <b>TIDAK BISA</b> dikembalikan lagi?</p>
-        </div>
-
-        <div class="modal-footer">
-          <a href="process/hapus_lantai.php?id_lantai=<?php echo $row['id_lantai'] ?>" class="btn btn-danger btn-sm">Hapus</a>
-        </div>
-      </div>
-    </div>
-  </div>
-<?php } ?>
 </div>
 <!-- ./wrapper -->
 

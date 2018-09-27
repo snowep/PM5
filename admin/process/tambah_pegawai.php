@@ -1,5 +1,6 @@
 <?php
   include '../../koneksi.php';
+  session_start();
 
   $nip = $_POST['nip'];
   $nama = $_POST['nama'];

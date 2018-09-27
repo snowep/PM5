@@ -90,9 +90,16 @@
                     <div class="card-body">
                       <h5 class="card-title"><?php echo $row['nama_lantai'] ?></h5>
                       <ul class="list-group">
-                      <?php while ($data = $query->fetch()) { ?>
+                      <?php
+                        if ($rowCount > 0) {
+                          while ($data = $query->fetch()) {
+                      ?>
                         <li class="list-group-item"><a href="aset_ruangan.php?id_ruangan=<?php echo $data['id_ruangan'] ?>"><?php echo $data['nama_ruangan'] ?></a></li>
-                    <?php } ?>
+                    <?php }
+                        }
+                    ?>
+                    <li class="list-group-item"><a href="#" data-toggle="modal" data-target="#tambahRuangan">Tambah Ruangan</a></li>
+
                       </ul>
                       <br>
                       <a href="aset_lantai.php?id_lantai=<?php echo $row['id_lantai'] ?>" class="btn btn-light btn-sm" data-toggle="tooltip" data-placement="bottom" title="Lihat Aset Lantai"><i class="fa fa-eye"></i></a>
@@ -188,6 +195,29 @@
     </div>
   </div>
 <?php } ?>
+</div>
+
+<div class="modal fade" id="tambahRuangan" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Tambah Ruangan</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden>&times;</span>
+        </button>
+      </div>
+
+      <div class="modal-body">
+        <form action="process/tambah_ruangan.php" method="post">
+          <div class="form-group">
+            <label>Nama Ruangan</label>
+            <input type="text" class="form-control" name="nama_ruangan" placeholder="Nama Ruangan">
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
 </div>
 <!-- ./wrapper -->
 

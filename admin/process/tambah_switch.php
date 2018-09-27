@@ -1,7 +1,7 @@
 <?php
   include '../../koneksi.php';
 
-  $id_kantor  = $_POST['kantor'];
+  $id_kantor  = $_SESSION['id_kantor'];
   $id_gedung  = $_POST['gedung'];
   $id_lantai  = $_POST['lantai'];
   $id_ruangan = $_POST['ruangan'];

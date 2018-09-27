@@ -96,9 +96,6 @@
                     <div class="card-body">
                       <h5 class="card-title"><?php echo $row['nama_ruangan'] ?></h5>
                       <a href="aset_ruangan.php?id_ruangan=<?php echo $row['id_ruangan'] ?>" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="bottom" title="Detail Ruangan"><i class="fa fa-layer-group"></i></a>
-                      <span data-toggle="modal" data-target="#hapusRuangan<?php echo $row['id_ruangan'] ?>" >
-                        <button type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="bottom" title="Hapus Ruangan"><i class="fa fa-trash"></i></button>
-                      </span>
                     </div>
                   </div>
                 </div>
@@ -118,8 +115,8 @@
             <h1 class="display-4">Data Ruangan tidak ditemukan!</h1>
             <p class="lead">Oops! Sepertinya belum ada data ruangan yang dimasukkan.</p>
             <hr class="my-4">
-            <p>Mulai dengan menambah data ruangan kedalam database.</p>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambahRuangan">Tambah Ruangan</button>
+            <p>Hanya <b>Superuser</b> yang dapat menambahkan ruangan.</p>
+            <button type="button" class="btn btn-light disabled">Tambah Ruangan</button>
           </div>
         </div>
       </div>

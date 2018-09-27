@@ -3,7 +3,7 @@
     <div class="info-box">
       <span class="info-box-icon bg-aqua"><i class="fa fa-users"></i></span>
       <?php
-        $sql = $db->query("SELECT * FROM pegawai");
+        $sql = $db->query("SELECT * FROM pegawai INNER JOIN pc ON pegawai.id_pc = pc.id_pc WHERE pc.id_kantor = '".$_SESSION['id_kantor']."'");
         $count = $sql->rowCount();
       ?>
       <div class="info-box-content">
@@ -16,13 +16,13 @@
   </div>
   <!-- /.col -->
   <?php
-    $sql = $db->query("SELECT * FROM pc");
+    $sql = $db->query("SELECT * FROM pc WHERE id_kantor = '".$_SESSION['id_kantor']."'");
     $countPC = $sql->rowCount();
-    $sql = $db->query("SELECT * FROM server");
+    $sql = $db->query("SELECT * FROM server WHERE id_kantor = '".$_SESSION['id_kantor']."'");
     $countServer = $sql->rowCount();
-    $sql = $db->query("SELECT * FROM switch");
+    $sql = $db->query("SELECT * FROM switch WHERE id_kantor = '".$_SESSION['id_kantor']."'");
     $countSwitch = $sql->rowCount();
-    $sql = $db->query("SELECT * FROM wifi");
+    $sql = $db->query("SELECT * FROM wifi WHERE id_kantor = '".$_SESSION['id_kantor']."'");
     $countWifi = $sql->rowCount();
 
     $countTot = $countPC + $countWifi + $countServer + $countSwitch;

@@ -64,7 +64,7 @@
         <div class="col-md-12">
           <?php
             $sql = $db->query("SELECT * FROM pc INNER JOIN kantor ON pc.id_kantor = kantor.id_kantor INNER JOIN gedung ON pc.id_gedung = gedung.id_gedung
-                              INNER JOIN lantai ON pc.id_lantai = lantai.id_lantai INNER JOIN ruangan ON pc.id_ruangan = ruangan.id_ruangan ORDER BY INET_ATON(ip_address)");
+                              INNER JOIN lantai ON pc.id_lantai = lantai.id_lantai INNER JOIN ruangan ON pc.id_ruangan = ruangan.id_ruangan WHERE pc.id_kantor = '".$_SESSION['id_kantor']."' ORDER BY INET_ATON(ip_address)");
             $count = $sql->rowCount();
 
             if ($count > 0) {

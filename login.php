@@ -18,6 +18,7 @@
       header("location:user");
     }
     $_SESSION['nama'] = $row['nama'];
+    $_SESSION['id_user'] = $row['id_user'];
     $_SESSION['id_kantor'] = $row['id_kantor'];
   } else {
     header("location:index.php");

@@ -54,9 +54,6 @@
         <small>
           <?php echo $row['telepon'] ?>
           <a href="aset_kantor.php?id_kantor=<?php echo $id_kantor ?>" class="btn btn-link btn-sm" data-toggle="tooltip" data-placement="bottom" title="Lihat Aset"><i class="fa fa-eye"></i></a>
-          <span data-toggle="modal" data-target="#hapusKantor<?php echo $id_kantor ?>" >
-            <button type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="bottom" title="Hapus Kantor"><i class="fa fa-trash"></i></button>
-          </span>
         </small>
       </h1>
       <ol class="breadcrumb">
@@ -83,10 +80,6 @@
           <div class="box">
             <div class="box-header with-border">
               <h3 class="box-title">Daftar Gedung</h3>
-
-              <div class="box-tools pull-right">
-                <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#tambahGedung"><i class="fa fa-plus"></i> Tambah Gedung</button>
-              </div>
             </div>
             <div class="box-body">
               <div class="row">
@@ -100,9 +93,6 @@
                       <p><?php echo $row['alamat'] ?></p>
                       <a href="aset_gedung.php?id_gedung=<?php echo $row['id_gedung'] ?>" class="btn btn-light btn-sm" data-toggle="tooltip" data-placement="bottom" title="Lihat Aset Gedung"><i class="fa fa-eye"></i></a>
                       <a href="gedung.php?id_gedung=<?php echo $row['id_gedung'] ?>" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="bottom" title="Detail Gedung"><i class="fa fa-layer-group"></i></a>
-                      <span data-toggle="modal" data-target="#hapusGedung<?php echo $row['id_gedung'] ?>" >
-                        <button type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="bottom" title="Hapus Gedung"><i class="fa fa-trash"></i></button>
-                      </span>
                     </div>
                   </div>
                 </div>
@@ -123,8 +113,8 @@
                 <h1 class="display-4">Data gedung tidak ditemukan!</h1>
                 <p class="lead">Oops! Sepertinya belum ada data gedung yang dimasukkan.</p>
                 <hr class="my-4">
-                <p>Mulai dengan menambah data gedung kedalam database.</p>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambahGedung">Tambah Gedung</button>
+                <p>Hanya <b>Superuser</b> yang dapat menambahkan gedung.</p>
+                <button type="button" class="btn btn-light disabled">Tambah Gedung</button>
               </div>
             </div>
           </div>
@@ -145,80 +135,6 @@
   <?php
     include 'element/footer.php';
   ?>
-
-  <div class="modal fade" id="tambahGedung" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Tambah Gedung</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden>&times;</span>
-          </button>
-        </div>
-
-        <div class="modal-body">
-          <form action="process/tambah_gedung.php" method="post">
-            <div class="form-group">
-              <label>Nama Gedung</label>
-              <input type="text" class="form-control" name="nama_gedung" placeholder="Nama Gedung">
-            </div>
-            <div class="form-group">
-              <label>Alamat Gedung</label>
-              <textarea class="form-control" name="alamat_gedung" rows="3"></textarea>
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-  <?php
-  $sql = $db->query("SELECT * FROM gedung WHERE id_kantor = '$id_kantor'");
-  while ($row = $sql->fetch()) {
-  ?>
-  <div class="modal fade" id="hapusGedung<?php echo $row['id_gedung'] ?>" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Hapus <?php echo $row['nama_gedung'] ?></h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden>&times;</span>
-          </button>
-        </div>
-
-        <div class="modal-body">
-          <p style="font-weight:400">Anda yakin menghapus gedung ini? Semua data yang bersangkutan dengan gedung ini akan ikut <b>terhapus</b> dan <b>TIDAK BISA</b> dikembalikan lagi!</p>
-        </div>
-
-        <div class="modal-footer">
-          <a href="process/hapus_gedung.php?id_gedung=<?php echo $row['id_gedung'] ?>" class="btn btn-danger btn-sm">Hapus</a>
-        </div>
-      </div>
-    </div>
-  </div>
-<?php } ?>
-<div class="modal fade" id="hapusKantor<?php echo $id_kantor ?>" tabindex="-1" role="dialog" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <?php $sql = $db->query("SELECT * FROM kantor WHERE id_kantor = '$id_kantor'"); $row = $sql->fetch(); ?>
-        <h5 class="modal-title">Hapus <?php echo $row['nama_kantor'] ?></h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden>&times;</span>
-        </button>
-      </div>
-
-      <div class="modal-body">
-        <p style="font-weight:400">Anda yakin menghapus kantor ini? Semua data yang bersangkutan dengan kantor ini akan ikut <b>terhapus</b> dan <b>TIDAK BISA</b> dikembalikan lagi!</p>
-      </div>
-
-      <div class="modal-footer">
-        <a href="process/hapus_kantor.php?id_kantor=<?php echo $id_kantor ?>" class="btn btn-danger btn-sm">Hapus</a>
-      </div>
-    </div>
-  </div>
-</div>
-
 </div>
 <!-- ./wrapper -->
 <!-- jQuery 3 -->

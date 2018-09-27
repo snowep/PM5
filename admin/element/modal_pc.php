@@ -13,20 +13,20 @@
           <div class="row">
             <div class="col">
               <div class="form-group">
-                <label>Pilih Kantor</label>
+                <label>Pilih Gedung</label>
                 <?php
-                  $sql = $db->query("SELECT * FROM kantor");
+                  $sql = $db->query("SELECT * FROM gedung WHERE id_kantor = '".$_SESSION['id_kantor']."'");
                   $count = $sql->rowCount();
                 ?>
-                <select class="form-control" id="kantor" name="kantor">
-                  <option value="">Pilih Kantor</option>
+                <select class="form-control" id="gedung" name="gedung">
+                  <option value="">Pilih Gedung</option>
                   <?php
                     if ($count > 0) {
                       while ($row = $sql->fetch()) {
-                        echo '<option value="'.$row['id_kantor'].'">'.$row['nama_kantor'].'</option>';
+                        echo '<option value="'.$row['id_gedung'].'">'.$row['nama_gedung'].'</option>';
                       }
                     } else {
-                      echo '<option value="">Belum ada Data Kantor</option>';
+                      echo '<option value="">Belum ada Data Gedung</option>';
                     }
                   ?>
                 </select>
@@ -34,22 +34,14 @@
             </div>
             <div class="col">
               <div class="form-group">
-                <label>Pilih Gedung</label>
-                <select class="form-control" id="gedung" name="gedung">
-                  <option value="">Pilih Kantor Dahulu</option>
+                <label>Pilih Lantai</label>
+                <select class="form-control" id="lantai" name="lantai">
+                  <option value="">Pilih Lantai Dahulu</option>
                 </select>
               </div>
             </div>
           </div>
           <div class="row">
-            <div class="col">
-              <div class="form-group">
-                <label>Pilih Lantai</label>
-                <select class="form-control" id="lantai" name="lantai">
-                  <option value="">Pilih Gedung Dahulu</option>
-                </select>
-              </div>
-            </div>
             <div class="col">
               <div class="form-group">
                 <label>Pilih Ruangan</label>
@@ -396,7 +388,7 @@ while ($row = $sql->fetch()) {
     </div>
   </div>
 </div>
-<?php } 
+<?php }
 $query = $db->query("SELECT * FROM pc");
 while ($data = $query->fetch()) {
   $_SESSION['id_pc'] = $data['id_pc'];

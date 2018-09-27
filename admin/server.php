@@ -68,7 +68,7 @@
               INNER JOIN kantor ON server.id_kantor = kantor.id_kantor
               INNER JOIN gedung ON server.id_gedung = gedung.id_gedung
               INNER JOIN lantai ON server.id_lantai = lantai.id_lantai
-              INNER JOIN ruangan ON server.id_ruangan = ruangan.id_ruangan");
+              INNER JOIN ruangan ON server.id_ruangan = ruangan.id_ruangan WHERE server.id_kantor = '".$_SESSION['id_kantor']."' ORDER BY INET_ATON(ip_address)");
             $count = $sql->rowCount();
 
             if ($count > 0) {

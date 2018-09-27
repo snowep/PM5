@@ -63,7 +63,7 @@
       <div class="row">
         <div class="col-md-12">
           <?php
-            $sql = $db->query("SELECT * FROM pegawai");
+            $sql = $db->query("SELECT * FROM pegawai LEFT JOIN pc ON pegawai.id_pc = pc.id_pc WHERE pc.id_kantor = '".$_SESSION['id_kantor']."' OR pegawai.id_pc IS NULL");
             $count = $sql->rowCount();
 
             if ($count > 0) {

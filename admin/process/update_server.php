@@ -11,14 +11,6 @@
   $prcsr = $_POST['processor'];
   $tahun = $_POST['tahun'];
 
-  echo $id_server."<br>";
-  echo $fungsi."<br>";
-  echo $os."<br>";
-  echo $ip."<br>";
-  echo $mac."<br>";
-  echo $sn."<br>";
-  echo $hdd."<br>";
-
   $sql = $db->query("UPDATE server SET ip_address = '$ip', mac_address = '$mac', serial_number = '$sn', hard_disk = '$hdd', ram = '$ram', cpu_processor = '$prcsr', sistem_operasi = '$os', tahun = '$tahun', fungsi_server = '$fungsi' WHERE id_server = '$id_server'");
   header("location:". $_SERVER['HTTP_REFERER']);
 ?>

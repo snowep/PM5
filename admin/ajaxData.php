@@ -1,20 +1,7 @@
 <?php
   include '../koneksi.php';
 
-  if (!empty($_POST['id_kantor'])) {
-    $sql = $db->query("SELECT * FROM gedung WHERE id_kantor = '".$_POST['id_kantor']."' ORDER BY nama_gedung ASC");
-
-    $count = $sql->rowCount();
-
-    if ($count > 0) {
-      echo '<option values="">Pilih Gedung</option>';
-      while ($row = $sql->fetch()) {
-        echo '<option value="'.$row['id_gedung'].'">'.$row['nama_gedung'].'</option>';
-      }
-    } else {
-      echo '<option value="">Gedung tidak tersedia</option>';
-    }
-  } elseif (!empty($_POST['id_gedung'])) {
+  if (!empty($_POST['id_gedung'])) {
     $sql = $db->query("SELECT * FROM lantai WHERE id_gedung = '".$_POST['id_gedung']."'");
 
     $count = $sql->rowCount();

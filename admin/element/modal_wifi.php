@@ -12,35 +12,25 @@
           <div class="row">
             <div class="col">
               <div class="form-group">
-                <label>Pilih Kantor</label>
+                <label>Pilih Gedung</label>
                 <?php
-                  $sql = $db->query("SELECT * FROM kantor");
+                  $sql = $db->query("SELECT * FROM gedung");
                   $count = $sql->rowCount();
                 ?>
-                <select class="form-control" id="kantor3" name="kantor">
-                  <option value="">Pilih Kantor</option>
+                <select class="form-control" id="gedung3" name="gedung">
+                  <option value="">Pilih Gedung</option>
                   <?php
                     if ($count > 0) {
                       while ($row = $sql->fetch()) {
-                        echo '<option value="'.$row['id_kantor'].'">'.$row['nama_kantor'].'</option>';
+                        echo '<option value="'.$row['id_gedung'].'">'.$row['nama_gedung'].'</option>';
                       }
                     } else {
-                      echo '<option value="">Belum ada Data Kantor</option>';
+                      echo '<option value="">Belum ada Data Gedung</option>';
                     }
                   ?>
                 </select>
               </div>
             </div>
-            <div class="col">
-              <div class="form-group">
-                <label>Pilih Gedung</label>
-                <select class="form-control" id="gedung3" name="gedung">
-                  <option value="">Pilih Kantor Dahulu</option>
-                </select>
-              </div>
-            </div>
-          </div>
-          <div class="row">
             <div class="col">
               <div class="form-group">
                 <label>Pilih Lantai</label>
@@ -49,6 +39,8 @@
                 </select>
               </div>
             </div>
+          </div>
+          <div class="row">
             <div class="col">
               <div class="form-group">
                 <label>Pilih Ruangan</label>

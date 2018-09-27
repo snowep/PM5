@@ -44,33 +44,16 @@
     <!-- sidebar menu: : style can be found in sidebar.less -->
     <ul class="sidebar-menu" data-widget="tree">
       <li class="header">Navigation</li>
-      <li class="treeview">
-        <a href="#">
-          <i class="fa fa-building"></i> <span>Kantor</span>
-          <span class="pull-right-container">
-            <i class="fa fa-angle-left float-right"></i>
-          </span>
-        </a>
-        <ul class="treeview-menu">
-      <?php
-        $sql = $db->query("SELECT * FROM kantor");
-        $count = $sql->rowCount();
-        if ($count > 0) {
-          while ($row = $sql->fetch()) {
-      ?>
-          <li><a href="kantor.php?id_kantor=<?php echo $row['id_kantor'] ?>"><?php echo $row['nama_kantor'] ?></a></li>
-      <?php
-          }
-        } else {
-      ?>
-        <li><a href="#">Tidak ada data Kantor</a></li>
+    <?php
+      $sql = $db->query("SELECT * FROM user INNER JOIN kantor ON user.id_kantor = kantor.id_kantor WHERE user.id_user = '".$_SESSION['id_user']."'");
+      $count = $sql->rowCount();
+      if ($count > 0) {
+        $row = $sql->fetch();
+    ?>
+      <li><a href="kantor.php?id_kantor=<?php echo $row['id_kantor'] ?>"><i class="fa fa-building"></i> <span><?php echo $row['nama_kantor'] ?></span></a></li>
       <?php
         }
       ?>
-          <li><a href="tambah_kantor.php"><i class="fa fa-plus"></i> Tambah Kantor</a></li>
-
-        </ul>
-      </li>
       <li class="treeview">
         <a href="#">
           <i class="fa fa-box"></i>
