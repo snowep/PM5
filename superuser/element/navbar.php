@@ -19,7 +19,7 @@
       <ul class="nav navbar-nav">
         <!-- Messages: style can be found in dropdown.less-->
         <li class="user user-menu">
-          <a href="../login.php">
+          <a href="../logout.php">
             Sign Out
           </a>
         </li>
@@ -37,7 +37,7 @@
         <img src="../dist/img/user2-160x160.jpg" class="rounded-circle" alt="User Image">
       </div>
       <div class="float-left info">
-        <p>Alexander Pierce</p>
+        <p> <?php echo $_SESSION['nama'] ?> </p>
         <a href="#"><i class="fa fa-circle text-success"></i> Superuser</a>
       </div>
     </div>

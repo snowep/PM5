@@ -1,6 +1,11 @@
 <?php
   session_start();
   include '../koneksi.php';
+  if (isset($_SESSION['username'])) {
+
+  } else {
+    header("location:../index.php");
+  }
   $id_kantor = $_GET['id_kantor'];
   $page = 'aset_kantor';
   $_SESSION['id_kantor'] = $id_kantor;
@@ -87,8 +92,8 @@
         <div class="modal-body">
           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambahPC">PC</button>
           <button type="button" class="btn btn-success" data-toggle="modal" data-target="#tambahServer">Server</button>
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambahPC">Switch</button>
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambahPC">WiFi</button>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambahSwitch">Switch</button>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambahWifi">WiFi</button>
         </div>
       </div>
     </div>

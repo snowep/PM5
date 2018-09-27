@@ -1,6 +1,11 @@
 <?php
   session_start();
   include '../koneksi.php';
+  if (isset($_SESSION['username'])) {
+
+  } else {
+    header("location:../index.php");
+  }
   $id_gedung = $_GET['id_gedung'];
   $page = 'aset_gedung';
 
@@ -96,7 +101,6 @@
       </div>
     </div>
   </div>
-
 </div>
 <!-- ./wrapper -->
 

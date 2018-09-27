@@ -1,5 +1,11 @@
 <?php
+  session_start();
   include '../koneksi.php';
+  if (isset($_SESSION['username'])) {
+
+  } else {
+    header("location:../index.php");
+  }
 ?>
 <!DOCTYPE html>
 <html>
@@ -79,8 +85,12 @@
                   <div class="card mb-3">
                     <div class="card-body">
                       <h5 class="card-title"><?php echo $row['nama'] ?></h5>
-                      <a href="aset.php?id_ruangan=<?php echo $row['id_ruangan'] ?>" class="btn btn-primary btn-sm">Detail Pegawai</a>
-                      <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#hapusPegawai<?php echo $row['id_pegawai'] ?>"><i class="fa fa-trash"></i></button>
+                      <span data-toggle="modal" data-target="#detailPegawai<?php echo $row['id_pegawai'] ?>" >
+                        <button type="button" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="bottom" title="Detail Pegawai"><i class="fa fa-layer-group"></i></button>
+                      </span>
+                      <span data-toggle="modal" data-target="#hapusPC<?php echo $row['id_pc'] ?>" >
+                        <button type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="bottom" title="Hapus <?php if ($row['jenis'] == 'pc') { echo strtoupper($row['jenis']); } else { echo ucfirst($row['jenis']); } ?>"><i class="fa fa-trash"></i></button>
+                      </span>
                     </div>
                   </div>
                     <?php
@@ -121,71 +131,9 @@
 
   <?php
     include 'element/footer.php';
+    include 'element/modal_pegawai.php';
+    include 'element/modal_pc.php';
   ?>
-
-  <div class="modal fade" id="tambahPegawai" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Tambah Pegawai</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden>&times;</span>
-          </button>
-        </div>
-
-        <div class="modal-body">
-          <form action="process/tambah_pegawai.php" method="post">
-            <div class="form-group">
-              <label>NIP</label>
-              <input type="text" class="form-control" name="nip" placeholder="198503302003121002">
-            </div>
-            <div class="form-group">
-              <label>Nama</label>
-              <input type="text" class="form-control" name="nama" placeholder="Mi Kael La">
-            </div>
-            <div class="form-group">
-              <label>Jabatan</label>
-              <input type="text" class="form-control" name="jabatan" placeholder="Supervisor">
-            </div>
-            <div class="form-group">
-              <label>Struktural</label>
-              <select class="form-control" id="struktural" name="struktural">
-                <option value="">Pilih Struktural</option>
-                <option value="0">0</option>
-                <option value="1">1</option>
-              </select>
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-  <?php
-  $sql = $db->query("SELECT * FROM pegawai");
-  while ($row = $sql->fetch()) {
-  ?>
-  <div class="modal fade" id="hapusPegawai<?php echo $row['id_pegawai'] ?>" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Hapus <?php echo $row['nama'] ?></h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden>&times;</span>
-          </button>
-        </div>
-
-        <div class="modal-body">
-          <p style="font-weight:400">Anda yakin menghapus pegawai ini?</p>
-        </div>
-
-        <div class="modal-footer">
-          <a href="process/hapus_pegawai.php?id_pegawai=<?php echo $row['id_pegawai'] ?>" class="btn btn-danger btn-sm">Hapus</a>
-        </div>
-      </div>
-    </div>
-  </div>
-<?php } ?>
   <!-- /.control-sidebar -->
   <!-- Add the sidebar's background. This div must be placed
        immediately after the control sidebar -->

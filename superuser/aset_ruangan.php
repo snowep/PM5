@@ -1,6 +1,11 @@
 <?php
   session_start();
   include '../koneksi.php';
+  if (isset($_SESSION['username'])) {
+
+  } else {
+    header("location:../index.php");
+  }
   $id_ruangan = $_GET['id_ruangan'];
   $page = 'aset_ruangan';
   $_SESSION['id_ruangan'] = $id_ruangan;

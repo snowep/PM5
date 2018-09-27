@@ -1,6 +1,11 @@
 <?php
   session_start();
   include '../koneksi.php';
+  if (isset($_SESSION['username'])) {
+
+  } else {
+    header("location:../index.php");
+  }
   $id_ruangan = $_GET['id_ruangan'];
   $page = 'aset_ruangan';
   $_SESSION['id_ruangan'] = $id_ruangan;
@@ -77,24 +82,24 @@
     <?php
       include 'element/footer.php';
     ?>
-  <div class="modal fade" id="tambahAset" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Pilih Aset</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden>&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambahPC">PC</button>
-          <button type="button" class="btn btn-success" data-toggle="modal" data-target="#tambahServer">Server</button>
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambahPC">Switch</button>
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambahPC">WiFi</button>
+    <div class="modal fade" id="tambahAset" tabindex="-1" role="dialog" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Pilih Aset</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden>&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambahPC">PC</button>
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#tambahServer">Server</button>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambahSwitch">Switch</button>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambahWifi">WiFi</button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
   <?php
     include 'element/modal_pc.php';

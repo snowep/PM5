@@ -1,6 +1,11 @@
 <?php
   session_start();
   include '../koneksi.php';
+  if (isset($_SESSION['username'])) {
+
+  } else {
+    header("location:../index.php");
+  }
 ?>
 <!DOCTYPE html>
 <html>
@@ -143,52 +148,7 @@
 
     include 'element/modal_pc.php';
 
-  $query = $db->query("SELECT * FROM pc");
-  while ($data = $query->fetch()) {
-    $_SESSION['id_pc'] = $data['id_pc'];
   ?>
-  <div class="modal fade" id="tambahUser<?php echo $data['id_pc'] ?>" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Tambah user untuk <?php echo strtoupper($data['jenis']) ?></h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden>&times;</span>
-          </button>
-        </div>
-
-        <div class="modal-body">
-          <form action="process/tambah_pc_user.php" method="post">
-            <div class="row">
-              <div class="col">
-                <div class="form-group">
-                  <label>Pilih Pegawai</label>
-                  <?php
-                    $sql = $db->query("SELECT * FROM pegawai WHERE id_pc IS NULL");
-                    $count = $sql->rowCount();
-                  ?>
-                  <select class="form-control" name="pegawai">
-                    <option value="">Pilih Pegawai</option>
-                    <?php
-                      if ($count > 0) {
-                        while ($row = $sql->fetch()) {
-                          echo '<option value="'.$row['id_pegawai'].'">'.$row['nama'].'</option>';
-                        }
-                      } else {
-                        echo '<option value="">Semua sudah terdaftar/belum ada data pegawai</option>';
-                      }
-                    ?>
-                  </select>
-                </div>
-              </div>
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-  <?php } ?>
   <?php
   $sql = $db->query("SELECT pc.id_pc, pc.jenis, pegawai.nama FROM pc LEFT JOIN pegawai ON pc.id_pc = pegawai.id_pc");
   while ($row = $sql->fetch()) {

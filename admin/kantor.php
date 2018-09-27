@@ -1,6 +1,11 @@
 <?php
   session_start();
   include '../koneksi.php';
+  if (isset($_SESSION['username'])) {
+
+  } else {
+    header("location:../index.php");
+  }
   $id_kantor = $_GET['id_kantor'];
 
   $_SESSION['id_kantor'] = $id_kantor;
