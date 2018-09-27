@@ -38,7 +38,7 @@
       </div>
       <div class="float-left info">
         <p> <?php echo $_SESSION['nama'] ?> </p>
-        <a href="#"><i class="fa fa-circle text-success"></i> Admin</a>
+        <a href="#"><i class="fa fa-circle text-success"></i> User</a>
       </div>
     </div>
     <!-- sidebar menu: : style can be found in sidebar.less -->

@@ -86,10 +86,7 @@
                     <div class="card-body">
                       <h5 class="card-title"><?php echo $row['nama'] ?></h5>
                       <span data-toggle="modal" data-target="#detailPegawai<?php echo $row['id_pegawai'] ?>" >
-                        <button type="button" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="bottom" title="Detail Pegawai"><i class="fa fa-layer-group"></i></button>
-                      </span>
-                      <span data-toggle="modal" data-target="#hapusPC<?php echo $row['id_pc'] ?>" >
-                        <button type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="bottom" title="Hapus <?php if ($row['jenis'] == 'pc') { echo strtoupper($row['jenis']); } else { echo ucfirst($row['jenis']); } ?>"><i class="fa fa-trash"></i></button>
+                        <button type="button" class="btn btn-dark btn-sm" data-toggle="tooltip" data-placement="bottom" title="Detail Pegawai"><i class="fa fa-eye"></i></button>
                       </span>
                     </div>
                   </div>
@@ -104,17 +101,17 @@
           </div><?php
             } else {
             ?>
-      <div class="col-md-12">
-        <div class="jumbotron jumbotron-fluid">
-          <div class="container">
-            <h1 class="display-4">Data Pegawai tidak ditemukan!</h1>
-            <p class="lead">Oops! Sepertinya belum ada data pegawai yang dimasukkan.</p>
-            <hr class="my-4">
-            <p>Mulai dengan menambah data pegawai kedalam database.</p>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambahPegawai">Tambah Pegawai</button>
-          </div>
-        </div>
-      </div>
+            <div class="col-md-12">
+              <div class="jumbotron jumbotron-fluid">
+                <div class="container">
+                  <h1 class="display-4">Data Pegawai tidak ditemukan!</h1>
+                  <p class="lead">Oops! Sepertinya belum ada data Pegawai yang dimasukkan.</p>
+                  <hr class="my-4">
+                  <p>Hanya <b>Superuser / Admin</b> yang dapat menambahkan pegawai.</p>
+                  <button type="button" class="btn btn-light disabled">Tambah pegawai</button>
+                </div>
+              </div>
+            </div>
       <?php
         }
       ?>

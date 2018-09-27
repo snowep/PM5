@@ -54,9 +54,6 @@
         ?>
         <small>
           <?php echo $row['nama_lantai'] ?>
-          <span data-toggle="modal" data-target="#tambahAset" >
-            <button type="button" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="bottom" title="Tambah Aset"><i class="fa fa-plus"></i></button>
-          </span>
         </small>
       </h1>
       <ol class="breadcrumb">
@@ -81,32 +78,11 @@
 
     <?php
       include 'element/footer.php';
+      include 'element/modal_pc.php';
+      include 'element/modal_server.php';
+      include 'element/modal_switch.php';
+      include 'element/modal_wifi.php';
     ?>
-    <div class="modal fade" id="tambahAset" tabindex="-1" role="dialog" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Pilih Aset</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden>&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambahPC">PC</button>
-            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#tambahServer">Server</button>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambahSwitch">Switch</button>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambahWifi">WiFi</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
-  <?php
-    include 'element/modal_pc.php';
-    include 'element/modal_server.php';
-    include 'element/modal_switch.php';
-    include 'element/modal_wifi.php';
-  ?>
 </div>
 <!-- ./wrapper -->
 
@@ -119,8 +95,6 @@
 <script src="../bower_components/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
 
 <script src="../dist/js/adminlte.min.js"></script>
-<?php include 'ajaxGetData.php'; ?>
-
 <script src="../bower_components/jquery-sparkline/dist/jquery.sparkline.min.js"></script>
 <!-- jvectormap  -->
 <script src="../plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>

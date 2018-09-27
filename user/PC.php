@@ -72,10 +72,6 @@
           <div class="box">
             <div class="box-header with-border">
               <h3 class="box-title">Daftar PC</h3>
-
-              <div class="box-tools pull-right">
-                <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#tambahPC"><i class="fa fa-plus"></i> Tambah PC</button>
-              </div>
             </div>
             <div class="box-body">
               <div class="row">
@@ -89,20 +85,8 @@
                         <?php if ($row['jenis'] == 'pc') { echo strtoupper($row['jenis'])." | ".$row['processor']; } else { echo ucfirst($row['jenis'])." | ".$row['processor']; } ?>
                       </h5>
                       <p><?php echo $row['ip_address'] ?></p>
-                      <?php
-                        $query = $db->query("SELECT * FROM pegawai WHERE id_pc = '".$row['id_pc']."'");
-                        $data = $query->fetch();
-                        if ($data['id_pc'] !== $row['id_pc']) {
-                      ?>
-                      <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#tambahUser<?php echo $row['id_pc'] ?>"><i class="fa fa-user"></i> Belum ada User</button>
-                      <?php
-                        }
-                      ?>
                       <span data-toggle="modal" data-target="#detailPC<?php echo $row['id_pc'] ?>" >
-                        <button type="button" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="bottom" title="Detail <?php if ($row['jenis'] == 'pc') { echo strtoupper($row['jenis']); } else { echo ucfirst($row['jenis']); } ?>"><i class="fa fa-layer-group"></i></button>
-                      </span>
-                      <span data-toggle="modal" data-target="#hapusPC<?php echo $row['id_pc'] ?>" >
-                        <button type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="bottom" title="Hapus <?php if ($row['jenis'] == 'pc') { echo strtoupper($row['jenis']); } else { echo ucfirst($row['jenis']); } ?>"><i class="fa fa-trash"></i></button>
+                        <button type="button" class="btn btn-dark btn-sm" data-toggle="tooltip" data-placement="bottom" title="Detail <?php if ($row['jenis'] == 'pc') { echo strtoupper($row['jenis']); } else { echo ucfirst($row['jenis']); } ?>"><i class="fa fa-eye"></i></button>
                       </span>
                     </div>
                   </div>
@@ -122,11 +106,11 @@
           <div class="col-md-12">
             <div class="jumbotron jumbotron-fluid">
               <div class="container">
-                <h1 class="display-4">Data mengenai PC tidak ditemukan!</h1>
-                <p class="lead">Oops! Sepertinya belum ada data PC yang dimasukkan.</p>
+                <h1 class="display-4">Data mengenai Aset tidak ditemukan!</h1>
+                <p class="lead">Oops! Sepertinya belum ada data Aset yang dimasukkan.</p>
                 <hr class="my-4">
-                <p>Mulai dengan menambah data PC kedalam database.</p>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambahPC">Tambah PC</button>
+                <p>Hanya <b>Superuser / Admin</b> yang dapat menambahkan aset.</p>
+                <button type="button" class="btn btn-light disabled">Tambah Aset</button>
               </div>
             </div>
           </div>
@@ -198,6 +182,5 @@
 <script src="../dist/js/pages/dashboard2.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../dist/js/demo.js"></script>
-<?php include 'ajaxGetData.php'; ?>
 </body>
 </html>

@@ -81,10 +81,6 @@
           <div class="box">
             <div class="box-header with-border">
               <h3 class="box-title">Daftar Ruangan</h3>
-
-              <div class="box-tools pull-right">
-                <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#tambahRuangan"><i class="fa fa-plus"></i> Tambah Ruangan</button>
-              </div>
             </div>
             <div class="box-body">
               <div class="row">
@@ -137,54 +133,6 @@
   <?php
     include 'element/footer.php';
   ?>
-
-  <div class="modal fade" id="tambahRuangan" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Tambah Ruangan</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden>&times;</span>
-          </button>
-        </div>
-
-        <div class="modal-body">
-          <form action="process/tambah_ruangan.php" method="post">
-            <div class="form-group">
-              <label>Nama Ruangan</label>
-              <input type="text" class="form-control" name="nama_ruangan" placeholder="Nama Ruangan">
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
-          </form>
-        </div>
-      </div>
-    </div>
-  </div>
-  <?php
-  $sql = $db->query("SELECT * FROM ruangan WHERE id_lantai = '$id'");
-  while ($row = $sql->fetch()) {
-  ?>
-  <div class="modal fade" id="hapusRuangan<?php echo $row['id_ruangan'] ?>" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Hapus <?php echo $row['nama_ruangan'] ?></h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden>&times;</span>
-          </button>
-        </div>
-
-        <div class="modal-body">
-          <p style="font-weight:400">Anda yakin menghapus ruangan ini? Semua data yang bersangkutan dengan ruangan ini akan ikut <b>terhapus</b> dan <b>TIDAK BISA</b> dikembalikan lagi!</p>
-        </div>
-
-        <div class="modal-footer">
-          <a href="process/hapus_ruangan.php?id_ruangan=<?php echo $row['id_ruangan'] ?>" class="btn btn-danger btn-sm">Hapus</a>
-        </div>
-      </div>
-    </div>
-  </div>
-<?php } ?>
 </div>
 <!-- ./wrapper -->
 

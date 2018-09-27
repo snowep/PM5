@@ -1,10 +1,6 @@
 <div class="box">
   <div class="box-header with-border">
     <h3 class="box-title">Daftar Switch</h3>
-
-    <div class="box-tools pull-right">
-      <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#tambahAset"><i class="fa fa-plus"></i> Tambah Aset</button>
-    </div>
   </div>
   <div class="box-body">
     <div class="row">
@@ -20,10 +16,7 @@
             </h5>
             <p><?php echo $row['ip_address'] ?></p>
             <span data-toggle="modal" data-target="#detailSwitch<?php echo $row['id_switch'] ?>" >
-              <button type="button" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="bottom" title="Detail Switch"><i class="fa fa-layer-group"></i></button>
-            </span>
-            <span data-toggle="modal" data-target="#hapusSwitch<?php echo $row['id_switch'] ?>" >
-              <button type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="bottom" title="Hapus Switch"><i class="fa fa-trash"></i></button>
+              <button type="button" class="btn btn-dark btn-sm" data-toggle="tooltip" data-placement="bottom" title="Detail Switch"><i class="fa fa-eye"></i></button>
             </span>
           </div>
         </div>

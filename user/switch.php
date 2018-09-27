@@ -76,10 +76,6 @@
           <div class="box">
             <div class="box-header with-border">
               <h3 class="box-title">Daftar Switch</h3>
-
-              <div class="box-tools pull-right">
-                <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#tambahSwitch"><i class="fa fa-plus"></i> Tambah Switch</button>
-              </div>
             </div>
             <div class="box-body">
               <div class="row">
@@ -95,10 +91,7 @@
                       </h5>
                       <p><?php echo $row['ip_address'] ?></p>
                       <span data-toggle="modal" data-target="#detailSwitch<?php echo $row['id_switch'] ?>" >
-                        <button type="button" class="btn btn-primary btn-sm" data-toggle="tooltip" data-placement="bottom" title="Detail Switch"><i class="fa fa-layer-group"></i></button>
-                      </span>
-                      <span data-toggle="modal" data-target="#hapusSwitch<?php echo $row['id_switch'] ?>" >
-                        <button type="button" class="btn btn-danger btn-sm" data-toggle="tooltip" data-placement="bottom" title="Hapus Switch"><i class="fa fa-trash"></i></button>
+                        <button type="button" class="btn btn-dark btn-sm" data-toggle="tooltip" data-placement="bottom" title="Detail Switch"><i class="fa fa-eye"></i></button>
                       </span>
                     </div>
                   </div>
@@ -113,17 +106,17 @@
           </div><?php
             } else {
             ?>
-      <div class="col-md-12">
-        <div class="jumbotron jumbotron-fluid">
-          <div class="container">
-            <h1 class="display-4">Data mengenai Switch tidak ditemukan!</h1>
-            <p class="lead">Oops! Sepertinya belum ada data Switch yang dimasukkan.</p>
-            <hr class="my-4">
-            <p>Mulai dengan menambah data Switch kedalam database.</p>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#tambahSwitch">Tambah Switch</button>
-          </div>
-        </div>
-      </div>
+            <div class="col-md-12">
+              <div class="jumbotron jumbotron-fluid">
+                <div class="container">
+                  <h1 class="display-4">Data mengenai Aset tidak ditemukan!</h1>
+                  <p class="lead">Oops! Sepertinya belum ada data Aset yang dimasukkan.</p>
+                  <hr class="my-4">
+                  <p>Hanya <b>Superuser / Admin</b> yang dapat menambahkan aset.</p>
+                  <button type="button" class="btn btn-light disabled">Tambah Aset</button>
+                </div>
+              </div>
+            </div>
       <?php
         }
       ?>
@@ -166,6 +159,5 @@
 <script src="../dist/js/pages/dashboard2.js"></script>
 <!-- AdminLTE for demo purposes -->
 <script src="../dist/js/demo.js"></script>
-<?php include 'ajaxGetData.php'; ?>
 </body>
 </html>
